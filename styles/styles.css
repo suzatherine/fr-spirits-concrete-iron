@@ -484,3 +484,32 @@ footer.ar > .nav-wrapper > .nav-item > #mount > span {
 .appear {
   animation: 2s appear 0.5s ease-out forwards;
 }
+
+/* STORY  */
+main.story {
+  /* justify-content: space-around; */
+}
+
+main.story > #caption {
+  /* color: blue; */
+}
+
+main.story > #mount > p.comment {
+  color: var(--accent-color-secondary);
+}
+
+/* SHOW NOTHING ON A PHONE  */
+
+.comp-warning {
+  display: none;
+}
+
+@media screen and (min-width: 400px) {
+  main {
+    display: none !important;
+  }
+  .comp-warning {
+    text-align: center;
+    display: inherit;
+  }
+}

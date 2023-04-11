@@ -193,8 +193,6 @@ function log(msg) {
   container.textContent = `${msg} \n${container.textContent}`;
 }
 
-
-
     const el = document.getElementById("initial");
   el.addEventListener("touchstart", handleStart);
   el.addEventListener("touchend", handleEnd);
@@ -203,9 +201,71 @@ function log(msg) {
   // log("Initialized.", el);
 }
 
-
-
 // document.addEventListener("DOMContentLoaded", startup);
+
+// CAPTIONS
+setup.addCaptions = () =>  {
+    const audio = document.getElementById("audio");
+     const track = audio.addTextTrack('subtitles', 'English', 'en');
+    track.mode = 'showing';
+    const cues = [[9.933,15.4,"Let me introduce you to Kharkiv, my city."],[15.466,16.933,"It's eclectic"],[16.958,21.121,"Just like Liverpool, it’s a centre for culture, science,"],[21.146,24.812,"education, philosophy and trade."],[24.837,29.145,"The streets are full of students from around the world."],[29.17,31.401,"Situated between Asia and Europe,"],[31.426,34.023,"you can see our transnational history"],[34.048,37.501,"carved out in the different architecture."],[37.546,42.367,"Here is where the first concrete skyscraper was built in the Soviet Union."],[42.392,45.723,"An amazing monument of constructivism,"],[45.659,50.167,"made from concrete and iron, using horses."],[50.192,55.856,"Kharkiv is only 40 kilometres from Russia and has become a city on the frontline."],[55.881,60.123,"From the first days, our busy streets, were targeted with rockets"],[60.148,62.501,"cluster and air bombs."],[62.568,66.024,"But just like concrete and iron are hard to destroy,"],[66.049,68.39,"our spirits are also unbreakable."],[68.41499999999999,71.812,"As each of us bravely questioned our responsibility."],[71.837,74.901,"Asking how can I help to win?"],[74.947,76.833,"To survive?"],[76.861,80.501,"And for a moment concerts were silent,"],[77,79,""],[80.526,83.545,"and Philharmonic Music Halls close their doors"],[83.57,87.723,"As musicians like Stas Kononov put down their instruments"],[87.748,91.10300000000001,"and became a frontline volunteer…"],[98.756,101.064,"STAS KONONOV: I was meant to play a concert in London"],[101.089,105.289,"on the 28th of February."],[105.314,107.789,"On the morning of the 24th"],[107.82300000000001,110.99000000000001,"a friend of mine, came knocking on my door, shouting"],[111.023,115.156,"‘wake up, or you will sleep through the war’."],[115.223,118.539,"For the next few days myself and other artists"],[118.564,121.94,"gathered in a small flat near the centre."],[121.965,124.123,"People were coming and going"],[124.173,126.273,"and we were trying to work out,"],[126.32300000000001,129.856,"should we stay or should we leave?"],[129.881,134.54,"I received a phone call from a friend in a more dangerous district,"],[134.565,139.148,"saying that there was a basement with 450 people."],[139.173,141.573,"That they didn’t have anything,"],[141.623,144.256,"no food, no water"],[144.281,147.498,"and its too dangerous to go outside."],[147.523,152.423,"It was the moment I realised that I must stay."],[152.448,156.80599999999998,"That there was a responsibility to provide and seek resources."],[156.83100000000002,159.475,"The flat I was in became a headquarters"],[159.5,163.923,"and everyone there if not actors, were connected to music, art, culture."],[163.948,167.323,"It was a little chaotic in that moment."],[167.348,170.323,"Someone provides something and its distributed"],[170.348,172.273,"to whoever most needs…"],[172.298,174.023,"Sharing everything…"],[174.048,177.323,"It was a very intense process."],[177.348,180.34,"After some time it became more organised"],[180.365,184.045,"and we had districts and volunteers in each area."],[184.09,186.203,"Of course it was dangerous."],[186.157,188.956,"Everywhere in Kharkiv was dangerous."],[188.981,191.49,"But I know a lot of examples of bravery"],[191.515,194.94,"and for me what I was doing is not brave."],[194.965,196.94,"It was stressful and frightening,"],[196.965,199.656,"it was a lots of things."],[199.681,202.431,"Everything makes you cry but inside"],[202.456,205.406,"but inside you have this feeling that you are in the right place,"],[205.431,209.123,"are part of something bigger than yourself,"],[209.148,213.406,"that we are all equal, all connected."],[213.43099999999998,218.59,"Everyone helps everyone and it doesn’t matter who you were before."],[218.615,221.80599999999998,"You could of been a businessman with a Tesla car"],[221.83100000000002,224.99,"or an artist who drives something very shitty."],[225.015,230.44,"Even the chief commander of the military base worked without hierarchy."],[230.465,232.95600000000002,"It was a horizontal connection…"],[232.981,234.70600000000002,"it was solidarity."],[233,234.707,""],[234.731,237.09,"You called someone if you needed something"],[237.115,238.95600000000002,"and you solved it."],[238.981,244.123,"It felt that one hundred people were one."],[244.148,247.323,"Before the full-scale invasion,"],[247.348,249.873,"I was asking these questions"],[249.898,251.59,"Who am I?"],[251.615,254.29,"What am I?"],[254.348,259.706,"This situation gave me the answers."],[263.21,268.16,"It feels like making music has not mattered for a long time."],[268.185,271.74,"A lot of musicians reject music right now."],[271.765,274.606,"To play, you must be in the moment,"],[274.631,277.79,"be present, to connect to your emotions."],[277.815,281.823,"It is very stressful and painful and when you start to play,"],[281.848,284.473,"you feel your pain and it comes in such a wave that"],[284.498,288.74,"you stop and think, never again."],[288.765,291.99,"We don’t have the space to be emotional."],[292.015,294.956,"So you go round in this circle."],[294.981,298.956,"And come back to the idea that it is not the time…"],[298.981,301.606,"maybe later."]]
+    for (let i=0; i<cues.length; i++){
+    const cue = new VTTCue(cues[i][0],cues[i][1],cues[i][2]);
+    track.addCue(cue); 
+}
+    track.addEventListener('cuechange', () => {
+    const activeCue = track.activeCues[0];
+    if (activeCue) {
+      document.getElementById('caption').textContent = activeCue.text;
+    }
+  });
+  console.log(audio.track)
+
+  const hideCap = () => {
+
+     track.mode = 'hidden';
+    document.getElementById("caption").style.visibility = "hidden";
+  }
+
+ 
+}
+
+setup.play = () => {
+ const audio = document.getElementById("audio")
+ audio.play();
+  }
+
+setup.pause = () => {
+ const audio = document.getElementById("audio")
+ audio.pause();
+  }
+
+setup.showCap = () => {
+    const track = document.getElementById("captrack")
+    console.log(track)
+track.mode = 'showing';
+    document.getElementById("caption").style.visibility = "visible";
+  }
+
+setup.hideCap = () => {
+    const track = document.getElementById("captrack")
+   track.mode = 'hidden';
+    document.getElementById("caption").style.visibility = "hidden";
+  }
+
+setup.addThirty = () => {
+  const audio = document.getElementById("audio")
+  const timeHolder = audio.currentTime;
+  audio.currentTime = timeHolder +30;  
+  }
+
+
+setup.backThirty = () => {
+  const audio = document.getElementById("audio");
+  const timeHolder = audio.currentTime;
+  audio.currentTime = timeHolder -30;
+  }
+
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
@@ -333,6 +393,90 @@ function log(msg) {
   </div>
 </footer>
 
+:: footerstory [nobr]
+<footer>
+<div class="nav-wrapper">
+  <div class="nav-item">
+      <<link [img[assets/img/play.png]]>>
+      <<set $fn to setup.play()>>
+      <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+      <<link [img[assets/img/pause.png]]>>
+      <<set $fn to setup.pause()>>
+      <</link>>
+  </div>
+</div>
+
+
+<<if $showCaptionsIcon is true>>
+<div class="nav-wrapper">
+    <div class="nav-item">
+      <<link [img[assets/img/captions.png]]>>
+      <<if $captionToggle is true>>
+          <<set $captionToggle to false>>
+      <<set $fn to setup.hideCap()>>
+          <<else>>
+          <<set $captionToggle to true>>
+      <<set $fn to setup.showCap()>>
+        <</if>>
+      <</link>>
+</div>
+  </div>
+<</if>>
+
+<<if $showMap is true>>
+    <div class="nav-wrapper">
+      <div class="nav-item">
+    <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>>
+    </div>
+  </div>
+  <</if>>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+    <<link "-30s">>
+<<set $fn to setup.backThirty()>>
+  <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+    <<link "+30s">>
+      <<set $fn to setup.addThirty()>>
+  <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+  <<link [img[assets/img/transcript.png]]>>
+<<if $transcript is false>>
+  <<set $transcript to true>>
+  <<replace "#transcript">>
+    <<include "spiritstranscript">>
+  <</replace>>
+  <<else>>
+  <<set $transcript to false>>
+  <<replace "#transcript">>
+  <</replace>>
+  <</if>>
+  <</link>>
+  </div>
+</div>
+<<if $showForwards is true>>
+    <div class="nav-wrapper">
+    <div class="nav-item">
+         [img[Forward|assets/img/forward.png][$nextpass]]
+    </div>
+  </div>
+     <</if>>
+</footer>
+
 :: footerMap [nobr]{"position":"100,375","size":"100,100"}
 <footer>
   <div class="nav-wrapper">
@@ -421,8 +565,9 @@ You have two options:
 <<set $passage to "landing">>
 <<set $nextpass to "instructions">>
 /* Title  */
-
+<div class="comp-warning">Best to experience on a phone</div>
 <main class="landing">
+
 
 <div class="poster-wrapper">
    <img class="poster" src="./../assets/img/sci.jpeg"/>
@@ -513,143 +658,124 @@ You have two options:
 :: preintro [nobr] {"position":"450,50","size":"100,100"}
 <<set $prevpass to "instnar2">>
 <<set $passage to "preintro">>
-<<set $nextpass to "intro">>
+<<set $nextpass to "spirits">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-<main class="instructions">
+<main class="story">
 <div id="mount"></div>
   <<timed 0.1s>><<replace "#mount">>
  <div class="poster-wrapper">
    <img class="poster" src="./../assets/img/sci.jpeg"/>
  </div>
     <p>Great!</p>
-    <p>Press  <div class="inline-btn-wrapper">[[play|intro]] </div>to listen </p>
+    <p>Press  <div class="inline-btn-wrapper">[[play|spirits]] </div>to listen </p>
   <</replace>><</timed>>
 
 </main>
 <<include "footer">>
 
-:: introaudio [nobr]
+/* :: introaudio [nobr]
 <<replace "#audio">><p>[narrator audio playing...]</p><</replace>>
 
 :: intro [nobr] {"position":"450,50","size":"100,100"}
+
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to true>>
+<<set $showBackwards to true>>
+<<set $showForwards to true>>
+<<set $showCaptionsIcon to true>> */
+
+
+:: spirits [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "preintro">>
 <<set $passage to "intro">>
-<<set $nextpass to "stas">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
+<<set $nextpass to "fakeend">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to true>>
 <<set $showBackwards to true>>
-<<set $showForwards to true>>
 <<set $showCaptionsIcon to true>>
-/* <<set $audio to "premiere">> */
-/* <<audio ":all" stop>> */
-/* <<audio "premiere" play>> */
-<audio src="https://remote.co.com/MoTT/AgentTraining/Sounds/13.%20Challenge%203%20-%202.mp3" autoplay>Audio is not supported on your device</audio>
-/* <<audio $audio time 0s play>> */
-
-
-/* <<include "header">> */
-<main>
-<div id="audio"></div>
-<div id="mount"></div>
-<<timed 0.1s>>
-    <<include "introaudio">>
-<</timed>>
-<<if $captions is true>>
-    <<timed 0.1s>><<replace "#mount">>
-      Let me introduce you to Kharkiv, my city.
-It's eclectic
-Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of students from around the world.
-
-    <</replace>><</timed>>
-
-    <<timed 2s>><<replace "#mount">>
-      Situated between Asia and Europe, you can see our transnational history carved out in the different architecture.
-Here is where the first concrete skyscraper was built in the Soviet Union. An amazing monument of constructivism, made from concrete and iron, using horses.
-
-    <</replace>><</timed>>
-
-    <<timed 4s>><<replace "#mount">>
-      Kharkiv is only 40 kilometres from Russia and has become a city on the frontline. 
-From the first days, our busy streets, were targeted with rockets, cluster and air bombs. But just like concrete and iron are hard to destroy, our spirits are also unbreakable. As each of us bravely questioned our responsibility. Asking how can I help to win? To survive?
-And for a moment concerts were silent, and Philharmonic Music Halls close their doors. As musicians like Stas Kononov put down their instruments and became a frontline volunteer…
-
-    <</replace>><</timed>>
-<</if>>
-<<timed 6s>><<replace "#mount">>
-
- <<button "Next">><<goto $nextpass>><</button>>
-<</replace>><</timed>>
-
-</main>
-<<include "footer">>
-
-:: stasaudio [nobr]
-<<replace "#audio">><p>[stas audio playing...]</p><</replace>>
-
-:: stas [nobr] {"position":"450,50","size":"100,100"}
-<<set $prevpass to "landing">>
-<<set $passage to "stas">>
-<<set $nextpass to "instnar3">>
 <<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to true>>
-<main>
-<div id="audio"></div>
-<div id="mount"></div>
-<<timed 0.1s>>
-    <<include "stasaudio">>
-<</timed>>
+<main class="story">
+<audio id="audio" autoplay>
+  <source src="https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1">
+  <track kind="captions" srclang="en" label="English captions" id="captrack" default>
+</audio>
 
-<<if $captions is true>>
-    <<timed 0.1s>><<replace "#mount">>
-<p>    STAS KONONOV:</p>
-<p>I was meant to play a concert in London on the 28th of February.</p>
-<p>On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep through the war’. </p>
-<p>For the next few days myself and other artists gathered in a small flat near the centre.</p>
-<p>People were coming and going and we were trying to work out, should we stay or should we leave?</p>
-<p>I received a phone call from a friend in a more dangerous district, saying that there was a basement with 450 people. That they didn’t have anything, no food, no water and its too dangerous to go outside.</p>
-<p>It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources. </p>
-<p>The flat I was in became a headquarters and everyone there if not actors, were connected to music, art, culture. </p>
-<p>It was a little chaotic in that moment. Someone provides something and its distributed to whoever most needs… Sharing everything…</p>
-<p>It was a very intense process.</p>
-<p>After some time it became more organised and we had districts and volunteers in each area. </p>
-<p>
-  Of course it was dangerous. Everywhere in Kharkiv was dangerous.
-  But I know a lot of examples that are brave and for me what I was doing is not brave. 
-</p>
-<p>It was stressful and frightening, it was a lots of things. </p><p>Everything makes you cry but inside you have this feeling that you are in the right place, are part of something bigger than yourself, that we are all equal, all connected.</p>
-<p>Everyone helps everyone and it doesn’t matter who you were before. You could of been a businessman with a Tesla car or an artist who drives something very shitty. </p>
-<p>
-  Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was solidarity. You called someone if you needed something and you solved it. 
-  It felt that one hundred people were one.
-</p>
-<p>
-  Before the full-scale invasion, I was asking these questions - Who am I? What am I? This situation gave me the answers.
-  It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
-</p>
-<p>To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.</p>
-<p>We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</p>
+<div id="caption" ></div>
+<div id="transcript"></div>
+<div id="mount" ></div>
 
-
-
-    <</replace>><</timed>>
-<</if>>
-<<timed 8s>><<replace "#mount">>
-<p> When you're finished listening, let me know</p>
+<<timed 506s>><<replace "#mount">>
+<p class="comment"> When you're finished listening, let me know</p>
 <<button "I'm finished">><<goto $nextpass>><</button>>
  <</replace>><</timed>>
-
 </main>
-<<include "footer">>
+
+<<include "footerstory">>
+<<done>>
+  <<set $addC to setup.addCaptions()>>
+<</done>>
+
+
+:: spiritstranscript
+
+<h2>Transcript</h2>
+NARRATOR:
+Let me introduce you to Kharkiv, my city.
+It's eclectic
+Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of
+students from around the world.
+-
+Situated between Asia and Europe, you can see our transnational history carved out in the different architecture.
+Here is where the first concrete skyscraper was built in the Soviet Union. An amazing monument of constructivism,
+made from concrete and iron, using horses.
+-
+Kharkiv is only 40 kilometres from Russia and has become a city on the frontline.
+From the first days, our busy streets, were targeted with rockets, cluster and air bombs. But just like concrete
+and iron are hard to destroy, our spirits are also unbreakable. As each of us bravely questioned our
+responsibility. Asking how can I help to win? To survive?
+And for a moment concerts were silent, and Philharmonic Music Halls close their doors. As musicians like Stas
+Kononov put down their instruments and became a frontline volunteer…
+STAS KONONOV:
+I was meant to play a concert in London on the 28th of February.
+On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep
+through the war’.
+For the next few days myself and other artists gathered in a small flat near the centre.
+People were coming and going and we were trying to work out, should we stay or should we leave?
+I received a phone call from a friend in a more dangerous district, saying that there was a basement with 450
+people. That they didn’t have anything, no food, no water and its too dangerous to go outside.
+It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources.
+The flat I was in became a headquarters and everyone there if not actors, were connected to music, art, culture.
+It was a little chaotic in that moment. Someone provides something and its distributed to whoever most needs…
+Sharing everything…
+It was a very intense process.
+After some time it became more organised and we had districts and volunteers in each area.
+Of course it was dangerous. Everywhere in Kharkiv was dangerous.
+But I know a lot of examples that are brave and for me what I was doing is not brave.
+It was stressful and frightening, it was a lots of things. Everything makes you cry but inside you have this
+feeling that you are in the right place, are part of something bigger than yourself, that we are all equal, all
+connected.
+Everyone helps everyone and it doesn’t matter who you were before. You could of been a businessman with a Tesla
+car or an artist who drives something very shitty.
+Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was
+solidarity. You called someone if you needed something and you solved it.
+It felt that one hundred people were one.
+Before the full-scale invasion, I was asking these questions - Who am I? What am I? This situation gave me the
+answers.
+It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
+To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and
+when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not
+the time… maybe later.
+
+:: fakeend [nobr]
+<main>End</main>
 
 
 :: instnar3 [nobr]
@@ -704,7 +830,7 @@ And for a moment concerts were silent, and Philharmonic Music Halls close their 
 
 
 :: instnar4 [nobr]
-<<set $prevpass to "AR2">>
+<<set $prevpass to "AR1">>
 <<set $passage to "instnar4">>
 <<set $nextpass to "journey1">>
 <<set $showMap to true>>
@@ -765,45 +891,46 @@ And for a moment concerts were silent, and Philharmonic Music Halls close their 
 <<set $passage to "mixtape">>
 <<set $nextpass to "end">>
 <<set $showMap to true>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to true>>
 <<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to true>>
-/* Phil to Church  */
+<<set $showCaptionsIcon to false>>
 <<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)>>
-<<include "footer">>
-
-<main>
-<div id="audio"></div>
+<main class="story">
+<audio id="audio" autoplay>
+  <source src="https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1">
+  <track kind="captions" srclang="en" label="English captions" id="captrack" default>
+</audio>
 <div id="map" class="hide">$map</div>
-<div id="mount"></div>
-/* Walk The Streets Part One */
-<<timed 0.1s>>
-    <<include "mixtapeaudio">>
-<</timed>>
-<<if $captions is true>>
-<<timed 0.1s>><<replace "#mount">>
-    <p>Audio - MIXTAPE / STAS MUSIC</p>
-<p>Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. </p>
+<div id="caption" ></div>
+<div id="transcript"></div>
+<div id="mount" ></div>
 
-    <</replace>><</timed>>
-    <<timed 2s>><<replace "#mount">>
-<p>It is on the frontline, he begins to play again - concerts for the army.</p>
-    <</replace>><</timed>>
-    <<timed 4s>><<replace "#mount">>
-    <p>  Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…</p>
-    <</replace>><</timed>>
-   
-    <<timed 8s>><<replace "#mount">>
-    <<button "Next">><<goto $nextpass>><</button>>
-    <</replace>><</timed>>
-<</if>>
+<<timed 506s>><<replace "#mount">>
+<p class="comment"> When you're finished listening, let me know</p>
+<<button "I'm finished">><<goto $nextpass>><</button>>
+ <</replace>><</timed>>
 </main>
-<<include "footer">>
+
+<<include "footerstory">>
+<<done>>
+  <<set $addC to setup.addCaptions()>>
+<</done>>
+
+
+
+:: mixtapetranscript
+
+<h2>Transcript</h2>
+Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
+It is on the frontline, he begins to play again - concerts for the army.
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…
+
+
 
 :: end [nobr]
-<<set $prevpass to "teacher">>
+<<set $prevpass to "mixtape">>
 <<set $passage to "end">>
 <<set $nextpass to "end">>
 <<set $showMap to false>>
@@ -855,4 +982,5 @@ And for a moment concerts were silent, and Philharmonic Music Halls close their 
 <iframe width="90%" height="500px" allowFullScreen="true" allow="accelerometer; magnetometer; gyroscope" style="display:block; margin:20px auto; border:0 none; max-width:880px;border-radius:8px; box-shadow: 0 1px 1px rgba(0,0,0,0.11),0 2px 2px rgba(0,0,0,0.11),0 4px 4px rgba(0,0,0,0.11),0 6px 8px rgba(0,0,0,0.11),0 8px 16px rgba(0,0,0,0.11);" src="https://panoraven.com/en/embed/uE3bv5KK9Q"></iframe>
 <<button "back">><<goto "landing">><</button>>
 </main>
+
 
