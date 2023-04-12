@@ -642,7 +642,6 @@ You have two options:
 <p>Step forward via a button like this     [img[Forward|assets/img/for.png][$nextpass]]</p>
   <</append>>
 <</timed>>
- 
  <<timed 13s>>
   <<append "#mount">>
 <p>Toggle captions by tapping this [img[Forward|assets/img/captions.png][$nextpass]]</p>
