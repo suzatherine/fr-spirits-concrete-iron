@@ -5,24 +5,14 @@
 /* CONSTANTS  */
 
 :root {
-  /* --main-bg-color: #2e375f;
-  --accent-color-primary: #e8d7a4;
-  --accent-color-secondary: #1fb9aa; */
   --main-bg-color: #140246;
   --accent-color-primary: #fea602;
   --accent-color-secondary: #1fb9aa;
   --accent-color-shadow: #140246;
-  /* --color-red: #bc4121;
-  --color-mint: #94cab7;
-  --color-grey: #7f7f7f;
-  --color-orange: #e86530;
-  --color-purple: #7f6fb0;
-  --color-pink: #cd7362; */
   --color-yellow: #fea602;
   --color-red: #ff0200;
   --color-purple: #140246;
   --color-pink: #ff007c;
-  /* --color-yellow: #f3d903; */
   --color-orange: #f75146;
   --font-headings: "Shippori Antique B1", sans-serif;
   --font-body: "Shippori Antique B1", sans-serif;

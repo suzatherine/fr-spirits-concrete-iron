@@ -14,6 +14,7 @@ Spirits of Concrete & Iron
 
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");
 
@@ -627,7 +628,7 @@ You have two options:
 <</timed>>
 <<timed 5s>>
   <<append "#mount">>
-<p>The arrow [img[Back|assets/img/backward.png][$prevpass]] skips back</p>
+<p>The arrow [img[Back|assets/img/back.png][$prevpass]] skips back</p>
   <</append>>
 <</timed>>
 <<timed 8s>>
@@ -638,10 +639,21 @@ You have two options:
 <</timed>>
 <<timed 11s>>
   <<append "#mount">>
-<p>Step forward via a button like this     [img[Forward|assets/img/forward.png][$nextpass]]</p>
+<p>Step forward via a button like this     [img[Forward|assets/img/for.png][$nextpass]]</p>
   <</append>>
 <</timed>>
-  <<timed 13s>>
+ 
+ <<timed 13s>>
+  <<append "#mount">>
+<p>Toggle captions by tapping this [img[Forward|assets/img/captions.png][$nextpass]]</p>
+  <</append>>
+<</timed>>
+ <<timed 15s>>
+  <<append "#mount">>
+<p>[img[Forward|assets/img/transcript.png][$nextpass]] will show a transcript of the audio</p>
+  <</append>>
+<</timed>>
+ <<timed 17s>>
   <<append "#mount">>
 <<button "Next">><<goto $nextpass>><</button>>
   <</append>>

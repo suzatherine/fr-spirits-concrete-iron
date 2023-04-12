@@ -99,6 +99,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<!-- UUID://F9E39354-F641-4070-8B45-C330A3FDC8C9// --><tw-storydata name="Spirits of Concrete &amp; Iron" startnode="11" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C330A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");</style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
 $(document.head).find('#style-ui-bar').remove();
@@ -658,7 +659,7 @@ You have two options:
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 5s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;The arrow [img[Back|assets/img/backward.png][$prevpass]] skips back&lt;/p&gt;
+&lt;p&gt;The arrow [img[Back|assets/img/back.png][$prevpass]] skips back&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 8s&gt;&gt;
@@ -669,10 +670,21 @@ You have two options:
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 11s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;Step forward via a button like this     [img[Forward|assets/img/forward.png][$nextpass]]&lt;/p&gt;
+&lt;p&gt;Step forward via a button like this     [img[Forward|assets/img/for.png][$nextpass]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-  &lt;&lt;timed 13s&gt;&gt;
+ 
+ &lt;&lt;timed 13s&gt;&gt;
+  &lt;&lt;append &quot;#mount&quot;&gt;&gt;
+&lt;p&gt;Toggle captions by tapping this [img[Forward|assets/img/captions.png][$nextpass]]&lt;/p&gt;
+  &lt;&lt;/append&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+ &lt;&lt;timed 15s&gt;&gt;
+  &lt;&lt;append &quot;#mount&quot;&gt;&gt;
+&lt;p&gt;[img[Forward|assets/img/transcript.png][$nextpass]] will show a transcript of the audio&lt;/p&gt;
+  &lt;&lt;/append&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+ &lt;&lt;timed 17s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
   &lt;&lt;/append&gt;&gt;
