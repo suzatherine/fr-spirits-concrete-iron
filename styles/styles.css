@@ -486,16 +486,20 @@ footer.ar > .nav-wrapper > .nav-item > #mount > span {
 }
 
 /* STORY  */
-main.story {
-  /* justify-content: space-around; */
-}
-
-main.story > #caption {
-  /* color: blue; */
-}
 
 main.story > #mount > p.comment {
   color: var(--accent-color-secondary);
+}
+
+footer > .nav-wrapper.playpause-wrapper {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#playpause.playhighlight {
+  background-color: var(--color-pink);
 }
 
 /* SHOW NOTHING ON A PHONE  */

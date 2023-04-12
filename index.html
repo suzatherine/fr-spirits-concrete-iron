@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://F9E39354-F641-4070-8B45-C330A3FDC8C9// --><tw-storydata name="Spirits of Concrete &amp; Iron" startnode="10" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C330A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+	<!-- UUID://F9E39354-F641-4070-8B45-C330A3FDC8C9// --><tw-storydata name="Spirits of Concrete &amp; Iron" startnode="11" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C330A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");</style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
 $(document.head).find('#style-ui-bar').remove();
@@ -284,13 +284,15 @@ function log(msg) {
 // document.addEventListener("DOMContentLoaded", startup);
 
 // CAPTIONS
-setup.addCaptions = () =>  {
+setup.addCaptions = (cuekey) =>  {
     const audio = document.getElementById("audio");
      const track = audio.addTextTrack('subtitles', 'English', 'en');
     track.mode = 'showing';
-    const cues = [[9.933,15.4,"Let me introduce you to Kharkiv, my city."],[15.466,16.933,"It's eclectic"],[16.958,21.121,"Just like Liverpool, it’s a centre for culture, science,"],[21.146,24.812,"education, philosophy and trade."],[24.837,29.145,"The streets are full of students from around the world."],[29.17,31.401,"Situated between Asia and Europe,"],[31.426,34.023,"you can see our transnational history"],[34.048,37.501,"carved out in the different architecture."],[37.546,42.367,"Here is where the first concrete skyscraper was built in the Soviet Union."],[42.392,45.723,"An amazing monument of constructivism,"],[45.659,50.167,"made from concrete and iron, using horses."],[50.192,55.856,"Kharkiv is only 40 kilometres from Russia and has become a city on the frontline."],[55.881,60.123,"From the first days, our busy streets, were targeted with rockets"],[60.148,62.501,"cluster and air bombs."],[62.568,66.024,"But just like concrete and iron are hard to destroy,"],[66.049,68.39,"our spirits are also unbreakable."],[68.41499999999999,71.812,"As each of us bravely questioned our responsibility."],[71.837,74.901,"Asking how can I help to win?"],[74.947,76.833,"To survive?"],[76.861,80.501,"And for a moment concerts were silent,"],[77,79,""],[80.526,83.545,"and Philharmonic Music Halls close their doors"],[83.57,87.723,"As musicians like Stas Kononov put down their instruments"],[87.748,91.10300000000001,"and became a frontline volunteer…"],[98.756,101.064,"STAS KONONOV: I was meant to play a concert in London"],[101.089,105.289,"on the 28th of February."],[105.314,107.789,"On the morning of the 24th"],[107.82300000000001,110.99000000000001,"a friend of mine, came knocking on my door, shouting"],[111.023,115.156,"‘wake up, or you will sleep through the war’."],[115.223,118.539,"For the next few days myself and other artists"],[118.564,121.94,"gathered in a small flat near the centre."],[121.965,124.123,"People were coming and going"],[124.173,126.273,"and we were trying to work out,"],[126.32300000000001,129.856,"should we stay or should we leave?"],[129.881,134.54,"I received a phone call from a friend in a more dangerous district,"],[134.565,139.148,"saying that there was a basement with 450 people."],[139.173,141.573,"That they didn’t have anything,"],[141.623,144.256,"no food, no water"],[144.281,147.498,"and its too dangerous to go outside."],[147.523,152.423,"It was the moment I realised that I must stay."],[152.448,156.80599999999998,"That there was a responsibility to provide and seek resources."],[156.83100000000002,159.475,"The flat I was in became a headquarters"],[159.5,163.923,"and everyone there if not actors, were connected to music, art, culture."],[163.948,167.323,"It was a little chaotic in that moment."],[167.348,170.323,"Someone provides something and its distributed"],[170.348,172.273,"to whoever most needs…"],[172.298,174.023,"Sharing everything…"],[174.048,177.323,"It was a very intense process."],[177.348,180.34,"After some time it became more organised"],[180.365,184.045,"and we had districts and volunteers in each area."],[184.09,186.203,"Of course it was dangerous."],[186.157,188.956,"Everywhere in Kharkiv was dangerous."],[188.981,191.49,"But I know a lot of examples of bravery"],[191.515,194.94,"and for me what I was doing is not brave."],[194.965,196.94,"It was stressful and frightening,"],[196.965,199.656,"it was a lots of things."],[199.681,202.431,"Everything makes you cry but inside"],[202.456,205.406,"but inside you have this feeling that you are in the right place,"],[205.431,209.123,"are part of something bigger than yourself,"],[209.148,213.406,"that we are all equal, all connected."],[213.43099999999998,218.59,"Everyone helps everyone and it doesn’t matter who you were before."],[218.615,221.80599999999998,"You could of been a businessman with a Tesla car"],[221.83100000000002,224.99,"or an artist who drives something very shitty."],[225.015,230.44,"Even the chief commander of the military base worked without hierarchy."],[230.465,232.95600000000002,"It was a horizontal connection…"],[232.981,234.70600000000002,"it was solidarity."],[233,234.707,""],[234.731,237.09,"You called someone if you needed something"],[237.115,238.95600000000002,"and you solved it."],[238.981,244.123,"It felt that one hundred people were one."],[244.148,247.323,"Before the full-scale invasion,"],[247.348,249.873,"I was asking these questions"],[249.898,251.59,"Who am I?"],[251.615,254.29,"What am I?"],[254.348,259.706,"This situation gave me the answers."],[263.21,268.16,"It feels like making music has not mattered for a long time."],[268.185,271.74,"A lot of musicians reject music right now."],[271.765,274.606,"To play, you must be in the moment,"],[274.631,277.79,"be present, to connect to your emotions."],[277.815,281.823,"It is very stressful and painful and when you start to play,"],[281.848,284.473,"you feel your pain and it comes in such a wave that"],[284.498,288.74,"you stop and think, never again."],[288.765,291.99,"We don’t have the space to be emotional."],[292.015,294.956,"So you go round in this circle."],[294.981,298.956,"And come back to the idea that it is not the time…"],[298.981,301.606,"maybe later."]]
-    for (let i=0; i<cues.length; i++){
-    const cue = new VTTCue(cues[i][0],cues[i][1],cues[i][2]);
+    const cues = {
+      spirits: [[9.933,15.4,"Let me introduce you to Kharkiv, my city."],[15.466,16.933,"It's eclectic"],[16.958,21.121,"Just like Liverpool, it’s a centre for culture, science,"],[21.146,24.812,"education, philosophy and trade."],[24.837,29.145,"The streets are full of students from around the world."],[29.17,31.401,"Situated between Asia and Europe,"],[31.426,34.023,"you can see our transnational history"],[34.048,37.501,"carved out in the different architecture."],[37.546,42.367,"Here is where the first concrete skyscraper was built in the Soviet Union."],[42.392,45.723,"An amazing monument of constructivism,"],[45.659,50.167,"made from concrete and iron, using horses."],[50.192,55.856,"Kharkiv is only 40 kilometres from Russia and has become a city on the frontline."],[55.881,60.123,"From the first days, our busy streets, were targeted with rockets"],[60.148,62.501,"cluster and air bombs."],[62.568,66.024,"But just like concrete and iron are hard to destroy,"],[66.049,68.39,"our spirits are also unbreakable."],[68.41499999999999,71.812,"As each of us bravely questioned our responsibility."],[71.837,74.901,"Asking how can I help to win?"],[74.947,76.833,"To survive?"],[76.861,80.501,"And for a moment concerts were silent,"],[77,79,""],[80.526,83.545,"and Philharmonic Music Halls close their doors"],[83.57,87.723,"As musicians like Stas Kononov put down their instruments"],[87.748,91.10300000000001,"and became a frontline volunteer…"],[98.756,101.064,"STAS KONONOV: I was meant to play a concert in London"],[101.089,105.289,"on the 28th of February."],[105.314,107.789,"On the morning of the 24th"],[107.82300000000001,110.99000000000001,"a friend of mine, came knocking on my door, shouting"],[111.023,115.156,"‘wake up, or you will sleep through the war’."],[115.223,118.539,"For the next few days myself and other artists"],[118.564,121.94,"gathered in a small flat near the centre."],[121.965,124.123,"People were coming and going"],[124.173,126.273,"and we were trying to work out,"],[126.32300000000001,129.856,"should we stay or should we leave?"],[129.881,134.54,"I received a phone call from a friend in a more dangerous district,"],[134.565,139.148,"saying that there was a basement with 450 people."],[139.173,141.573,"That they didn’t have anything,"],[141.623,144.256,"no food, no water"],[144.281,147.498,"and its too dangerous to go outside."],[147.523,152.423,"It was the moment I realised that I must stay."],[152.448,156.80599999999998,"That there was a responsibility to provide and seek resources."],[156.83100000000002,159.475,"The flat I was in became a headquarters"],[159.5,163.923,"and everyone there if not actors, were connected to music, art, culture."],[163.948,167.323,"It was a little chaotic in that moment."],[167.348,170.323,"Someone provides something and its distributed"],[170.348,172.273,"to whoever most needs…"],[172.298,174.023,"Sharing everything…"],[174.048,177.323,"It was a very intense process."],[177.348,180.34,"After some time it became more organised"],[180.365,184.045,"and we had districts and volunteers in each area."],[184.09,186.203,"Of course it was dangerous."],[186.157,188.956,"Everywhere in Kharkiv was dangerous."],[188.981,191.49,"But I know a lot of examples of bravery"],[191.515,194.94,"and for me what I was doing is not brave."],[194.965,196.94,"It was stressful and frightening,"],[196.965,199.656,"it was a lots of things."],[199.681,202.431,"Everything makes you cry but inside"],[202.456,205.406,"but inside you have this feeling that you are in the right place,"],[205.431,209.123,"are part of something bigger than yourself,"],[209.148,213.406,"that we are all equal, all connected."],[213.43099999999998,218.59,"Everyone helps everyone and it doesn’t matter who you were before."],[218.615,221.80599999999998,"You could of been a businessman with a Tesla car"],[221.83100000000002,224.99,"or an artist who drives something very shitty."],[225.015,230.44,"Even the chief commander of the military base worked without hierarchy."],[230.465,232.95600000000002,"It was a horizontal connection…"],[232.981,234.70600000000002,"it was solidarity."],[233,234.707,""],[234.731,237.09,"You called someone if you needed something"],[237.115,238.95600000000002,"and you solved it."],[238.981,244.123,"It felt that one hundred people were one."],[244.148,247.323,"Before the full-scale invasion,"],[247.348,249.873,"I was asking these questions"],[249.898,251.59,"Who am I?"],[251.615,254.29,"What am I?"],[254.348,259.706,"This situation gave me the answers."],[263.21,268.16,"It feels like making music has not mattered for a long time."],[268.185,271.74,"A lot of musicians reject music right now."],[271.765,274.606,"To play, you must be in the moment,"],[274.631,277.79,"be present, to connect to your emotions."],[277.815,281.823,"It is very stressful and painful and when you start to play,"],[281.848,284.473,"you feel your pain and it comes in such a wave that"],[284.498,288.74,"you stop and think, never again."],[288.765,291.99,"We don’t have the space to be emotional."],[292.015,294.956,"So you go round in this circle."],[294.981,298.956,"And come back to the idea that it is not the time…"],[298.981,301.606,"maybe later."]], 
+      mixtape: [[10.2,13.866,"Musician Stas Kononov continues to volunteer,"],[13.891,17.266,"distributing supplies to civilians and soldiers."],[17.291,22.49,"It is on the frontline, he begins to play again - concerts for the army."],[22.515,26.856,"Acoustic sounds, songs from his album he is yet to release"],[26.881,30.589,"and music he recorded in a legendary studio in Izium"],[30.614,35.156,"that has now been completely destroyed…"]]}
+    for (let i=0; i<cues[cuekey].length; i++){
+    const cue = new VTTCue(cues[cuekey][i][0],cues[cuekey][i][1],cues[cuekey][i][2]);
     track.addCue(cue); 
 }
     track.addEventListener('cuechange', () => {
@@ -351,7 +353,33 @@ setup.backThirty = () => {
   &lt;h1&gt;$title&lt;/h1&gt;
   &lt;h3 class=&quot;subtitle&quot;&gt;With Fire &amp; Rage&lt;/h3&gt;
 &lt;/div &gt;
-&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
+&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="headerstory" tags="nobr" position="350,100" size="100,100">&lt;header&gt;
+&lt;&lt;if $showBackwards is true&gt;&gt;
+  &lt;div class=&quot;nav-wrapper&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;
+        [img[Back|assets/img/back.png][$prevpass]]
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if $showMap is true&gt;&gt;
+    &lt;div class=&quot;nav-wrapper&quot;&gt;
+      &lt;div class=&quot;nav-item&quot;&gt;
+    &lt;&lt;link [img[assets/img/map.png]]&gt;&gt;&lt;&lt;toggleclass &quot;#map&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if $showForwards is true&gt;&gt;
+    &lt;div class=&quot;nav-wrapper&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;
+         [img[Forward|assets/img/for.png][$nextpass]]
+    &lt;/div&gt;
+  &lt;/div&gt;
+     &lt;&lt;/if&gt;&gt;
+&lt;/header&gt;</tw-passagedata><tw-passagedata pid="4" name="footer" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
 &lt;&lt;if $showBackwards is true&gt;&gt;
   &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
@@ -415,7 +443,7 @@ setup.backThirty = () => {
     &lt;/div&gt;
   &lt;/div&gt;
      &lt;&lt;/if&gt;&gt;
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="4" name="footerback" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="footerback" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
   &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
         [img[Back|assets/img/backward.png][$prevpass]]
@@ -425,7 +453,7 @@ setup.backThirty = () => {
  
   &lt;/div&gt;
   
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="footerAR" tags="nobr" position="100,375" size="100,100">&lt;footer class=&quot;ar&quot;&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="6" name="footerAR" tags="nobr" position="100,375" size="100,100">&lt;footer class=&quot;ar&quot;&gt;
   &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
     &lt;div id=&quot;mount&quot;&gt; &lt;span&gt;Press the image&lt;/span&gt; &lt;span&gt;to see it change&lt;/span&gt;&lt;/div&gt;
@@ -449,24 +477,29 @@ setup.backThirty = () => {
        &lt;&lt;button &quot;I’ve finished listening&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="6" name="footerstory" tags="nobr" position="725,100" size="100,100">&lt;footer&gt;
-&lt;div class=&quot;nav-wrapper&quot;&gt;
-  &lt;div class=&quot;nav-item&quot;&gt;
-      &lt;&lt;link [img[assets/img/play.png]]&gt;&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="7" name="footerstory" tags="nobr" position="850,100" size="100,100">&lt;footer&gt;
+&lt;&lt;if $showBackwards is true&gt;&gt;
+  &lt;div class=&quot;nav-wrapper&quot;&gt;
+    &lt;div class=&quot;nav-item&quot;&gt;
+        [img[Back|assets/img/back.png][$prevpass]]
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;div class=&quot;nav-wrapper playpause-wrapper&quot;&gt;
+  &lt;div class=&quot;nav-item&quot; id=&quot;playpause&quot;&gt;
+      &lt;&lt;link [img[assets/img/playpause.png]]&gt;&gt;
+        &lt;&lt;if $playToggle is false&gt;&gt;
       &lt;&lt;set $fn to setup.play()&gt;&gt;
+      &lt;&lt;set $playToggle to true&gt;&gt;
+      &lt;&lt;addclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+       &lt;&lt;set $fn to setup.pause()&gt;&gt;
+        &lt;&lt;set $playToggle to false&gt;&gt;
+      &lt;&lt;removeclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
       &lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;div class=&quot;nav-wrapper&quot;&gt;
-  &lt;div class=&quot;nav-item&quot;&gt;
-      &lt;&lt;link [img[assets/img/pause.png]]&gt;&gt;
-      &lt;&lt;set $fn to setup.pause()&gt;&gt;
-      &lt;&lt;/link&gt;&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-
 &lt;&lt;if $showCaptionsIcon is true&gt;&gt;
 &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
@@ -526,11 +559,11 @@ setup.backThirty = () => {
 &lt;&lt;if $showForwards is true&gt;&gt;
     &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
-         [img[Forward|assets/img/forward.png][$nextpass]]
+         [img[Forward|assets/img/for.png][$nextpass]]
     &lt;/div&gt;
   &lt;/div&gt;
      &lt;&lt;/if&gt;&gt;
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="7" name="footerMap" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="8" name="footerMap" tags="nobr" position="100,375" size="100,100">&lt;footer&gt;
   &lt;div class=&quot;nav-wrapper&quot;&gt;
 
     &lt;div class=&quot;nav-item&quot;&gt;
@@ -550,7 +583,7 @@ setup.backThirty = () => {
         &lt;&lt;button &quot;I&#39;ve arrived&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="8" name="lost" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="9" name="lost" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Sorry to hear that you&#39;re lost! 
 You have two options:
@@ -559,7 +592,7 @@ You have two options:
 
 &lt;&lt;button &quot;Take me straight to the end location!&quot;&gt;&gt;&lt;&lt;goto &quot;end&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="credits" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;credits&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="credits" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;credits&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
 &lt;&lt;set $showAudio to false&gt;&gt;
 &lt;&lt;set $showReplay to false&gt;&gt;
@@ -599,7 +632,7 @@ You have two options:
 &lt;p&gt;Poem Survivor&#39;s Syndrome by Andriy Bondarenko&lt;/p&gt;
 &lt;p&gt;Poem by Ostap Slyvynsky&lt;/p&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footerback&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="landing" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $title to &quot;Spirits of Concrete &amp; Iron&quot;&gt;&gt;
+&lt;&lt;include &quot;footerback&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="landing" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $title to &quot;Spirits of Concrete &amp; Iron&quot;&gt;&gt;
 &lt;&lt;set $captions to true&gt;&gt;
 &lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
@@ -617,7 +650,7 @@ You have two options:
 /* &lt;&lt;button &quot;lofiAR&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;lofiai&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; */
 
 &lt;/main&gt;
-/* &lt;&lt;include &quot;footer&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="11" name="instructions" tags="nobr" position="100,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+/* &lt;&lt;include &quot;footer&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="12" name="instructions" tags="nobr" position="225,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instructions&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar1&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -662,7 +695,7 @@ You have two options:
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="instnar1" tags="nobr" position="225,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="instnar1" tags="nobr" position="350,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;preintro&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -684,7 +717,7 @@ You have two options:
   &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
  
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="preintro" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar2&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="preintro" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar2&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;preintro&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -704,23 +737,25 @@ You have two options:
   &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="introaudio" tags="nobr" position="600,225" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[narrator audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;
 
-/* :: introaudio [nobr]
-&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[narrator audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="intro" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $showMap to false&gt;&gt;
+/* :: intro [nobr] {&quot;position&quot;:&quot;450,50&quot;,&quot;size&quot;:&quot;100,100&quot;}
+
+&lt;&lt;set $showMap to false&gt;&gt;
 &lt;&lt;set $showAudio to false&gt;&gt;
 &lt;&lt;set $showReplay to true&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to true&gt;&gt; */</tw-passagedata><tw-passagedata pid="15" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;preintro&quot;&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to true&gt;&gt; */</tw-passagedata><tw-passagedata pid="16" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;preintro&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;intro&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;fakeend&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $transcript to false&gt;&gt;
 &lt;&lt;set $playToggle to false&gt;&gt;
 &lt;&lt;set $captionToggle to true&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to true&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
+&lt;&lt;include &quot;headerstory&quot;&gt;&gt;
 &lt;main class=&quot;story&quot;&gt;
 &lt;audio id=&quot;audio&quot; autoplay&gt;
   &lt;source src=&quot;https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1&quot;&gt;
@@ -739,8 +774,8 @@ You have two options:
 
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
-  &lt;&lt;set $addC to setup.addCaptions()&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="spiritstranscript" tags="" position="725,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+  &lt;&lt;set $addC to setup.addCaptions(&quot;spirits&quot;)&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="spiritscues" tags="" position="850,225" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="spiritstranscript" tags="" position="975,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 NARRATOR:
 Let me introduce you to Kharkiv, my city.
 It&#39;s eclectic
@@ -787,7 +822,7 @@ It feels like making music has not mattered for a long time. A lot of musicians 
 To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and
 when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
 We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not
-the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend" tags="nobr" position="850,225" size="100,100">&lt;main&gt;End&lt;/main&gt;</tw-passagedata><tw-passagedata pid="18" name="instnar3" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;stas&quot;&gt;&gt;
+the time… maybe later.</tw-passagedata><tw-passagedata pid="19" name="fakeend" tags="nobr" position="1100,225" size="100,100">&lt;main&gt;End&lt;/main&gt;</tw-passagedata><tw-passagedata pid="20" name="instnar3" tags="nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;stas&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;AR1&quot;&gt;&gt;
 
@@ -810,7 +845,7 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
     &lt;&lt;button &quot;I&#39;m in position&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -831,7 +866,7 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
 
 &lt;/main&gt;
 &lt;&lt;include &quot;footerAR&quot;&gt;&gt;
-&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="instnar4" tags="nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;AR1&quot;&gt;&gt;
+&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="instnar4" tags="nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -853,7 +888,7 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
 
   &lt;&lt;button &quot;Let&#39;s go&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="journey1" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar4&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="journey1" tags="nobr" position="350,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -874,7 +909,7 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
 
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="mixtapeaudio" tags="nobr" position="225,350" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[mixtape audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="mixtape" tags="nobr" position="350,350" size="100,100">&lt;&lt;set $prevpass to &quot;journey1&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="mixtapeaudio" tags="nobr" position="475,350" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[mixtape audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="mixtape" tags="nobr" position="600,350" size="100,100">&lt;&lt;set $prevpass to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -882,11 +917,11 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
 &lt;&lt;set $playToggle to false&gt;&gt;
 &lt;&lt;set $captionToggle to true&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to true&gt;&gt;
 &lt;&lt;set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)&gt;&gt;
 &lt;main class=&quot;story&quot;&gt;
 &lt;audio id=&quot;audio&quot; autoplay&gt;
-  &lt;source src=&quot;https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1&quot;&gt;
+  &lt;source src=&quot;https://www.dropbox.com/s/ldn4ws1lyq2rn26/Walk%202%20_%20Stas%20Acoustic%20Music%20V1.mp3?raw=1&quot;&gt;
   &lt;track kind=&quot;captions&quot; srclang=&quot;en&quot; label=&quot;English captions&quot; id=&quot;captrack&quot; default&gt;
 &lt;/audio&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
@@ -902,11 +937,11 @@ the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="fakeend"
 
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
-  &lt;&lt;set $addC to setup.addCaptions()&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="mixtapetranscript" tags="" position="475,350" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+  &lt;&lt;set $addC to setup.addCaptions(&quot;mixtape&quot;)&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="mixtapetranscript" tags="" position="725,350" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
 It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…</tw-passagedata><tw-passagedata pid="25" name="end" tags="nobr" position="600,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…</tw-passagedata><tw-passagedata pid="27" name="end" tags="nobr" position="850,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -944,7 +979,7 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 &lt;br/&gt;
 /* &lt;p&gt;Or back to the main &lt;a href=&quot;https://liv-ukr-main.netlify.app/map&quot;&gt;map&lt;/a&gt;&lt;/p&gt; */
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="360" tags="" position="600,225" size="100,100">&lt;&lt;set $passage to &quot;360&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="360" tags="" position="600,225" size="100,100">&lt;&lt;set $passage to &quot;360&quot;&gt;&gt;
 &lt;main&gt;
 &lt;h1&gt;360 Image Viewer&lt;/h1&gt;
 &lt;p&gt; you can add an image of your choosing. via &lt;a href=&quot;https://panoraven.com/en&quot; target=&quot;_blank&quot;&gt;panoraven&lt;/a&gt;&lt;/p&gt;
