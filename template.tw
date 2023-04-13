@@ -431,7 +431,6 @@ setup.backThirty = () => {
 
 <footer>
 
-
 <<if $showCaptionsIcon is true>>
 <div class="nav-wrapper">
     <div class="nav-item">
@@ -582,7 +581,7 @@ You have two options:
 
 
 :: landing [nobr]{"position":"450,50","size":"100,100"}
-<<set $title to "Spirits of Concrete & Iron">>
+<<set $title to "Sprits from Concrete And Iron">>
 <<set $captions to true>>
 <<set $prevpass to "landing">>
 <<set $passage to "landing">>
@@ -676,7 +675,7 @@ You have two options:
 <main class="instructions">
 <div id="map" class="hide">$map</div>
 
-  <p>You should be outside the Liverpool Philharmonic</p>
+<p> You should be outside the Liverpool Philharmonic</p>
 <p>Home to the UK's oldest continuing professional symphony orchestra</p>
 <p>Take a seat on the benches across the road</p>
 
@@ -704,7 +703,8 @@ You have two options:
  <div class="poster-wrapper">
    <img class="poster" src="./../assets/img/sci.jpeg"/>
  </div>
-    <p>Press  <div class="inline-btn-wrapper">[[play|spirits]] </div>to listen </p>
+    <p>Press  <div class="inline-btn-wrapper">[[play|spirits]] </div> to listen to <em>Sprits from Concrete And Iron</em>
+</p>
   <</replace>><</timed>>
 
 </main>
@@ -726,7 +726,7 @@ You have two options:
 :: spirits [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "preintro">>
 <<set $passage to "intro">>
-<<set $nextpass to "instnar3">>
+<<set $nextpass to "instnar4">>
 <<set $transcript to false>>
 <<set $playToggle to false>>
 <<set $captionToggle to true>>
@@ -768,56 +768,72 @@ You have two options:
 :: spiritstranscript
 
 <h2>Transcript</h2>
-NARRATOR:
+
 Let me introduce you to Kharkiv, my city.
 It's eclectic
-Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of
-students from around the world.
--
+Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of students from around the world.
 Situated between Asia and Europe, you can see our transnational history carved out in the different architecture.
-Here is where the first concrete skyscraper was built in the Soviet Union. An amazing monument of constructivism,
-made from concrete and iron, using horses.
--
-Kharkiv is only 40 kilometres from Russia and has become a city on the frontline.
-From the first days, our busy streets, were targeted with rockets, cluster and air bombs. But just like concrete
-and iron are hard to destroy, our spirits are also unbreakable. As each of us bravely questioned our
-responsibility. Asking how can I help to win? To survive?
-And for a moment concerts were silent, and Philharmonic Music Halls close their doors. As musicians like Stas
-Kononov put down their instruments and became a frontline volunteer…
-STAS KONONOV:
-I was meant to play a concert in London on the 28th of February.
-On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep
-through the war’.
-For the next few days myself and other artists gathered in a small flat near the centre.
-People were coming and going and we were trying to work out, should we stay or should we leave?
-I received a phone call from a friend in a more dangerous district, saying that there was a basement with 450
-people. That they didn’t have anything, no food, no water and its too dangerous to go outside.
-It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources.
-The flat I was in became a headquarters and everyone there if not actors, were connected to music, art, culture.
-It was a little chaotic in that moment. Someone provides something and its distributed to whoever most needs…
-Sharing everything…
-It was a very intense process.
-After some time it became more organised and we had districts and volunteers in each area.
-Of course it was dangerous. Everywhere in Kharkiv was dangerous.
-But I know a lot of examples that are brave and for me what I was doing is not brave.
-It was stressful and frightening, it was a lots of things. Everything makes you cry but inside you have this
-feeling that you are in the right place, are part of something bigger than yourself, that we are all equal, all
-connected.
-Everyone helps everyone and it doesn’t matter who you were before. You could of been a businessman with a Tesla
-car or an artist who drives something very shitty.
-Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was
-solidarity. You called someone if you needed something and you solved it.
-It felt that one hundred people were one.
-Before the full-scale invasion, I was asking these questions - Who am I? What am I? This situation gave me the
-answers.
-It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
-To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and
-when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
-We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not
-the time… maybe later.
+Here is where the first concrete skyscraper was built in the Soviet Union. An amazing monument of constructivism, made from concrete and iron, using horses.
+Kharkiv is only 40 kilometres from Russia and has become a city on the frontline. 
+From the first days, our busy streets, were targeted with rockets, cluster and air bombs. But just like concrete and iron are hard to destroy, our spirits are also unbreakable. As each of us bravely questioned our responsibility. Asking how can I help to win? To survive?
+And for a moment concerts were silent, and Philharmonic Music Halls close their doors. As musicians like Stas Kononov put down their instruments and became frontline volunteer…
 
-:: fakeend [nobr]
-<main>End</main>
+
+STAS KONONOV:
+
+
+I was meant to play a concert in London on the 28th of February.
+On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep through the war’. 
+
+
+For the next few days, myself and other artists gathered in a small flat near the centre.
+
+
+People were coming and going, and we were trying to work out, should we stay or should we leave?
+
+
+I received a phone call from a friend, in a more dangerous district, saying that there was a basement with 450 people. That they didn’t have anything, no food, no water and its too dangerous to go outside.
+
+
+It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources. 
+The flat I was in became a headquarters, and everyone was an actor, or connected to music, art and culture. 
+
+
+It was a little chaotic in that moment. Someone provides something and its distributed to anyone who needs - Sharing everything
+It was a very intense process.
+
+
+After some time it became more organised, and we had districts and volunteers in each area. 
+
+
+Of course it was dangerous. Everywhere in Kharkiv was dangerous.
+
+
+But I know a lot of examples of bravery, and for me what I’m doing is not brave.
+It was stressful and frightening, it was a lot of things. Everything makes you cry, but inside you have this feeling that you are in the right place, are part of something bigger than yourself. That we are all equal, all connected.
+
+
+Everyone helps everyone and it doesn’t matter who you were before. You could have been a businessman with a Tesla car or an artist who drives something very shitty.
+
+
+Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was solidarity. You called someone if you needed something and you solved it. 
+
+
+It felt that one hundred people were one.
+
+
+Before the full-scale invasion, I was asking these questions - Who am I? What am I? 
+This situation gave me the answers.
+
+
+It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
+
+
+To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
+
+
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.
+
 
 
 :: instnar3 [nobr]
@@ -977,7 +993,8 @@ the time… maybe later.
 <h2>Transcript</h2>
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
 It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed...
+
 
 
 
@@ -997,27 +1014,16 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 <div id="audio"></div>
 <div id="map" class="hide">$map</div>
 <div id="mount"></div>
-<h2>Liverpool Philharmonic</h2>
+<h2>Bombed Out Church</h2>
 <p>Would you like to go on another journey?</p>
-<p>Here are two options:</p>
-<div class="option-wrapper">
-  <div class="option-item">
-    <div class="option-info-wrapper">
-      <h3>Spirits of Concrete & Iron</h3>
-      <p>Location: Liverpool Philharmonic</p>
-    </div >
-    <<button "Start">><<goto "">><</button>>
-  </div>
-    <div class="option-item">
-    <div class="option-info-wrapper">
-      <h3>Flowers that Grew from the Concrete</h3>
-      <p>Location: Bombed Out Church</p>
-    </div>
-    <<button "Start">><<goto "">><</button>>
-</div>
-
-</div>
 <br/>
+ <h3>Flowers that Grew from the Concrete</h3>
+ <br/>
+    <a href="https://fr-flowers-concrete.netlify.app/">
+    <br/><button>Start</button></a>
+
+
+
 /* <p>Or back to the main <a href="https://liv-ukr-main.netlify.app/map">map</a></p> */
 </main>
 <<include "footer">>

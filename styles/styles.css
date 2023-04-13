@@ -345,6 +345,7 @@ main.instructions > p {
 main.end {
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .option-wrapper {
   display: flex;
