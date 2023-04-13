@@ -124,7 +124,7 @@ header {
 main {
   padding: var(--padding);
   min-height: 80vh;
-  margin-block-end: 10rem;
+  margin-block-end: 10rem !important;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -332,7 +332,7 @@ main.instructions > p > .link-image > img {
 
 main.instructions > #mount > p,
 main.instructions > p {
-  background-color: #1fb9aa;
+  background-color: var(--accent-color-secondary);
   padding: 6px 8px;
   border-radius: 10px;
   border: black 0.5px solid;
@@ -381,14 +381,17 @@ main.end {
 .ar-imgs-container {
   position: relative;
   width: 100%;
-  height: 80vh;
-  background-image: url("./../assets/img/big_stage_by_B.Yemets.jpg");
+  height: 50vh;
   background-size: cover;
+}
+
+.ar-imgs-container.one {
+  background-image: url("./../assets/img/le15.jpeg");
 }
 
 .ar-img-wrapper,
 .hidden-img-wrapper {
-  height: 80vh;
+  height: 50vh;
   object-fit: cover;
   /* position: absolute; */
   left: 0;
@@ -486,7 +489,12 @@ main.story {
 }
 
 main.story > #mount > p.comment {
-  color: var(--accent-color-secondary);
+  background-color: var(--accent-color-secondary);
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: black 0.5px solid;
+  color: black;
+  width: fit-content;
 }
 
 footer > .nav-wrapper.playpause-wrapper {
@@ -501,7 +509,14 @@ footer > .nav-wrapper.playpause-wrapper {
 }
 
 main.story > .poster-wrapper {
-  width: 80%;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: -3rem;
+  z-index: -999;
+}
+
+main.story > .poster-wrapper.small {
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -511,6 +526,10 @@ main.story > #caption {
   background: aliceblue;
   margin-block-start: -3rem;
   padding: 0.5rem;
+}
+
+main.story > .mount > p {
+  text-align: center;
 }
 
 /* SHOW NOTHING ON A PHONE  */

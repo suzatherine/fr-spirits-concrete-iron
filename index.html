@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://F9E39354-F641-4070-8B45-C330A3FDC8C9// --><tw-storydata name="Sprits from Concrete And Iron" startnode="11" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C330A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+	<!-- UUID://F9E39354-F641-4070-8B45-C330A3FDC8C9// --><tw-storydata name="Sprits from Concrete And Iron" startnode="12" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C330A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");</style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
@@ -181,37 +181,28 @@ return iFrame
 
 // TOUCHEVENTS 
 // taken from https://developer.mozilla.org/en-US/docs/Web/API/Touch_events  
-setup.startup = () =>  {
+setup.startup = (backgrounds) =>  {
   const ongoingTouches = [];
   console.log(ongoingTouches)
-
+console.log(backgrounds)
 const handleStart = (evt) =>{
   evt.preventDefault();
   // log("touchstart.");
   const initial = document.getElementById("initial");
   const stat = document.getElementById("stat");
-    const reveal = document.getElementById("reveal");
+    const ARContainer = document.getElementById("ARContainer");
     //  reveal.classList.add("transparent");  
      initial.classList.add("transparent");  
-     console.log(reveal)
-//       setTimeout(() => {
-//     initial.classList.add("hide"); 
-// }, "1000");
-   
-//   initial.classList.add("dissolve");  
-//    stat.classList.add("appear"); 
-//   setTimeout(() => {
-//     initial.classList.add("hide"); 
-//   // stat.classList.add("dissolve"); 
-//   // reveal.classList.add("dissolve"); 
-// }, "5000");
-//  setTimeout(() => {
-//     // initial.classList.add("hide"); 
-//   stat.classList.add("hide"); 
-//   // reveal.classList.add("dissolve"); 
-// }, "6000");
-  // el.classList.remove("hide"); 
-  
+     console.log("ARContainer", ARContainer)
+    ARContainer.style.backgroundImage = "url(./../assets/img/le15.jpeg)"
+console.log("bg", ARContainer.style.backgroundImage)
+
+
+for(let i = 0; i < backgrounds.length; i++){
+setTimeout (()=> {
+   ARContainer.style.backgroundImage = `url(./../assets/img/${backgrounds[i]}.jpeg)`
+}, `${i*3000}`)
+}
 }
 
 const handleMove = (evt) => {
@@ -615,27 +606,9 @@ You have two options:
 &lt;p&gt;Poem Survivor&#39;s Syndrome by Andriy Bondarenko&lt;/p&gt;
 &lt;p&gt;Poem by Ostap Slyvynsky&lt;/p&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footerback&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="landing" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $title to &quot;Sprits from Concrete And Iron&quot;&gt;&gt;
-&lt;&lt;set $captions to true&gt;&gt;
-&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;instructions&quot;&gt;&gt;
-/* Title  */
-&lt;div class=&quot;comp-warning&quot;&gt;Best to experience on a phone&lt;/div&gt;
-&lt;main class=&quot;landing&quot;&gt;
-
-
-&lt;div class=&quot;poster-wrapper&quot;&gt;
-   &lt;img class=&quot;poster&quot; src=&quot;./../assets/img/sci.jpeg&quot;/&gt;
- &lt;/div&gt;
-&lt;&lt;button &quot;Begin&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-
-/* &lt;&lt;button &quot;lofiAR&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;lofiai&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; */
-
-&lt;/main&gt;
-/* &lt;&lt;include &quot;footer&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="12" name="instructions" tags="nobr" position="225,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footerback&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="instructions" tags="nobr" position="100,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instructions&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;instnar1&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
 &lt;&lt;set $showAudio to false&gt;&gt;
 &lt;&lt;set $showReplay to false&gt;&gt;
@@ -688,9 +661,10 @@ You have two options:
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="instnar1" tags="nobr" position="350,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;instnar1&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;preintro&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="landing" tags="nobr" position="225,225" size="100,100">&lt;&lt;set $title to &quot;Sprits from Concrete And Iron&quot;&gt;&gt;
+&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;instructions&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
 &lt;&lt;set $showAudio to false&gt;&gt;
 &lt;&lt;set $showReplay to true&gt;&gt;
@@ -700,6 +674,7 @@ You have two options:
 &lt;&lt;set $map = setup.generateDirectionsMap(53.40123951917362, -2.9696925172693147, 53.40123951917362, -2.9696925172693147)&gt;&gt;
 &lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;div class=&quot;comp-warning&quot;&gt;Best to experience on a phone&lt;/div&gt;
 &lt;main class=&quot;instructions&quot;&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
 
@@ -710,36 +685,7 @@ You have two options:
   &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
  
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="preintro" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar2&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;preintro&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;spirits&quot;&gt;&gt;
-&lt;&lt;set $showMap to false&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;main class=&quot;story&quot;&gt;
-&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
-  &lt;&lt;timed 0.1s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;
- &lt;div class=&quot;poster-wrapper&quot;&gt;
-   &lt;img class=&quot;poster&quot; src=&quot;./../assets/img/sci.jpeg&quot;/&gt;
- &lt;/div&gt;
-    &lt;p&gt;Press  &lt;div class=&quot;inline-btn-wrapper&quot;&gt;[[play|spirits]] &lt;/div&gt; to listen to &lt;em&gt;Sprits from Concrete And Iron&lt;/em&gt;
-&lt;/p&gt;
-  &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="introaudio" tags="nobr" position="600,225" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[narrator audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;
-
-/* :: intro [nobr] {&quot;position&quot;:&quot;450,50&quot;,&quot;size&quot;:&quot;100,100&quot;}
-
-&lt;&lt;set $showMap to false&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to true&gt;&gt; */</tw-passagedata><tw-passagedata pid="16" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;preintro&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;preintro&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;intro&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $transcript to false&gt;&gt;
@@ -748,8 +694,9 @@ You have two options:
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to true&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
-&lt;&lt;include &quot;headerstory&quot;&gt;&gt;
-&lt;main class=&quot;story&quot;&gt;
+&lt;&lt;set $transcriptname to  &quot;spiritstranscript&quot;&gt;&gt;
+&lt;&lt;include &quot;headerstory&quot;  &gt;&gt;
+&lt;main class=&quot;story&quot; id=&quot;story&quot;&gt;
 &lt;audio id=&quot;audio&quot; autoplay&gt;
   &lt;source src=&quot;https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1&quot;&gt;
   &lt;track kind=&quot;captions&quot; srclang=&quot;en&quot; label=&quot;English captions&quot; id=&quot;captrack&quot; default&gt;
@@ -759,23 +706,34 @@ You have two options:
  &lt;/div&gt;
 &lt;div id=&quot;caption&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;transcript&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;mount&quot; &gt;&lt;/div&gt;
+&lt;div id=&quot;mount&quot;  &gt;&lt;p class=&quot;comment&quot;&gt; To listen to &lt;em&gt;$title&lt;/em&gt; press &lt;div class=&quot;inline-btn-wrapper&quot;&gt;
+&lt;&lt;link &quot;play&quot;&gt;&gt;
+        &lt;&lt;if $playToggle is false&gt;&gt;
+      &lt;&lt;set $fn to setup.play()&gt;&gt;
+      &lt;&lt;set $playToggle to true&gt;&gt;
+      &lt;&lt;addclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+       &lt;&lt;set $fn to setup.pause()&gt;&gt;
+        &lt;&lt;set $playToggle to false&gt;&gt;
+      &lt;&lt;removeclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
+      &lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;/p&gt;&lt;/div&gt;
 
 
-&lt;&lt;timed 6s&gt;&gt;
-  &lt;&lt;addclass &quot;#forIcon&quot; &quot;circle&quot;&gt;&gt;
-   &lt;&lt;addclass &quot;#forIcon&quot; &quot;pulse&quot;&gt;&gt;
-/* &lt;&lt;replace &quot;#mount&quot;&gt;&gt;
-&lt;p class=&quot;comment&quot;&gt; When you&#39;re finished listening, let me know&lt;/p&gt;
-&lt;&lt;button &quot;I&#39;m finished&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
- &lt;&lt;/replace&gt;&gt; */
+&lt;&lt;timed 15s&gt;&gt;
+  /* &lt;&lt;addclass &quot;#forIcon&quot; &quot;circle&quot;&gt;&gt;
+   &lt;&lt;addclass &quot;#forIcon&quot; &quot;pulse&quot;&gt;&gt; */
+&lt;&lt;replace &quot;#mount&quot;&gt;&gt;
+&lt;p class=&quot;comment&quot;&gt; When you&#39;re finished listening, let me know &lt;div class=&quot;inline-btn-wrapper&quot;&gt;&lt;&lt;button &quot;I&#39;m finished&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/p&gt;
+
+ &lt;&lt;/replace&gt;&gt;
  &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
 
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
   &lt;&lt;set $addC to setup.addCaptions(&quot;spirits&quot;)&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="spiritscues" tags="" position="850,225" size="100,100"></tw-passagedata><tw-passagedata pid="18" name="spiritstranscript" tags="" position="975,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="spiritstranscript" tags="" position="475,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 
 Let me introduce you to Kharkiv, my city.
 It&#39;s eclectic
@@ -840,7 +798,7 @@ It feels like making music has not mattered for a long time. A lot of musicians 
 To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
 
 
-We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="19" name="instnar3" tags="nobr" position="1100,225" size="100,100">&lt;&lt;set $prevpass to &quot;stas&quot;&gt;&gt;
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="15" name="instnar3" tags="nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;stas&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;AR1&quot;&gt;&gt;
 
@@ -863,7 +821,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
     &lt;&lt;button &quot;I&#39;m in position&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -884,7 +842,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 &lt;/main&gt;
 &lt;&lt;include &quot;footerAR&quot;&gt;&gt;
-&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="instnar4" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;AR1&quot;&gt;&gt;
+&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="instnar4" tags="nobr" position="850,225" size="100,100">&lt;&lt;set $prevpass to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -906,7 +864,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
   &lt;&lt;button &quot;Let&#39;s go&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="journey1" tags="nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar4&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="journey1" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;instnar4&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -927,7 +885,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="mixtapeaudio" tags="nobr" position="350,350" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[mixtape audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="mixtape" tags="nobr" position="475,350" size="100,100">&lt;&lt;set $prevpass to &quot;journey1&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="mixtapeaudio" tags="nobr" position="1100,225" size="100,100">&lt;&lt;replace &quot;#audio&quot;&gt;&gt;&lt;p&gt;[mixtape audio playing...]&lt;/p&gt;&lt;&lt;/replace&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="mixtape" tags="nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;journey1&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -937,6 +895,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showForwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to true&gt;&gt;
+&lt;&lt;set $transcriptname to  &quot;mixtapetranscript&quot;&gt;&gt;
 &lt;&lt;set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)&gt;&gt;
 &lt;&lt;include &quot;headerstory&quot;&gt;&gt;
 &lt;main class=&quot;story&quot;&gt;
@@ -951,25 +910,37 @@ We don’t have the space to be emotional. So you go round in this circle. And c
  &lt;/div&gt;
 &lt;div id=&quot;caption&quot; &gt;&lt;/div&gt;
 &lt;div id=&quot;transcript&quot;&gt;&lt;/div&gt;
-&lt;div id=&quot;mount&quot; &gt;&lt;/div&gt;
+&lt;div id=&quot;mount&quot;  &gt;&lt;p class=&quot;comment&quot;&gt; To listen to &lt;em&gt;Mixtape/Stas Music&lt;/em&gt; press &lt;div class=&quot;inline-btn-wrapper&quot;&gt;
+&lt;&lt;link &quot;play&quot;&gt;&gt;
+        &lt;&lt;if $playToggle is false&gt;&gt;
+      &lt;&lt;set $fn to setup.play()&gt;&gt;
+      &lt;&lt;set $playToggle to true&gt;&gt;
+      &lt;&lt;addclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;else&gt;&gt;
+       &lt;&lt;set $fn to setup.pause()&gt;&gt;
+        &lt;&lt;set $playToggle to false&gt;&gt;
+      &lt;&lt;removeclass &quot;#playpause&quot; &quot;playhighlight&quot;&gt;&gt;
+      &lt;&lt;/if&gt;&gt;
+      &lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;/p&gt;&lt;/div&gt;
 
-&lt;&lt;timed 6s&gt;&gt;
-  &lt;&lt;addclass &quot;#forIcon&quot; &quot;circle&quot;&gt;&gt;
-   &lt;&lt;addclass &quot;#forIcon&quot; &quot;pulse&quot;&gt;&gt;
-/* &lt;&lt;replace &quot;#mount&quot;&gt;&gt;
-&lt;p class=&quot;comment&quot;&gt; When you&#39;re finished listening, let me know&lt;/p&gt;
-&lt;&lt;button &quot;I&#39;m finished&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
- &lt;&lt;/replace&gt;&gt; */
+
+&lt;&lt;timed 15s&gt;&gt;
+  /* &lt;&lt;addclass &quot;#forIcon&quot; &quot;circle&quot;&gt;&gt;
+   &lt;&lt;addclass &quot;#forIcon&quot; &quot;pulse&quot;&gt;&gt; */
+&lt;&lt;replace &quot;#mount&quot;&gt;&gt;
+&lt;p class=&quot;comment&quot;&gt; When you&#39;re finished listening, let me know &lt;div class=&quot;inline-btn-wrapper&quot;&gt;&lt;&lt;button &quot;I&#39;m finished&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/p&gt;
+
+ &lt;&lt;/replace&gt;&gt;
  &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
 
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
   &lt;&lt;set $addC to setup.addCaptions(&quot;mixtape&quot;)&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="mixtapetranscript" tags="" position="600,350" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="mixtapetranscript" tags="" position="100,350" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
 It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed...</tw-passagedata><tw-passagedata pid="26" name="end" tags="nobr" position="725,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed...</tw-passagedata><tw-passagedata pid="22" name="end" tags="nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -996,7 +967,7 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 
 /* &lt;p&gt;Or back to the main &lt;a href=&quot;https://liv-ukr-main.netlify.app/map&quot;&gt;map&lt;/a&gt;&lt;/p&gt; */
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="360" tags="" position="600,225" size="100,100">&lt;&lt;set $passage to &quot;360&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="360" tags="" position="600,225" size="100,100">&lt;&lt;set $passage to &quot;360&quot;&gt;&gt;
 &lt;main&gt;
 &lt;h1&gt;360 Image Viewer&lt;/h1&gt;
 &lt;p&gt; you can add an image of your choosing. via &lt;a href=&quot;https://panoraven.com/en&quot; target=&quot;_blank&quot;&gt;panoraven&lt;/a&gt;&lt;/p&gt;

@@ -101,37 +101,28 @@ return iFrame
 
 // TOUCHEVENTS 
 // taken from https://developer.mozilla.org/en-US/docs/Web/API/Touch_events  
-setup.startup = () =>  {
+setup.startup = (backgrounds) =>  {
   const ongoingTouches = [];
   console.log(ongoingTouches)
-
+console.log(backgrounds)
 const handleStart = (evt) =>{
   evt.preventDefault();
   // log("touchstart.");
   const initial = document.getElementById("initial");
   const stat = document.getElementById("stat");
-    const reveal = document.getElementById("reveal");
+    const ARContainer = document.getElementById("ARContainer");
     //  reveal.classList.add("transparent");  
      initial.classList.add("transparent");  
-     console.log(reveal)
-//       setTimeout(() => {
-//     initial.classList.add("hide"); 
-// }, "1000");
-   
-//   initial.classList.add("dissolve");  
-//    stat.classList.add("appear"); 
-//   setTimeout(() => {
-//     initial.classList.add("hide"); 
-//   // stat.classList.add("dissolve"); 
-//   // reveal.classList.add("dissolve"); 
-// }, "5000");
-//  setTimeout(() => {
-//     // initial.classList.add("hide"); 
-//   stat.classList.add("hide"); 
-//   // reveal.classList.add("dissolve"); 
-// }, "6000");
-  // el.classList.remove("hide"); 
-  
+     console.log("ARContainer", ARContainer)
+    ARContainer.style.backgroundImage = "url(./../assets/img/le15.jpeg)"
+console.log("bg", ARContainer.style.backgroundImage)
+
+
+for(let i = 0; i < backgrounds.length; i++){
+setTimeout (()=> {
+   ARContainer.style.backgroundImage = `url(./../assets/img/${backgrounds[i]}.jpeg)`
+}, `${i*3000}`)
+}
 }
 
 const handleMove = (evt) => {
@@ -580,31 +571,12 @@ You have two options:
 <<include "footerback">>
 
 
-:: landing [nobr]{"position":"450,50","size":"100,100"}
-<<set $title to "Sprits from Concrete And Iron">>
-<<set $captions to true>>
-<<set $prevpass to "landing">>
-<<set $passage to "landing">>
-<<set $nextpass to "instructions">>
-/* Title  */
-<div class="comp-warning">Best to experience on a phone</div>
-<main class="landing">
 
-
-<div class="poster-wrapper">
-   <img class="poster" src="./../assets/img/sci.jpeg"/>
- </div>
-<<button "Begin">><<goto $nextpass>><</button>>
-
-/* <<button "lofiAR">><<set $prevpass to $passage>><<goto "lofiai">><</button>> */
-
-</main>
-/* <<include "footer">> */
 
 :: instructions [nobr]
 <<set $prevpass to "landing">>
 <<set $passage to "instructions">>
-<<set $nextpass to "instnar1">>
+<<set $nextpass to "spirits">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to false>>
@@ -659,10 +631,11 @@ You have two options:
 </main>
 <<include "footer">>
 
-:: instnar1 [nobr]
+:: landing [nobr]
+<<set $title to "Sprits from Concrete And Iron">>
 <<set $prevpass to "landing">>
-<<set $passage to "instnar1">>
-<<set $nextpass to "preintro">>
+<<set $passage to "landing">>
+<<set $nextpass to "instructions">>
 <<set $showMap to true>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -672,6 +645,7 @@ You have two options:
 <<set $map = setup.generateDirectionsMap(53.40123951917362, -2.9696925172693147, 53.40123951917362, -2.9696925172693147)>>
 <div id="audio"></div>
 <<include "header">>
+<div class="comp-warning">Best to experience on a phone</div>
 <main class="instructions">
 <div id="map" class="hide">$map</div>
 
@@ -687,40 +661,7 @@ You have two options:
 
 
 
-:: preintro [nobr] {"position":"450,50","size":"100,100"}
-<<set $prevpass to "instnar2">>
-<<set $passage to "preintro">>
-<<set $nextpass to "spirits">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showForwards to true>>
-<<set $showBackwards to true>>
-<<set $showCaptionsIcon to false>>
-<main class="story">
-<div id="mount"></div>
-  <<timed 0.1s>><<replace "#mount">>
- <div class="poster-wrapper">
-   <img class="poster" src="./../assets/img/sci.jpeg"/>
- </div>
-    <p>Press  <div class="inline-btn-wrapper">[[play|spirits]] </div> to listen to <em>Sprits from Concrete And Iron</em>
-</p>
-  <</replace>><</timed>>
 
-</main>
-<<include "footer">>
-
-:: introaudio [nobr]
-<<replace "#audio">><p>[narrator audio playing...]</p><</replace>>
-
-/* :: intro [nobr] {"position":"450,50","size":"100,100"}
-
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to true>> */
 
 
 :: spirits [nobr]  {"position":"700,175","size":"100,100"}
@@ -733,8 +674,9 @@ You have two options:
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to true>>
 <<set $showMap to false>>
-<<include "headerstory">>
-<main class="story">
+<<set $transcriptname to  "spiritstranscript">>
+<<include "headerstory"  >>
+<main class="story" id="story">
 <audio id="audio" autoplay>
   <source src="https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
@@ -744,16 +686,27 @@ You have two options:
  </div>
 <div id="caption"></div>
 <div id="transcript"></div>
-<div id="mount" ></div>
+<div id="mount"  ><p class="comment"> To listen to <em>$title</em> press <div class="inline-btn-wrapper">
+<<link "play">>
+        <<if $playToggle is false>>
+      <<set $fn to setup.play()>>
+      <<set $playToggle to true>>
+      <<addclass "#playpause" "playhighlight">>
+      <<else>>
+       <<set $fn to setup.pause()>>
+        <<set $playToggle to false>>
+      <<removeclass "#playpause" "playhighlight">>
+      <</if>>
+      <</link>></div></p></div>
 
 
-<<timed 6s>>
-  <<addclass "#forIcon" "circle">>
-   <<addclass "#forIcon" "pulse">>
-/* <<replace "#mount">>
-<p class="comment"> When you're finished listening, let me know</p>
-<<button "I'm finished">><<goto $nextpass>><</button>>
- <</replace>> */
+<<timed 15s>>
+  /* <<addclass "#forIcon" "circle">>
+   <<addclass "#forIcon" "pulse">> */
+<<replace "#mount">>
+<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
+
+ <</replace>>
  <</timed>>
 </main>
 
@@ -762,7 +715,7 @@ You have two options:
   <<set $addC to setup.addCaptions("spirits")>>
 <</done>>
 
-:: spiritscues
+
 
 
 :: spiritstranscript
@@ -955,6 +908,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showBackwards to true>>
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to true>>
+<<set $transcriptname to  "mixtapetranscript">>
 <<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)>>
 <<include "headerstory">>
 <main class="story">
@@ -969,15 +923,27 @@ We don’t have the space to be emotional. So you go round in this circle. And c
  </div>
 <div id="caption" ></div>
 <div id="transcript"></div>
-<div id="mount" ></div>
+<div id="mount"  ><p class="comment"> To listen to <em>Mixtape/Stas Music</em> press <div class="inline-btn-wrapper">
+<<link "play">>
+        <<if $playToggle is false>>
+      <<set $fn to setup.play()>>
+      <<set $playToggle to true>>
+      <<addclass "#playpause" "playhighlight">>
+      <<else>>
+       <<set $fn to setup.pause()>>
+        <<set $playToggle to false>>
+      <<removeclass "#playpause" "playhighlight">>
+      <</if>>
+      <</link>></div></p></div>
 
-<<timed 6s>>
-  <<addclass "#forIcon" "circle">>
-   <<addclass "#forIcon" "pulse">>
-/* <<replace "#mount">>
-<p class="comment"> When you're finished listening, let me know</p>
-<<button "I'm finished">><<goto $nextpass>><</button>>
- <</replace>> */
+
+<<timed 15s>>
+  /* <<addclass "#forIcon" "circle">>
+   <<addclass "#forIcon" "pulse">> */
+<<replace "#mount">>
+<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
+
+ <</replace>>
  <</timed>>
 </main>
 
