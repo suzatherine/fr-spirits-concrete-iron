@@ -16,7 +16,7 @@
   --color-orange: #f75146;
   --font-headings: "Shippori Antique B1", sans-serif;
   --font-body: "Shippori Antique B1", sans-serif;
-  --padding: 2rem;
+  --padding: 1.5rem;
 }
 
 /* GET RID OF TWINE STYLES */
@@ -106,8 +106,8 @@ h4 {
 
 header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   padding: var(--padding);
 }
 
@@ -116,7 +116,7 @@ header {
 }
 
 .header-item > h3.subtitle {
-  text-align: right;
+  text-align: center;
   font-size: 1.5rem;
   font-family: var(--font-body);
 }
@@ -178,7 +178,7 @@ nav {
 }
 
 .nav-item > a > img {
-  width: 30px;
+  width: 25px;
 }
 
 .nav-item:last-child {
@@ -199,6 +199,7 @@ nav {
   margin-bottom: 3rem;
 }
 
+
 .poster-wrapper > h2,
 .poster-wrapper > h1 {
   background: var(--color-purple);
@@ -213,6 +214,7 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .menu-wrapper > button {
@@ -273,7 +275,7 @@ textarea {
   margin: auto;
 }
 
-.directions-card {
+.gm-style .directions-card {
   display: none !important;
 }
 
@@ -325,8 +327,9 @@ main.instructions > h2 {
 }
 
 main.instructions > #mount > p > .link-image > img,
-main.instructions > p > .link-image > img {
-  width: 30px;
+main.instructions > p > .link-image > img,
+main.story > #mount > p > .link-image > img {
+  width: 25px;
   margin: 0 10px;
 }
 
@@ -367,6 +370,10 @@ main.end {
 
 /* LOFI AR */
 
+main.ar {
+  justify-content: flex-start;
+}
+
 .ar-option-wrapper {
   display: flex;
   flex-direction: column;
@@ -381,19 +388,18 @@ main.end {
 .ar-imgs-container {
   position: relative;
   width: 100%;
-  height: 50vh;
-  background-size: cover;
+  max-height: 50vh;
 }
 
-.ar-imgs-container.one {
+/* .ar-imgs-container.one {
   background-image: url("./../assets/img/le15.jpeg");
-}
+} */
 
 .ar-img-wrapper,
 .hidden-img-wrapper {
-  height: 50vh;
+  max-height: 50vh;
   object-fit: cover;
-  /* position: absolute; */
+  position: absolute;
   left: 0;
   -webkit-transition: opacity 2s ease-in-out;
   -moz-transition: opacity 2s ease-in-out;
@@ -404,7 +410,7 @@ main.end {
 .ar-img-wrapper > img,
 .hidden-img-wrapper > img,
 .static-img-wrapper > img {
-  height: 100%;
+  /* height: 100%; */
   object-fit: cover;
 }
 
@@ -413,26 +419,6 @@ main.end {
 .static-img-wrapper.transparent {
   opacity: 0;
   /* height: 0; */
-}
-
-.ar-img-wrapper.hover:hover {
-  filter: grayscale(100%);
-}
-
-.ar-img-wrapper.active:active {
-  filter: grayscale(100%);
-}
-
-.ar-img-wrapper.focus:focus {
-  filter: grayscale(100%);
-}
-
-.ar-img-wrapper.touch {
-  filter: grayscale(0%);
-}
-
-.ar-img-wrapper.touch.filter {
-  filter: grayscale(100%);
 }
 
 #log {
@@ -444,6 +430,7 @@ main.end {
 footer.ar > .nav-wrapper > .nav-item > #mount > span {
   display: block;
   font-size: 1.4rem;
+  text-align: center;
 }
 
 @media screen and (min-width: 450px) {
@@ -481,6 +468,12 @@ footer.ar > .nav-wrapper > .nav-item > #mount > span {
 
 /* STORY  */
 
+header.story {
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+}
+
 main.story {
   justify-content: flex-start;
   gap: 1.5rem;
@@ -488,7 +481,8 @@ main.story {
   padding-top: 0;
 }
 
-main.story > #mount > p.comment {
+main.story > #mount > p.comment,
+.nav-item > #mount > span.comment {
   background-color: var(--accent-color-secondary);
   padding: 6px 8px;
   border-radius: 10px;
@@ -497,8 +491,12 @@ main.story > #mount > p.comment {
   width: fit-content;
 }
 
+main.story.captions {
+  justify-content: center;
+}
+
 footer > .nav-wrapper.playpause-wrapper {
-  width: 30px;
+  width: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -511,7 +509,7 @@ footer > .nav-wrapper.playpause-wrapper {
 main.story > .poster-wrapper {
   width: 95%;
   margin: 0 auto;
-  margin-top: -3rem;
+
   z-index: -999;
 }
 
@@ -522,9 +520,8 @@ main.story > .poster-wrapper.small {
 
 main.story > #caption {
   z-index: 9999;
-  color: #000000;
-  background: aliceblue;
-  margin-block-start: -3rem;
+  color: #ffff;
+
   padding: 0.5rem;
 }
 
@@ -538,7 +535,7 @@ main.story > .mount > p {
   display: none;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 500px) {
   main {
     display: none !important;
   }

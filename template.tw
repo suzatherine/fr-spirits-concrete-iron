@@ -1,13 +1,13 @@
 :: StoryTitle
-Sprits from Concrete And Iron
+Spirits from Concrete and Iron
 
 
 :: StoryData
 {
-	"ifid": "F9E39354-F641-4070-8B45-C330A3FDC8C9",
+	"ifid": "F9E39354-F641-4070-8B45-C337A3FDC8C9",
 	"format": "SugarCube",
 	"format-version": "2.36.1",
-	"start": "landing",
+	"start": "beginning",
 	"zoom": 0.6
 }
 
@@ -23,106 +23,78 @@ Sprits from Concrete And Iron
 :: Story JavaScript [script]
 $('#ui-bar').remove();
 $(document.head).find('#style-ui-bar').remove();
-// TYPEWRITER FN
-!function() {
-    postrender.typewriter = function (b) {
-        if (this.tags) {
-            var r = new RegExp("t8n.typewriter.([0-9]+)(?:[^0-9]|$)","g");
-            var t = r.exec(this.tags.toString());
-            if (t) {
-                typeout(b, t[1]+0);
-            }
-        }
-        return b;
-    };
-    var typeout = function(c,t) {
-        var Furl = function(current) {
-            this.n = current;
-            this.out = false;
-            this.data = current.nodeValue;
-            current.nodeValue = "";
-            this.kids = [];
-            var cn = current.childNodes;
-            if (current.style && current.style.display=="none") {
-                return;
-            }
-            while (cn.length>0) {
-                var f = new Furl(cn[0]);
-                current.removeChild(cn[0]);
-                f.out = true;this.kids.push(f);
-            }
-        };
-        var nodes = new Furl(c);
-        var unfurl = function(furled,d) {
-            var n = furled.n;
-            if (furled.out) {
-                d.appendChild(n);
-                furled.out = false;
-            }
-            if (furled.data) {
-                n.nodeValue += furled.data[0];
-                furled.data = furled.data.slice(1);
-                return true;
-            }
-            for (var j=0; j<furled.kids.length; j++) {
-                var ret = unfurl(furled.kids[j],n);
-                if (ret) {
-                    return true;
-                }
-            }
-            return false;
-        };
-        var title = passage();
-        var intr = setInterval (
-            function() {
-                if (passage() == title && unfurl(nodes,null)) {
-                    return;
-                }
-                clearInterval(intr);
-            }
-        ,t);
-    };
-}();
 
 // MAKE MAP FUNCTION
 
-setup.generateDirectionsMap = function (latorg, longorg, latdest, longdest){
+setup.generateDirectionsMap = function (origin, destination, waypoints){
+const {originLat,originLong,originName} = origin;
+let waypointsString = "";
+if (waypoints) {
+waypointsString = `&waypoints=${waypoints}`
+}
+console.log(origin)
+console.log(destination)
 const iFrame = document.createElement("iframe")
 iFrame.classList.add("map")
 iFrame.setAttribute("loading", "lazy")
 iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
 // iFrame.setAttribute("allowfullscreen")
-iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyB7uJuBjDcK-tb0aJpTjaKA1ZNLWhEPN5M&center=${latorg},${longorg}&zoom=17&origin=${latorg},${longorg}&destination=${latdest},${longdest}&mode=walking`)
+// iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyB7uJuBjDcK-tb0aJpTjaKA1ZNLWhEPN5M&center=${originLat},${originLong}&zoom=17&origin=${originPlaceId}&destination=${destination}&mode=walking`)
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyB7uJuBjDcK-tb0aJpTjaKA1ZNLWhEPN5M&center=${originLat},${originLong}&zoom=17&origin=${originName}&destination=${destination}${waypointsString}&mode=walking`)
 const mount = document.getElementById("mapMount")
 console.log(iFrame)
 return iFrame
 // this.mapMount.appendChild(iFrame)
 }
 
+setup.generateDirectionsMapWP = function (origin, dest, wayp){
+const iFrame = document.createElement("iframe")
+iFrame.classList.add("map")
+iFrame.setAttribute("loading", "lazy")
+iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
+// iFrame.setAttribute("allowfullscreen")
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyCSbMwR1cUMfnIAh0Pxi0F1N16kvDGZXGU&center=${origin[0]},${origin[1]}&zoom=18&origin=${origin[0]},${origin[1]}&destination=${dest[0]},${dest[1]}&waypoints=${wayp}&mode=walking`)
+const mount = document.getElementById("mapMount")
+console.log(iFrame)
+return iFrame
+// this.mapMount.appendChild(iFrame)
+}
+// <<set $map = setup.generateDirectionsMapWP([53.1, 1.48], [52.3, 1.50], "Blah St | Blah Blah St")>>
+
+
+setup.generateViewMap = function (origin, destination){
+const {originName, originLat,originLong} = origin;
+
+console.log("origin", origin)
+console.log("dest", destination)
+const iFrame = document.createElement("iframe")
+iFrame.classList.add("map")
+iFrame.setAttribute("loading", "lazy")
+iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
+// iFrame.setAttribute("allowfullscreen")
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/place?key=AIzaSyB7uJuBjDcK-tb0aJpTjaKA1ZNLWhEPN5M&center=${originLat},${originLong}&q=${originName}&zoom=17`)
+const mount = document.getElementById("mapMount")
+console.log(iFrame)
+return iFrame
+// this.mapMount.appendChild(iFrame)
+}
+
+
+
+
 // TOUCHEVENTS 
 // taken from https://developer.mozilla.org/en-US/docs/Web/API/Touch_events  
-setup.startup = (backgrounds) =>  {
+setup.startup = () =>  {
   const ongoingTouches = [];
-  console.log(ongoingTouches)
-console.log(backgrounds)
+
 const handleStart = (evt) =>{
   evt.preventDefault();
-  // log("touchstart.");
-  const initial = document.getElementById("initial");
-  const stat = document.getElementById("stat");
-    const ARContainer = document.getElementById("ARContainer");
-    //  reveal.classList.add("transparent");  
+ const initial = document.getElementById("initial");
+const reveal = document.getElementById("reveal");
      initial.classList.add("transparent");  
-     console.log("ARContainer", ARContainer)
-    ARContainer.style.backgroundImage = "url(./../assets/img/le15.jpeg)"
-console.log("bg", ARContainer.style.backgroundImage)
+     reveal.classList.remove("transparent");  
 
 
-for(let i = 0; i < backgrounds.length; i++){
-setTimeout (()=> {
-   ARContainer.style.backgroundImage = `url(./../assets/img/${backgrounds[i]}.jpeg)`
-}, `${i*3000}`)
-}
 }
 
 const handleMove = (evt) => {
@@ -133,12 +105,11 @@ const handleMove = (evt) => {
 const handleEnd = (evt) => {
   evt.preventDefault();
   // log("touchend");
-   const initial = document.getElementById("initial");
-    const reveal = document.getElementById("reveal");
-    //  initial.classList.remove("hide"); 
-     initial.classList.remove("transparent");  
-  // initial.classList.remove("hide")  
-  //   reveal.classList.add("hide");  
+  //  const initial = document.getElementById("initial");
+
+  //    initial.classList.remove("transparent");  
+  //    reveal.classList.add("transparent");  
+
   
 }
 
@@ -201,8 +172,9 @@ setup.addCaptions = (cuekey) =>  {
      const track = audio.addTextTrack('subtitles', 'English', 'en');
     track.mode = 'showing';
     const cues = {
-      spirits: [[9.933,15.4,"Let me introduce you to Kharkiv, my city."],[15.466,16.933,"It's eclectic"],[16.958,21.121,"Just like Liverpool, it’s a centre for culture, science,"],[21.146,24.812,"education, philosophy and trade."],[24.837,29.145,"The streets are full of students from around the world."],[29.17,31.401,"Situated between Asia and Europe,"],[31.426,34.023,"you can see our transnational history"],[34.048,37.501,"carved out in the different architecture."],[37.546,42.367,"Here is where the first concrete skyscraper was built in the Soviet Union."],[42.392,45.723,"An amazing monument of constructivism,"],[45.659,50.167,"made from concrete and iron, using horses."],[50.192,55.856,"Kharkiv is only 40 kilometres from Russia and has become a city on the frontline."],[55.881,60.123,"From the first days, our busy streets, were targeted with rockets"],[60.148,62.501,"cluster and air bombs."],[62.568,66.024,"But just like concrete and iron are hard to destroy,"],[66.049,68.39,"our spirits are also unbreakable."],[68.41499999999999,71.812,"As each of us bravely questioned our responsibility."],[71.837,74.901,"Asking how can I help to win?"],[74.947,76.833,"To survive?"],[76.861,80.501,"And for a moment concerts were silent,"],[77,79,""],[80.526,83.545,"and Philharmonic Music Halls close their doors"],[83.57,87.723,"As musicians like Stas Kononov put down their instruments"],[87.748,91.10300000000001,"and became a frontline volunteer…"],[98.756,101.064,"STAS KONONOV: I was meant to play a concert in London"],[101.089,105.289,"on the 28th of February."],[105.314,107.789,"On the morning of the 24th"],[107.82300000000001,110.99000000000001,"a friend of mine, came knocking on my door, shouting"],[111.023,115.156,"‘wake up, or you will sleep through the war’."],[115.223,118.539,"For the next few days myself and other artists"],[118.564,121.94,"gathered in a small flat near the centre."],[121.965,124.123,"People were coming and going"],[124.173,126.273,"and we were trying to work out,"],[126.32300000000001,129.856,"should we stay or should we leave?"],[129.881,134.54,"I received a phone call from a friend in a more dangerous district,"],[134.565,139.148,"saying that there was a basement with 450 people."],[139.173,141.573,"That they didn’t have anything,"],[141.623,144.256,"no food, no water"],[144.281,147.498,"and its too dangerous to go outside."],[147.523,152.423,"It was the moment I realised that I must stay."],[152.448,156.80599999999998,"That there was a responsibility to provide and seek resources."],[156.83100000000002,159.475,"The flat I was in became a headquarters"],[159.5,163.923,"and everyone there if not actors, were connected to music, art, culture."],[163.948,167.323,"It was a little chaotic in that moment."],[167.348,170.323,"Someone provides something and its distributed"],[170.348,172.273,"to whoever most needs…"],[172.298,174.023,"Sharing everything…"],[174.048,177.323,"It was a very intense process."],[177.348,180.34,"After some time it became more organised"],[180.365,184.045,"and we had districts and volunteers in each area."],[184.09,186.203,"Of course it was dangerous."],[186.157,188.956,"Everywhere in Kharkiv was dangerous."],[188.981,191.49,"But I know a lot of examples of bravery"],[191.515,194.94,"and for me what I was doing is not brave."],[194.965,196.94,"It was stressful and frightening,"],[196.965,199.656,"it was a lots of things."],[199.681,202.431,"Everything makes you cry but inside"],[202.456,205.406,"but inside you have this feeling that you are in the right place,"],[205.431,209.123,"are part of something bigger than yourself,"],[209.148,213.406,"that we are all equal, all connected."],[213.43099999999998,218.59,"Everyone helps everyone and it doesn’t matter who you were before."],[218.615,221.80599999999998,"You could of been a businessman with a Tesla car"],[221.83100000000002,224.99,"or an artist who drives something very shitty."],[225.015,230.44,"Even the chief commander of the military base worked without hierarchy."],[230.465,232.95600000000002,"It was a horizontal connection…"],[232.981,234.70600000000002,"it was solidarity."],[233,234.707,""],[234.731,237.09,"You called someone if you needed something"],[237.115,238.95600000000002,"and you solved it."],[238.981,244.123,"It felt that one hundred people were one."],[244.148,247.323,"Before the full-scale invasion,"],[247.348,249.873,"I was asking these questions"],[249.898,251.59,"Who am I?"],[251.615,254.29,"What am I?"],[254.348,259.706,"This situation gave me the answers."],[263.21,268.16,"It feels like making music has not mattered for a long time."],[268.185,271.74,"A lot of musicians reject music right now."],[271.765,274.606,"To play, you must be in the moment,"],[274.631,277.79,"be present, to connect to your emotions."],[277.815,281.823,"It is very stressful and painful and when you start to play,"],[281.848,284.473,"you feel your pain and it comes in such a wave that"],[284.498,288.74,"you stop and think, never again."],[288.765,291.99,"We don’t have the space to be emotional."],[292.015,294.956,"So you go round in this circle."],[294.981,298.956,"And come back to the idea that it is not the time…"],[298.981,301.606,"maybe later."]], 
-      mixtape: [[10.2,13.866,"Musician Stas Kononov continues to volunteer,"],[13.891,17.266,"distributing supplies to civilians and soldiers."],[17.291,22.49,"It is on the frontline, he begins to play again - concerts for the army."],[22.515,26.856,"Acoustic sounds, songs from his album he is yet to release"],[26.881,30.589,"and music he recorded in a legendary studio in Izium"],[30.614,35.156,"that has now been completely destroyed…"],[35.17,36.17,""]]}
+      spirits: [[0.001,7.205,""],[7.23,10.02,"Welcome to the immersive body experience"],[10.045,13.71,"with fire and rage. I'm Veronica"],[13.71,16.32,"sclerotome, artist and producer from"],[16.32,19.02,"Kharkiv, Ukraine, and I will be your"],[19.02,23.01,"guide for today. Along the way, I"],[23.01,25.5,"encourage you to take a break. If you"],[25.5,28.17,"want to stop for a coffee, you will not"],[28.17,30.99,"spend long in each location but even so,"],[31.26,34.529,"find a place to sit to lean to shelter."],[35.04,37.65,"Make yourself comfortable. After all,"],[38.04,41.01,"Liverpool is your city, not mine. The"],[41.01,43.17,"places you will walk in, I've never"],[43.17,45.96,"been, but lets your imagination wander"],[45.96,49.17,"from your streets to ours. As I take you"],[49.17,51.6,"on a journey to the frontline in Ukraine"],[52.2,54.15,"to meet some of our country's most"],[54.15,57.36,"radical, brave and innovative artists"],[57.9,60.63,"from art museums, libraries, train"],[60.63,63.21,"stations and cafes in Liverpool to"],[63.21,65.16,"different histories in places across"],[65.16,68.31,"Ukraine. From where you are now at the"],[68.31,71.03999999999999,"Liverpool Everyman to the lesser Quinta"],[71.03999999999999,74.55,"Theatre in the beef. Here, you will need"],[74.58,77.34,"our first artist, Oliver Pooja kowski,"],[77.91,79.89,"who with tremendous courage and"],[79.89,82.5,"ingenuity, transformed her theatre to"],[82.5,87.27,"respond to a moment of crisis. So, I"],[87.27,89.91,"already let's begin."],[89.935,97.625,""],[97.65,103.53,"10 987 burning house in heaven, a"],[103.53,106.77000000000001,"cartridge is full of deceptions slyness,"],[107.00999999999999,110.19,"blackmail, no exceptions, read"],[110.4,113.64,"reflections, reviewing eternal centers"],[113.64,118.11,"of life, destroy, forget, deprive six"],[118.11,122.315,"five burn down. church choirs believe"],[122.34,125.79,"there is no where to flee for three to"],[125.79,128.58,"the abyss of suffering we have run to"],[128.58,128.94,"one."],[128.965,140.70499999999998,""],[140.73,144.57,"On the 24th of February 2020, till the"],[144.57,147.21,"day of the full scale invasion, we made"],[147.21,150.03,"a plan of how to defend the theater and"],[150.03,153.78,"how we could avoid being captured. It's"],[153.81,156.12,"the highest building in the district."],[156.48,158.52,"And right across the street, there is a"],[158.52,162.18,"big military base. So we put razor wire"],[162.21,164.4,"anywhere a person could climb onto the"],[164.4,167.28,"rooftop, and some of the staff began to"],[167.28,170.19,"make Molotov cocktails. This was the"],[170.19,174.72,"first day the war had already been going"],[174.72,177.78,"in the east for many years. So full"],[177.78,180.93,"scale invasion was not a surprise. But"],[180.93,184.59,"still, in the sharp moment of crisis. We"],[184.59,187.65,"were lost and we didn't know how to"],[187.71,190.92,"adapt our work. At first, it was very"],[190.92,194.88,"good. We had no sleep. Every day we had"],[194.88,198.24,"meetings with the whole theater team. We"],[198.24,200.91,"made a lot of mistakes, but we tried to"],[200.91,203.82,"find the best solutions. We started by"],[203.82,206.88,"setting up the spaces for refugees, and"],[206.88,209.37,"cleaning the basement that became a bomb"],[209.37,212.94,"shelter. We invited not only artists but"],[212.97,215.73,"anyone who had to flee and needed a"],[215.73,218.61,"space to stay. Many of our staff didn't"],[218.61,221.07,"feel safe in their apartments, so they"],[221.07,225.36,"also lived here. In our theater. We set"],[225.36,228.3,"up a shower and created a small kitchen."],[228.96,231.03,"The person who used to be in charge of"],[231.03,233.91,"laundry for costumes now washed clothes"],[233.94,237.09,"and bedding. Instead, the small stage"],[237.09,240,"became a space to store humanitarian aid"],[240.24,244.29,"actors distributed not only in Lviv but"],[244.29,247.11,"to other cities, often under shelling."],[247.71,250.35,"We organized buses for those who were"],[250.35,252.93,"displaced to go through the border to"],[252.93,255.72,"Poland. Because it was an awful"],[255.72,259.74,"situation. Those over 60 and mothers"],[259.74,262.65,"with a lot of small kids were stuck"],[262.65,266.43,"there for days. We prepared warm food"],[266.43,269.67,"and drinks and actors would give this"],[269.67,272.01,"out at the railway stations were"],[272.01,274.29,"internally displaced people were also"],[274.29,277.35,"waiting for days in winter, we equipped"],[277.35,279.87,"soldiers, including our colleagues and"],[279.87,282.45,"friends who went to defend the country."],[282.75,286.65,"Everything we had as theater was used in"],[286.68,289.65,"a new way. Set and probes became"],[289.65,293.07,"humanitarian aid and technical supplies"],[293.07,296.46,"things like walkie talkies were sent to"],[296.46,298.95,"the front line in the costume"],[298.95,302.04,"department. We sold parts of the uniform"],[302.07,305.19,"for soldiers. A very interesting fashion"],[305.19,308.04,"designer who lived in our shelter became"],[308.04,310.86,"the head of this production. For the"],[310.86,313.23,"last five years we have been trying to"],[313.23,316.86,"work without a strict hierarchy. And it"],[316.86,320.88,"is this horizontal structure that led to"],[320.88,323.7,"our biggest premiere yet, where the"],[323.7,327.24,"whole team united on the 24th of"],[327.24,330.18,"February to respond to the full scale"],[330.18,333.24,"invasion. And work is one strong"],[333.265,357.365,""]], 
+       mixtape: [[0.001,10.444,""],[10.469,13.229,"From the beginning, our citizens just"],[13.259,15.479,"changed and became full of strange and"],[15.479,19.859,"interesting artifacts. As you walk, look"],[19.859,25.169,"around Can you see underground bars to"],[25.169,30.089,"basements of buildings? In our cities,"],[30.329,31.919,"this were quickly adapted to become"],[31.919,35.279,"places to hide from rockets. posters"],[35.279,37.019,"from Music Nights are replaced with"],[37.019,40.469,"science for bumped shelters. As food and"],[40.469,42.779,"water restart for those taking refuge,"],[43.049,45.689,"sometimes for hours, weeks, or even"],[45.689,48.719,"months. On roads such as the one you're"],[48.719,51.089,"watching, people make outposts in"],[51.089,54.059,"preparation for invasion. And artists"],[54.149,56.189,"welded giant metal beams together"],[56.219,58.589,"creating hedge hooks to stop Russian"],[58.589,62.879,"tanks. Famous churches like the one"],[62.879,66.029,"behind and the one in front of you. Were"],[66.029,67.979,"boarded up to stop the stained glass"],[67.979,72.479,"from shattering explosions. Historic"],[72.479,74.57900000000001,"Buildings were protected in unique ways"],[74.729,76.559,"using metal sheets, plywood and"],[76.559,80.489,"scaffolding. Statues similar to the many"],[80.489,82.889,"will pass on your work today. You're"],[82.889,88.589,"covered in sandbags to protect them. The"],[88.589,90.749,"air raid alarm memory from high school"],[90.749,92.699,"drills appears as a present day"],[92.699,95.57900000000001,"nightmare. You're seeing the everyday"],[95.57900000000001,98.09899999999999,"sounds of the streets, it warrants the"],[98.09899999999999,100.34899999999999,"truck it's a camera and you have minutes"],[100.34899999999999,103.469,"to get on the ground. You catch eyes"],[103.469,105.65899999999999,"with strangers in anticipation of what's"],[105.65899999999999,111.364,"to come is an airborne or theory."],[111.38900000000001,113.369,"Millions of people flee the frontline"],[113.369,116.519,"cities. men of all ages are drafted in"],[116.519,119.699,"the military and teachers cancel lessons"],[119.699,120.239,"writing"],[120.264,127.415,""],[127.44,130.02,"there will be no classes today. Stay"],[130.02,133.59,"safe, minus sirens. Go down to the"],[133.59,138.06,"shelter, pack a backpack, bandages and"],[138.09,141.81,"ID in other medications you may need a"],[141.81,145.8,"bottle of water this gets a flashlight"],[146.31,150.75,"and needle with thread money documents a"],[150.75,154.95,"power bank mobile phone write your name"],[154.95,158.1,"surname on your hand. Your blood group,"],[158.55,161.7,"relatives phone number if the explosion"],[161.7,164.94,"is close, run to the bathroom. Keep in"],[164.94,169.8,"touch, breathe deeply. These are go down"],[169.82999999999998,171.21,"in the history books."],[171.235,192.46,""]]
+  }
     for (let i=0; i<cues[cuekey].length; i++){
     const cue = new VTTCue(cues[cuekey][i][0],cues[cuekey][i][1],cues[cuekey][i][2]);
     track.addCue(cue); 
@@ -215,11 +187,7 @@ setup.addCaptions = (cuekey) =>  {
   });
   console.log(audio.track)
 
-  const hideCap = () => {
 
-     track.mode = 'hidden';
-    document.getElementById("caption").style.visibility = "hidden";
-  }
 
  
 }
@@ -239,12 +207,14 @@ setup.showCap = () => {
     console.log(track)
 track.mode = 'showing';
     document.getElementById("caption").style.visibility = "visible";
+        document.getElementById("caption").classList.remove("hide")
   }
 
 setup.hideCap = () => {
     const track = document.getElementById("captrack")
    track.mode = 'hidden';
     document.getElementById("caption").style.visibility = "hidden";
+     document.getElementById("caption").classList.add("hide")
   }
 
 setup.addThirty = () => {
@@ -263,9 +233,6 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "premiere" "https://remote.co.com/MoTT/AgentTraining/Sounds/13.%20Challenge%203%20-%202.mp3">>
-<<waitforaudio>>
-
 
 
 :: header [nobr]{"position":"100,225","size":"100,100"}
@@ -280,7 +247,7 @@ setup.backThirty = () => {
 
 :: headerstory [nobr]
 
-<header>
+<header class="story">
 <<if $showBackwards is true>>
   <div class="nav-wrapper">
     <div class="nav-item">
@@ -293,7 +260,10 @@ setup.backThirty = () => {
 <<if $showMap is true>>
     <div class="nav-wrapper">
       <div class="nav-item">
-    <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>>
+    <<link [img[assets/img/map.png]]>>
+    <<toggleclass "#map" "hide">>
+
+    <</link>>
     </div>
   </div>
   <</if>>
@@ -328,7 +298,9 @@ setup.backThirty = () => {
   <<if $showMap is true>>
     <div class="nav-wrapper">
       <div class="nav-item">
-    <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>>
+    <<link [img[assets/img/map.png]]>>
+    <<toggleclass "#map" "hide">>
+    <</link>>
     </div>
   </div>
   <</if>>
@@ -390,30 +362,34 @@ setup.backThirty = () => {
   
 </footer>
 
+:: footerfor [nobr]{"position":"100,375","size":"100,100"}
+<footer>
+<div></div>
+  <div class="nav-wrapper">
+    <div class="nav-item">
+        [img[Back|assets/img/for.png][$nextpass]]
+    </div>
+  </div>
+
+  
+</footer>
+
 
 :: footerAR [nobr]{"position":"100,375","size":"100,100"}
 <footer class="ar">
+ <div class="nav-wrapper">
+    <div class="nav-item">
+        [img[Back|assets/img/back.png][$prevpass]]
+    </div>
+  </div>
+ 
   <div class="nav-wrapper">
     <div class="nav-item">
-    <div id="mount"> <span>Press the image</span> <span>to see it change</span></div>
-    <<silently>>
-	<<repeat 10s>>
-    <<timed 0.1s>>
-      <<replace "#mount">>
-         <span>When you’ve finished</span> <span>listening let me know</span>
-      <</replace>>
-     <</timed>>
-     <<timed 6s>>
-      <<replace "#mount">>
-       <span>Press the image</span> <span>to see it change</span>
-      <</replace>>
-     <</timed>>
-    <</repeat>>
-<</silently>>
+    <div id="mount"> <span class="comment">Press the image <br> to see it transform</span></div>
     </div></div>
     <div class="nav-wrapper">
     <div class="nav-item">
-       <<button "I’ve finished listening">><<goto $nextpass>><</button>>
+       <<button "Next">><<goto $nextpass>><</button>>
     </div>
   </div>
 </footer>
@@ -426,10 +402,15 @@ setup.backThirty = () => {
 <div class="nav-wrapper">
     <div class="nav-item">
       <<link [img[assets/img/captions.png]]>>
+      /* <<toggleclass "#posterWrapper" "small">> */
       <<if $captionToggle is true>>
+         <<toggleclass "#poster" "hide">>
+         <<toggleclass "#storyContainer" "captions">>
           <<set $captionToggle to false>>
       <<set $fn to setup.hideCap()>>
           <<else>>
+          <<toggleclass "#poster" "hide">>
+          <<toggleclass "#storyContainer" "captions">>
           <<set $captionToggle to true>>
       <<set $fn to setup.showCap()>>
         <</if>>
@@ -477,7 +458,7 @@ setup.backThirty = () => {
 <<if $transcript is false>>
   <<set $transcript to true>>
   <<replace "#transcript">>
-    <<include "spiritstranscript">>
+    <<include $transcriptname>>
   <</replace>>
   <<else>>
   <<set $transcript to false>>
@@ -489,6 +470,82 @@ setup.backThirty = () => {
 </div>
 
 </footer>
+
+:: footerstorywalk [nobr]
+
+<footer>
+
+<<if $showCaptionsIcon is true>>
+<div class="nav-wrapper">
+    <div class="nav-item">
+      <<link [img[assets/img/captions.png]]>>
+      /* <<toggleclass "#posterWrapper" "small">> */
+      <<if $captionToggle is true>>
+         <<toggleclass "#storyContainer" "captions">>
+          <<set $captionToggle to false>>
+      <<set $fn to setup.hideCap()>>
+          <<else>>
+          <<toggleclass "#storyContainer" "captions">>
+          <<set $captionToggle to true>>
+      <<set $fn to setup.showCap()>>
+        <</if>>
+      <</link>>
+</div>
+  </div>
+<</if>>
+
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+    <<link "-30s">>
+<<set $fn to setup.backThirty()>>
+  <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper playpause-wrapper">
+  <div class="nav-item" id="playpause">
+      <<link [img[assets/img/playpause.png]]>>
+        <<if $playToggle is false>>
+      <<set $fn to setup.play()>>
+      <<set $playToggle to true>>
+      <<addclass "#playpause" "playhighlight">>
+      <<else>>
+       <<set $fn to setup.pause()>>
+        <<set $playToggle to false>>
+      <<removeclass "#playpause" "playhighlight">>
+      <</if>>
+      <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+    <<link "+30s">>
+      <<set $fn to setup.addThirty()>>
+  <</link>>
+  </div>
+</div>
+
+<div class="nav-wrapper">
+  <div class="nav-item">
+  <<link [img[assets/img/transcript.png]]>>
+<<if $transcript is false>>
+  <<set $transcript to true>>
+  <<replace "#transcript">>
+    <<include $transcriptname>>
+  <</replace>>
+  <<else>>
+  <<set $transcript to false>>
+  <<replace "#transcript">>
+  <</replace>>
+  <</if>>
+  <</link>>
+  </div>
+</div>
+
+</footer>
+
 
 :: footerMap [nobr]{"position":"100,375","size":"100,100"}
 <footer>
@@ -513,18 +570,6 @@ setup.backThirty = () => {
   </div>
 </footer>
 
-
-:: lost {"position":"450,50","size":"100,100"}
-<<set $passage to "lost">><<include "header">>
-<main>
-Sorry to hear that you're lost! 
-You have two options:
-
-<<button "Begin the adventure again">><<goto "landing">><</button>>
-
-<<button "Take me straight to the end location!">><<goto "end">><</button>>
-</main>
-<<include "footer">>
 
 
 :: credits [nobr]{"position":"450,50","size":"100,100"}
@@ -571,19 +616,47 @@ You have two options:
 <<include "footerback">>
 
 
+:: beginning [nobr]  {"position":"700,175","size":"100,100"}
+<<set $prevpass to "beginning">>
+<<set $passage to "beginning">>
+<<set $nextpass to "landing">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to false>>
+<<set $showForwards to true>>
+<<set $showBackwards to false>>
+<<set $showCaptionsIcon to true>>
+<<set $showMap to false>>
+
+<div class="comp-warning">Best experienced on a phone</div>
+<main class="" id="">
+
+<div class="poster-wrapper" id="poster">
+   <img class="poster" src="./../assets/img/spirits.jpeg"/>
+ </div>
+ <div class="menu-wrapper">
+    <<button "Begin">><<goto $nextpass>><</button>>
+</div>
+</main>
+
+
+
 
 
 :: instructions [nobr]
-<<set $prevpass to "landing">>
+<<set $prevpass to "beginning">>
 <<set $passage to "instructions">>
-<<set $nextpass to "spirits">>
+<<set $nextpass to "landing">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to false>>
 <<set $showForwards to true>>
 <<set $showBackwards to false>>
 <<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
+/* <<set $map = setup.generateDirectionsMap({originLat: 53.402939134543324,originLong:-2.969497397902565, originPlaceId: "ChIJ2ccRtxghe0gR3Z7JzoorJ58"},"ChIJ2ccRtxghe0gR3Z7JzoorJ58")>> */
+
+<<set $map = setup.generateViewMap({originLat: 53.402939134543324,originLong:-2.969497397902565, originName: "Liverpool Everyman Theatre"})>>
+
 
 <div id="audio"></div>
 /* <<include "header">> */
@@ -629,32 +702,63 @@ You have two options:
   <</append>>
 <</timed>>
 </main>
-<<include "footer">>
+<<include "footerfor">>
+
 
 :: landing [nobr]
-<<set $title to "Sprits from Concrete And Iron">>
-<<set $prevpass to "landing">>
+<<set $title to "Spirits from Concrete and Iron">>
+<<set $theatre to "closed">>
+<<set $prevpass to "beginning">>
 <<set $passage to "landing">>
-<<set $nextpass to "instructions">>
+<<set $nextpass to "spirits">>
 <<set $showMap to true>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.40123951917362, -2.9696925172693147, 53.40123951917362, -2.9696925172693147)>>
+<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
 <div id="audio"></div>
 <<include "header">>
 <div class="comp-warning">Best to experience on a phone</div>
 <main class="instructions">
-<div id="map" class="hide">$map</div>
 
-<p> You should be outside the Liverpool Philharmonic</p>
+<div id="map" class="hide">$map</div>
+<p>You should be outside the Liverpool Philharmonic</p>
 <p>Home to the UK's oldest continuing professional symphony orchestra</p>
 <p>Take a seat on the benches across the road</p>
+<<button "I'm ready">><<goto $nextpass>><</button>>
+</main>
+<<include "footer">>
 
+:: instnar2 [nobr]
+<<set $prevpass to "landing">>
+<<set $passage to "instnar2">>
+<<set $nextpass to "spirits">>
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to true>>
+<<set $showForwards to true>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+<div id="audio"></div>
+<<include "header">>
+<main class="instructions">
+<div id="map" class="hide">$map</div>
+  <<if $theatre is "open">>
+    <p>Go inside and take a seat in the downstairs bar </p>
+  <p>There are some comfy sofas either end</p>
+  <p>When you’re ready let me know</p>
   <<button "I'm ready">><<goto $nextpass>><</button>>
- 
+<</if>>
+
+
+  <<if $theatre is "closed">>
+  <p>Find a place to take shelter</p>
+  <p>Maybe by the big windows, under the theatre’s balcony</p>
+  <p>When you’re ready let me know</p>
+    <<button "I'm ready">><<goto $nextpass>><</button>>
+<</if>>
 </main>
 <<include "footer">>
 
@@ -663,28 +767,28 @@ You have two options:
 
 
 
-
 :: spirits [nobr]  {"position":"700,175","size":"100,100"}
-<<set $prevpass to "preintro">>
-<<set $passage to "intro">>
-<<set $nextpass to "instnar4">>
+<<set $prevpass to "instnar2">>
+<<set $passage to "spirits">>
+<<set $nextpass to "instnar5">>
 <<set $transcript to false>>
 <<set $playToggle to false>>
-<<set $captionToggle to true>>
+<<set $captionToggle to false>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to true>>
 <<set $showMap to false>>
 <<set $transcriptname to  "spiritstranscript">>
-<<include "headerstory"  >>
-<main class="story" id="story">
-<audio id="audio" autoplay>
-  <source src="https://www.dropbox.com/s/8wwb0xty3hsf5x4/02-Spirits-of-Concrete-and-Iron.mp4?raw=1">
+<<include "headerstory">>
+<main class="story" id="storyContainer">
+<audio id="audio" >
+  <source src="https://www.dropbox.com/s/k0ctc95n24r8lle/02.%20Spirits%20of%20Concrete%20and%20Iron%20V1.mp3?raw=1">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
-<div class="poster-wrapper">
-   <img class="poster" src="./../assets/img/sci.jpeg"/>
+<div class="poster-wrapper" id="poster">
+   <img class="poster audio" src="./../assets/img/spirits.jpeg"/>
  </div>
-<div id="caption"></div>
+  
+<div id="caption" class="hide"></div>
 <div id="transcript"></div>
 <div id="mount"  ><p class="comment"> To listen to <em>$title</em> press <div class="inline-btn-wrapper">
 <<link "play">>
@@ -692,22 +796,14 @@ You have two options:
       <<set $fn to setup.play()>>
       <<set $playToggle to true>>
       <<addclass "#playpause" "playhighlight">>
-      <<else>>
-       <<set $fn to setup.pause()>>
-        <<set $playToggle to false>>
-      <<removeclass "#playpause" "playhighlight">>
       <</if>>
+      <<replace "#mount">>
+<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I've finished">><<goto $nextpass>><</button>></div></p>
+
+ <</replace>>
       <</link>></div></p></div>
 
 
-<<timed 15s>>
-  /* <<addclass "#forIcon" "circle">>
-   <<addclass "#forIcon" "pulse">> */
-<<replace "#mount">>
-<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
-
- <</replace>>
- <</timed>>
 </main>
 
 <<include "footerstory">>
@@ -717,11 +813,10 @@ You have two options:
 
 
 
-
 :: spiritstranscript
 
 <h2>Transcript</h2>
-
+NARRATOR:
 Let me introduce you to Kharkiv, my city.
 It's eclectic
 Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of students from around the world.
@@ -733,67 +828,38 @@ And for a moment concerts were silent, and Philharmonic Music Halls close their 
 
 
 STAS KONONOV:
-
-
 I was meant to play a concert in London on the 28th of February.
 On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep through the war’. 
-
-
 For the next few days, myself and other artists gathered in a small flat near the centre.
-
-
 People were coming and going, and we were trying to work out, should we stay or should we leave?
-
-
 I received a phone call from a friend, in a more dangerous district, saying that there was a basement with 450 people. That they didn’t have anything, no food, no water and its too dangerous to go outside.
-
-
 It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources. 
 The flat I was in became a headquarters, and everyone was an actor, or connected to music, art and culture. 
-
-
 It was a little chaotic in that moment. Someone provides something and its distributed to anyone who needs - Sharing everything
 It was a very intense process.
-
-
 After some time it became more organised, and we had districts and volunteers in each area. 
-
-
 Of course it was dangerous. Everywhere in Kharkiv was dangerous.
-
-
 But I know a lot of examples of bravery, and for me what I’m doing is not brave.
 It was stressful and frightening, it was a lot of things. Everything makes you cry, but inside you have this feeling that you are in the right place, are part of something bigger than yourself. That we are all equal, all connected.
-
-
 Everyone helps everyone and it doesn’t matter who you were before. You could have been a businessman with a Tesla car or an artist who drives something very shitty.
-
-
 Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was solidarity. You called someone if you needed something and you solved it. 
-
-
 It felt that one hundred people were one.
-
-
 Before the full-scale invasion, I was asking these questions - Who am I? What am I? 
 This situation gave me the answers.
-
-
 It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
-
-
 To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
-
-
 We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.
 
 
-
 :: instnar3 [nobr]
-<<set $prevpass to "stas">>
+<<set $prevpass to "spirits">>
 <<set $passage to "instnar3">>
-<<set $nextpass to "AR1">>
-
+<<if $theatre is "open">>
+  <<set $nextpass to "AR1">>
+<</if>>
+<<if $theatre is "closed">>
+  <<set $nextpass to "AR2">>
+<</if>>
 <<set $showMap to true>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -805,20 +871,30 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 <main class="instructions">
 <div id="map" class="hide">$map</div>
-<strong>TBC MIGHT CUT</strong>
-<p>Let me show you some images </p>
-<p>Stand facing the middle the Liverool Philharmonic</p>
-<p>Staying on the opposite side of the road</p>
-<p>Hold up your phone</p>
-    <<button "I'm in position">><<goto $nextpass>><</button>>
+<<if $theatre is "open">>
+  <p> Let me show you some photos </p>
+  <p>Stand in front of the elevator, facing the bar</p>
+  <p>Hold up your phone</p>
+    <<button "Show me">><<goto $nextpass>><</button>>
+<</if>>
+
+<<if $theatre is "closed">>
+<p>Let me show you some photos </p>
+<p>Cross the road and face the Liverpool Everyman</p>
+<p>Hold up your phone and press</p>
+
+  <<button "Show Me">><<goto $nextpass>><</button>>
+<</if>>
+
 
 </main>
 <<include "footer">>
 
+
 :: AR1 [nobr]{"position":"450,50","size":"100,100"}
-<<set $prevpass to "landing">>
+<<set $prevpass to "instnar3">>
 <<set $passage to "AR1">>
-<<set $nextpass to "instnar4">>
+<<set $nextpass to "instnar5">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -826,24 +902,78 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to false>>
 /* <<include "header">> */
-<main>
-  <div class="ar-imgs-container">
-    <div class="ar-img-wrapper touch bottom" id="initial" >
-      <img src="./assets/img/everyman-theatre.webp" class="">
-      </div>
-  </div >
+/* OPEN */
+<main class="ar">
 
-/* <p>(Liverpool Everyman Transforms into the volunteering at Lesya Ukrainka Theater)</p> */
+  <div class="ar-imgs-container one" id="ARContainer">
+    <div class="hidden-img-wrapper touch transparent" id="reveal" >
+        <img src="./assets/img/gifs/ar1open.gif" class="">
+      </div>
+    <div class="ar-img-wrapper touch bottom" id="initial" >
+      <img src="./assets/img/everyman-inside.jpeg" class="">
+      </div>
+  </div>
+
 
 </main>
 <<include "footerAR">>
 <<done>><<set $s to setup.startup()>><</done>>
 
-
-:: instnar4 [nobr]
+/* :: instnar4 [nobr]
 <<set $prevpass to "AR1">>
 <<set $passage to "instnar4">>
-<<set $nextpass to "journey1">>
+<<set $nextpass to "AR2">>
+<<set $showMap to true>>
+<<set $showAudio to false>>
+<<set $showReplay to true>>
+<<set $showBackwards to true>>
+<<set $showForwards to true>>
+<<set $showCaptionsIcon to false>>
+<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
+<div id="audio"></div>
+
+<main class="instructions">
+<div id="map" class="hide">$map</div>
+<p>Go outside and cross the road </p>
+<p>Face the Liverpool Everyman</p>
+<p>Hold up your phone </p>
+
+  <<button "I'm in position">><<goto $nextpass>><</button>>
+</main>
+<<include "footer">> */
+
+
+:: AR2 [nobr]{"position":"450,50","size":"100,100"}
+<<set $prevpass to "instnar3">>
+<<set $passage to "AR2">>
+<<set $nextpass to "instnar5">>
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to true>>
+<<set $showBackwards to true>>
+<<set $showForwards to true>>
+<<set $showCaptionsIcon to false>>
+/* CLOSED  */
+/* <<include "header">> */
+<main class="ar">
+
+ <div class="ar-imgs-container one" id="ARContainer">
+    <div class="hidden-img-wrapper touch transparent" id="reveal" >
+        <img src="./assets/img/gifs/ar2closed.gif" class="">
+      </div>
+    <div class="ar-img-wrapper touch bottom" id="initial" >
+      <img src="./assets/img/everyman-outside.jpeg" class="">
+      </div>
+  </div>
+</main>
+<<include "footerAR">>
+<<done>><<set $s to setup.startup()>><</done>>
+
+
+:: instnar5 [nobr]
+<<set $prevpass to "spirits">>
+<<set $passage to "instnar5">>
+<<set $nextpass to "mixtape">>
 <<set $showMap to true>>
 <<set $showAudio to false>>
 <<set $showReplay to true>>
@@ -855,99 +985,72 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 <main class="instructions">
 <div id="map" class="hide">$map</div>
-<p> Ready to go to St Lukes Bombed Out Church?</p>
+<p>Ready to go to St Lukes Bombed Out Church?</p>
 <p>You want to head to the steps out front</p>
 <p>On your way you will see our artwork on the railings</p>
-
-
 
   <<button "Let's go">><<goto $nextpass>><</button>>
 </main>
 <<include "footer">>
 
 
-:: journey1 [nobr]
-<<set $prevpass to "instnar4">>
-<<set $passage to "journey1">>
-<<set $nextpass to "mixtape">>
-<<set $showMap to true>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to false>>
-/* <<set $showAudio to true>> */
-/* Phil to Church  */
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)>>
-<main class="instructions">
-<div id="audio"></div>
-<div id="map" class="hide">$map</div>
-<p>You can use the map <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>> to help you get there.</p>
-
-<p>As you begin to walk press <<button "Play">><<goto $nextpass>><</button>></p>
-
-</main>
-
-<<include "footer">>
-
-
-:: mixtapeaudio [nobr]
-<<replace "#audio">><p>[mixtape audio playing...]</p><</replace>>
-
-
 
 
 :: mixtape[nobr]
-<<set $prevpass to "journey1">>
+<<set $prevpass to "instnar5">>
 <<set $passage to "mixtape">>
 <<set $nextpass to "end">>
 <<set $showMap to true>>
 <<set $transcript to false>>
 <<set $playToggle to false>>
-<<set $captionToggle to true>>
+<<set $captionToggle to false>>
 <<set $showBackwards to true>>
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to true>>
 <<set $transcriptname to  "mixtapetranscript">>
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.40143323565547, -2.9706816152244295)>>
+/* Everyman to 1931  */
+<<set $map = setup.generateDirectionsMap({originName: "Liverpool Everyman", originLat: 53.40294244809804, originLong:-2.9694980926454186}, "Liverpool Philharmonic")>>
 <<include "headerstory">>
-<main class="story">
+<main class="story" id="storyContainer" >
 <audio id="audio" >
-  <source src="https://www.dropbox.com/s/ldn4ws1lyq2rn26/Walk%202%20_%20Stas%20Acoustic%20Music%20V1.mp3?raw=1">
+  <source src="https://www.dropbox.com/s/w1zv0172ha8b1vs/Walk%202%20_%20Stas%20Acoustic%20Music%20V1%20%281%29.mp3?raw=1">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
 
-<div id="map" class="hide">$map</div>
-<div class="poster-wrapper">
-   <img class="poster" src="./../assets/img/sci.jpeg"/>
- </div>
-<div id="caption" ></div>
+<div id="map" class="">$map</div>
+/* <div class="poster-wrapper hide" id="poster">
+   <img class="poster" src="./../assets/img/obpy.jpeg"/>
+ </div> */
+<div id="caption" class="hide" ></div>
 <div id="transcript"></div>
-<div id="mount"  ><p class="comment"> To listen to <em>Mixtape/Stas Music</em> press <div class="inline-btn-wrapper">
+<div id="mount"></div>
+
+<<timed 1s>>
+  <<replace "#mount">>  
+<p class="comment">You can use the map <<link [img[assets/img/map.png]]>><</link>> to help you get there</p>
+<</replace>>
+ <</timed>>
+
+ <<timed 6s>>
+  <<replace "#mount">>  
+<p class="comment">As you begin to walk press  <div class="inline-btn-wrapper">
 <<link "play">>
+      <<replace "#mount">>
+    <p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
+    <</replace>>
         <<if $playToggle is false>>
       <<set $fn to setup.play()>>
       <<set $playToggle to true>>
       <<addclass "#playpause" "playhighlight">>
-      <<else>>
-       <<set $fn to setup.pause()>>
-        <<set $playToggle to false>>
-      <<removeclass "#playpause" "playhighlight">>
       <</if>>
-      <</link>></div></p></div>
+      <</link>></div></p>
 
-
-<<timed 15s>>
-  /* <<addclass "#forIcon" "circle">>
-   <<addclass "#forIcon" "pulse">> */
-<<replace "#mount">>
-<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
-
- <</replace>>
+      <</replace>>
  <</timed>>
+
 </main>
 
-<<include "footerstory">>
+<<include "footerstorywalk">>
 <<done>>
   <<set $addC to setup.addCaptions("mixtape")>>
 <</done>>
@@ -957,10 +1060,10 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 :: mixtapetranscript
 
 <h2>Transcript</h2>
+NARRATOR:
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
 It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed...
-
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…
 
 
 
@@ -980,13 +1083,13 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 <div id="audio"></div>
 <div id="map" class="hide">$map</div>
 <div id="mount"></div>
-<h2>Bombed Out Church</h2>
+<h2>St Luke's Church</h2>
 <p>Would you like to go on another journey?</p>
 <br/>
- <h3>Flowers that Grew from the Concrete</h3>
+ <h3>Flowers That Grow from Concrete</h3>
  <br/>
     <a href="https://fr-flowers-concrete.netlify.app/">
-    <br/><button>Start</button></a>
+<button>Start</button></a>
 
 
 
@@ -996,15 +1099,5 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 
 
 
-
-
-:: 360 {"position":"600,225","size":"100,100"}
-<<set $passage to "360">>
-<main>
-<h1>360 Image Viewer</h1>
-<p> you can add an image of your choosing. via <a href="https://panoraven.com/en" target="_blank">panoraven</a></p>
-<iframe width="90%" height="500px" allowFullScreen="true" allow="accelerometer; magnetometer; gyroscope" style="display:block; margin:20px auto; border:0 none; max-width:880px;border-radius:8px; box-shadow: 0 1px 1px rgba(0,0,0,0.11),0 2px 2px rgba(0,0,0,0.11),0 4px 4px rgba(0,0,0,0.11),0 6px 8px rgba(0,0,0,0.11),0 8px 16px rgba(0,0,0,0.11);" src="https://panoraven.com/en/embed/uE3bv5KK9Q"></iframe>
-<<button "back">><<goto "landing">><</button>>
-</main>
 
 
