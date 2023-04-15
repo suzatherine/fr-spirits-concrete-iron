@@ -717,7 +717,7 @@ setup.backThirty = () => {
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
+<<set $map = setup.generateViewMap({originLat: 53.401592938405685,originLong: -2.9703296791325453, originName: "Royal Liverpool Philharmonic"})>>
 <div id="audio"></div>
 <<include "header">>
 <div class="comp-warning">Best to experience on a phone</div>
@@ -731,44 +731,10 @@ setup.backThirty = () => {
 </main>
 <<include "footer">>
 
-:: instnar2 [nobr]
-<<set $prevpass to "landing">>
-<<set $passage to "instnar2">>
-<<set $nextpass to "spirits">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showForwards to true>>
-<<set $showBackwards to true>>
-<<set $showCaptionsIcon to false>>
-<div id="audio"></div>
-<<include "header">>
-<main class="instructions">
-<div id="map" class="hide">$map</div>
-  <<if $theatre is "open">>
-    <p>Go inside and take a seat in the downstairs bar </p>
-  <p>There are some comfy sofas either end</p>
-  <p>When you’re ready let me know</p>
-  <<button "I'm ready">><<goto $nextpass>><</button>>
-<</if>>
-
-
-  <<if $theatre is "closed">>
-  <p>Find a place to take shelter</p>
-  <p>Maybe by the big windows, under the theatre’s balcony</p>
-  <p>When you’re ready let me know</p>
-    <<button "I'm ready">><<goto $nextpass>><</button>>
-<</if>>
-</main>
-<<include "footer">>
-
-
-
-
 
 
 :: spirits [nobr]  {"position":"700,175","size":"100,100"}
-<<set $prevpass to "instnar2">>
+<<set $prevpass to "landing">>
 <<set $passage to "spirits">>
 <<set $nextpass to "instnar5">>
 <<set $transcript to false>>
@@ -851,45 +817,6 @@ To play, you must be in the moment, be present, to connect to your emotions. It 
 We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.
 
 
-:: instnar3 [nobr]
-<<set $prevpass to "spirits">>
-<<set $passage to "instnar3">>
-<<if $theatre is "open">>
-  <<set $nextpass to "AR1">>
-<</if>>
-<<if $theatre is "closed">>
-  <<set $nextpass to "AR2">>
-<</if>>
-<<set $showMap to true>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
-<div id="audio"></div>
-
-<main class="instructions">
-<div id="map" class="hide">$map</div>
-<<if $theatre is "open">>
-  <p> Let me show you some photos </p>
-  <p>Stand in front of the elevator, facing the bar</p>
-  <p>Hold up your phone</p>
-    <<button "Show me">><<goto $nextpass>><</button>>
-<</if>>
-
-<<if $theatre is "closed">>
-<p>Let me show you some photos </p>
-<p>Cross the road and face the Liverpool Everyman</p>
-<p>Hold up your phone and press</p>
-
-  <<button "Show Me">><<goto $nextpass>><</button>>
-<</if>>
-
-
-</main>
-<<include "footer">>
-
 
 :: AR1 [nobr]{"position":"450,50","size":"100,100"}
 <<set $prevpass to "instnar3">>
@@ -919,56 +846,6 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<include "footerAR">>
 <<done>><<set $s to setup.startup()>><</done>>
 
-/* :: instnar4 [nobr]
-<<set $prevpass to "AR1">>
-<<set $passage to "instnar4">>
-<<set $nextpass to "AR2">>
-<<set $showMap to true>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)>>
-<div id="audio"></div>
-
-<main class="instructions">
-<div id="map" class="hide">$map</div>
-<p>Go outside and cross the road </p>
-<p>Face the Liverpool Everyman</p>
-<p>Hold up your phone </p>
-
-  <<button "I'm in position">><<goto $nextpass>><</button>>
-</main>
-<<include "footer">> */
-
-
-:: AR2 [nobr]{"position":"450,50","size":"100,100"}
-<<set $prevpass to "instnar3">>
-<<set $passage to "AR2">>
-<<set $nextpass to "instnar5">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to true>>
-<<set $showBackwards to true>>
-<<set $showForwards to true>>
-<<set $showCaptionsIcon to false>>
-/* CLOSED  */
-/* <<include "header">> */
-<main class="ar">
-
- <div class="ar-imgs-container one" id="ARContainer">
-    <div class="hidden-img-wrapper touch transparent" id="reveal" >
-        <img src="./assets/img/gifs/ar2closed.gif" class="">
-      </div>
-    <div class="ar-img-wrapper touch bottom" id="initial" >
-      <img src="./assets/img/everyman-outside.jpeg" class="">
-      </div>
-  </div>
-</main>
-<<include "footerAR">>
-<<done>><<set $s to setup.startup()>><</done>>
-
 
 :: instnar5 [nobr]
 <<set $prevpass to "spirits">>
@@ -980,7 +857,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showBackwards to true>>
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to false>>
-<<set $map = setup.generateDirectionsMap(53.40122672594675, -2.969617415416523,53.40188587934155, -2.97516167308871)>>
+<<set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: "Royal Liverpool Philharmonic"},"St Luke’s Bombed Out Church")>>
 <div id="audio"></div>
 
 <main class="instructions">
@@ -1009,7 +886,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showCaptionsIcon to true>>
 <<set $transcriptname to  "mixtapetranscript">>
 /* Everyman to 1931  */
-<<set $map = setup.generateDirectionsMap({originName: "Liverpool Everyman", originLat: 53.40294244809804, originLong:-2.9694980926454186}, "Liverpool Philharmonic")>>
+<<set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: "Royal Liverpool Philharmonic"},"St Luke’s Bombed Out Church")>>
 <<include "headerstory">>
 <main class="story" id="storyContainer" >
 <audio id="audio" >
@@ -1078,7 +955,8 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 <<set $showForwards to false>>
 <<set $showCaptionsIcon to false>>
 /* Church  */
-<<set $map = setup.generateDirectionsMap(53.40143323565547, -2.9706816152244295, 53.40143323565547, -2.9706816152244295)>>
+
+<<set $map = setup.generateViewMap({originLat: 53.40189909857434,originLong:-2.9750604982784883, originName: "St Luke’s Bombed Out Church"})>>
 <main class="end">
 <div id="audio"></div>
 <div id="map" class="hide">$map</div>

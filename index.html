@@ -737,7 +737,7 @@ setup.backThirty = () => {
 &lt;&lt;set $showForwards to true&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;&lt;set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)&gt;&gt;
+&lt;&lt;set $map = setup.generateViewMap({originLat: 53.401592938405685,originLong: -2.9703296791325453, originName: &quot;Royal Liverpool Philharmonic&quot;})&gt;&gt;
 &lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;div class=&quot;comp-warning&quot;&gt;Best to experience on a phone&lt;/div&gt;
@@ -749,35 +749,7 @@ setup.backThirty = () => {
 &lt;p&gt;Take a seat on the benches across the road&lt;/p&gt;
 &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="instnar2" tags="nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;instnar2&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;spirits&quot;&gt;&gt;
-&lt;&lt;set $showMap to false&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
-&lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;instructions&quot;&gt;
-&lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
-  &lt;&lt;if $theatre is &quot;open&quot;&gt;&gt;
-    &lt;p&gt;Go inside and take a seat in the downstairs bar &lt;/p&gt;
-  &lt;p&gt;There are some comfy sofas either end&lt;/p&gt;
-  &lt;p&gt;When you’re ready let me know&lt;/p&gt;
-  &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-
-  &lt;&lt;if $theatre is &quot;closed&quot;&gt;&gt;
-  &lt;p&gt;Find a place to take shelter&lt;/p&gt;
-  &lt;p&gt;Maybe by the big windows, under the theatre’s balcony&lt;/p&gt;
-  &lt;p&gt;When you’re ready let me know&lt;/p&gt;
-    &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;instnar2&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $transcript to false&gt;&gt;
@@ -818,7 +790,7 @@ setup.backThirty = () => {
 &lt;&lt;include &quot;footerstory&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
   &lt;&lt;set $addC to setup.addCaptions(&quot;spirits&quot;)&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="spiritstranscript" tags="" position="850,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="spiritstranscript" tags="" position="725,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 NARRATOR:
 Let me introduce you to Kharkiv, my city.
 It&#39;s eclectic
@@ -851,43 +823,7 @@ Before the full-scale invasion, I was asking these questions - Who am I? What am
 This situation gave me the answers.
 It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
 To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
-We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="18" name="instnar3" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;spirits&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;instnar3&quot;&gt;&gt;
-&lt;&lt;if $theatre is &quot;open&quot;&gt;&gt;
-  &lt;&lt;set $nextpass to &quot;AR1&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $theatre is &quot;closed&quot;&gt;&gt;
-  &lt;&lt;set $nextpass to &quot;AR2&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;set $showMap to true&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;&lt;set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)&gt;&gt;
-&lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
-
-&lt;main class=&quot;instructions&quot;&gt;
-&lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
-&lt;&lt;if $theatre is &quot;open&quot;&gt;&gt;
-  &lt;p&gt; Let me show you some photos &lt;/p&gt;
-  &lt;p&gt;Stand in front of the elevator, facing the bar&lt;/p&gt;
-  &lt;p&gt;Hold up your phone&lt;/p&gt;
-    &lt;&lt;button &quot;Show me&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $theatre is &quot;closed&quot;&gt;&gt;
-&lt;p&gt;Let me show you some photos &lt;/p&gt;
-&lt;p&gt;Cross the road and face the Liverpool Everyman&lt;/p&gt;
-&lt;p&gt;Hold up your phone and press&lt;/p&gt;
-
-  &lt;&lt;button &quot;Show Me&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-
-
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="17" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -912,53 +848,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 &lt;/main&gt;
 &lt;&lt;include &quot;footerAR&quot;&gt;&gt;
-&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;
-
-/* :: instnar4 [nobr]
-&lt;&lt;set $prevpass to &quot;AR1&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;instnar4&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;AR2&quot;&gt;&gt;
-&lt;&lt;set $showMap to true&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;&lt;set $map = setup.generateDirectionsMap(53.4030572538972, -2.969504715141457,53.4030572538972, -2.969504715141457)&gt;&gt;
-&lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
-
-&lt;main class=&quot;instructions&quot;&gt;
-&lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
-&lt;p&gt;Go outside and cross the road &lt;/p&gt;
-&lt;p&gt;Face the Liverpool Everyman&lt;/p&gt;
-&lt;p&gt;Hold up your phone &lt;/p&gt;
-
-  &lt;&lt;button &quot;I&#39;m in position&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="20" name="AR2" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
-&lt;&lt;set $passage to &quot;AR2&quot;&gt;&gt;
-&lt;&lt;set $nextpass to &quot;instnar5&quot;&gt;&gt;
-&lt;&lt;set $showMap to false&gt;&gt;
-&lt;&lt;set $showAudio to false&gt;&gt;
-&lt;&lt;set $showReplay to true&gt;&gt;
-&lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-/* CLOSED  */
-/* &lt;&lt;include &quot;header&quot;&gt;&gt; */
-&lt;main class=&quot;ar&quot;&gt;
-
- &lt;div class=&quot;ar-imgs-container one&quot; id=&quot;ARContainer&quot;&gt;
-    &lt;div class=&quot;hidden-img-wrapper touch transparent&quot; id=&quot;reveal&quot; &gt;
-        &lt;img src=&quot;./assets/img/gifs/ar2closed.gif&quot; class=&quot;&quot;&gt;
-      &lt;/div&gt;
-    &lt;div class=&quot;ar-img-wrapper touch bottom&quot; id=&quot;initial&quot; &gt;
-      &lt;img src=&quot;./assets/img/everyman-outside.jpeg&quot; class=&quot;&quot;&gt;
-      &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/main&gt;
-&lt;&lt;include &quot;footerAR&quot;&gt;&gt;
-&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="instnar5" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;spirits&quot;&gt;&gt;
+&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="instnar5" tags="nobr" position="975,225" size="100,100">&lt;&lt;set $prevpass to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -967,7 +857,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showForwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to false&gt;&gt;
-&lt;&lt;set $map = setup.generateDirectionsMap(53.40122672594675, -2.969617415416523,53.40188587934155, -2.97516167308871)&gt;&gt;
+&lt;&lt;set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: &quot;Royal Liverpool Philharmonic&quot;},&quot;St Luke’s Bombed Out Church&quot;)&gt;&gt;
 &lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
 
 &lt;main class=&quot;instructions&quot;&gt;
@@ -978,7 +868,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
   &lt;&lt;button &quot;Let&#39;s go&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="mixtape" tags="nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar5&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="mixtape" tags="nobr" position="1100,225" size="100,100">&lt;&lt;set $prevpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -990,7 +880,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;set $showCaptionsIcon to true&gt;&gt;
 &lt;&lt;set $transcriptname to  &quot;mixtapetranscript&quot;&gt;&gt;
 /* Everyman to 1931  */
-&lt;&lt;set $map = setup.generateDirectionsMap({originName: &quot;Liverpool Everyman&quot;, originLat: 53.40294244809804, originLong:-2.9694980926454186}, &quot;Liverpool Philharmonic&quot;)&gt;&gt;
+&lt;&lt;set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: &quot;Royal Liverpool Philharmonic&quot;},&quot;St Luke’s Bombed Out Church&quot;)&gt;&gt;
 &lt;&lt;include &quot;headerstory&quot;&gt;&gt;
 &lt;main class=&quot;story&quot; id=&quot;storyContainer&quot; &gt;
 &lt;audio id=&quot;audio&quot; &gt;
@@ -1034,11 +924,11 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;include &quot;footerstorywalk&quot;&gt;&gt;
 &lt;&lt;done&gt;&gt;
   &lt;&lt;set $addC to setup.addCaptions(&quot;mixtape&quot;)&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="mixtapetranscript" tags="" position="350,350" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="mixtapetranscript" tags="" position="1225,225" size="100,100">&lt;h2&gt;Transcript&lt;/h2&gt;
 NARRATOR:
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
 It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…</tw-passagedata><tw-passagedata pid="24" name="end" tags="nobr" position="475,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…</tw-passagedata><tw-passagedata pid="21" name="end" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -1048,7 +938,8 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 &lt;&lt;set $showForwards to false&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to false&gt;&gt;
 /* Church  */
-&lt;&lt;set $map = setup.generateDirectionsMap(53.40143323565547, -2.9706816152244295, 53.40143323565547, -2.9706816152244295)&gt;&gt;
+
+&lt;&lt;set $map = setup.generateViewMap({originLat: 53.40189909857434,originLong:-2.9750604982784883, originName: &quot;St Luke’s Bombed Out Church&quot;})&gt;&gt;
 &lt;main class=&quot;end&quot;&gt;
 &lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
