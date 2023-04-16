@@ -235,7 +235,6 @@ setup.backThirty = () => {
 :: StoryInit {"position":"100,100","size":"100,100"}
 <<cacheaudio "10" "./assets/audio/10.mp3">>
 <<cacheaudio "11" "./assets/audio/11.mp3">>
-<<cacheaudio "12" "./assets/audio/12.mp3">>
 <<cacheaudio "13" "./assets/audio/13.mp3">>
 <<cacheaudio "walk" "./assets/audio/walk.mp3">>
 <<waitforaudio>>
