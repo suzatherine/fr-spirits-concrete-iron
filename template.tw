@@ -964,6 +964,7 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 <<set $showBackwards to true>>
 <<set $showForwards to false>>
 <<set $showCaptionsIcon to false>>
+<<audio ":all" stop>>
 /* Church  */
 
 <<set $map = setup.generateViewMap({originLat: 53.40189909857434,originLong:-2.9750604982784883, originName: "St Luke’s Bombed Out Church"})>>
