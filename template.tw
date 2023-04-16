@@ -233,6 +233,12 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
+<<cacheaudio "10" "./assets/audio/10.mp3">>
+<<cacheaudio "11" "./assets/audio/11.mp3">>
+<<cacheaudio "12" "./assets/audio/12.mp3">>
+<<cacheaudio "13" "./assets/audio/13.mp3">>
+<<cacheaudio "walk" "./assets/audio/walk.mp3">>
+<<waitforaudio>>
 
 
 :: header [nobr]{"position":"100,225","size":"100,100"}
@@ -718,6 +724,7 @@ setup.backThirty = () => {
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
 <<set $map = setup.generateViewMap({originLat: 53.401592938405685,originLong: -2.9703296791325453, originName: "Royal Liverpool Philharmonic"})>>
+<<audio ":all" stop>><<audio "10" play>>
 <div id="audio"></div>
 <<include "header">>
 <div class="comp-warning">Best to experience on a phone</div>
@@ -744,6 +751,7 @@ setup.backThirty = () => {
 <<set $showCaptionsIcon to true>>
 <<set $showMap to false>>
 <<set $transcriptname to  "spiritstranscript">>
+<<audio ":all" stop>><<audio "11" play>>
 <<include "headerstory">>
 <main class="story" id="storyContainer">
 <audio id="audio" >
@@ -858,6 +866,8 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to false>>
 <<set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: "Royal Liverpool Philharmonic"},"St Luke’s Bombed Out Church")>>
+<<audio ":all" stop>><<audio "13" play>>
+
 <div id="audio"></div>
 
 <main class="instructions">
@@ -885,6 +895,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to true>>
 <<set $transcriptname to  "mixtapetranscript">>
+<<audio ":all" stop>><<audio "walk" play>>
 /* Everyman to 1931  */
 <<set $map = setup.generateDirectionsMap({originLat:53.40164411084969, originLong: -2.9701794755609803, originName: "Royal Liverpool Philharmonic"},"St Luke’s Bombed Out Church")>>
 <<include "headerstory">>
@@ -904,7 +915,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 <<timed 1s>>
   <<replace "#mount">>  
-<p class="comment">You can use the map <<link [img[assets/img/map.png]]>><</link>> to help you get there</p>
+<p class="comment">The map <<link [img[assets/img/map.png]]>><</link>> will help guide you</p>
 <</replace>>
  <</timed>>
 
