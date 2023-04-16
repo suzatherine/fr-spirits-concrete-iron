@@ -902,7 +902,13 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <div id="transcript"></div>
 <div id="mount"></div>
 
-<<timed 2s>>
+<<timed 1s>>
+  <<replace "#mount">>  
+<p class="comment">You can use the map <<link [img[assets/img/map.png]]>><</link>> to help you get there</p>
+<</replace>>
+ <</timed>>
+
+ <<timed 6s>>
   <<replace "#mount">>  
 <p class="comment">As you begin to walk press  <div class="inline-btn-wrapper">
 <<link "play">>
@@ -915,6 +921,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
       <<addclass "#playpause" "playhighlight">>
       <</if>>
       <</link>></div></p>
+
       <</replace>>
  <</timed>>
 
