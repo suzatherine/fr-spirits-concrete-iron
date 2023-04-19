@@ -233,8 +233,8 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "10" "./assets/audio/10.mp3">>
-<<cacheaudio "11" "./assets/audio/11.mp3">>
+<<cacheaudio "10" "./assets/audio/10-V2.mp3">>
+<<cacheaudio "11" "./assets/audio/11-V2.mp3">>
 <<cacheaudio "13" "./assets/audio/13.mp3">>
 <<cacheaudio "walk" "./assets/audio/walk.mp3">>
 <<waitforaudio>>
@@ -245,7 +245,47 @@ setup.backThirty = () => {
 <div class="header-item"></div>
 <div class="header-item">
   <h1>$title</h1>
-  <h3 class="subtitle">With Fire & Rage</h3>
+  <h3 class="subtitle">$location</h3>
+
+<div class="multiple-icon-wrapper">
+<<if $bathroom is true>>
+ <div class="multiple-icon-item">
+      <img src="assets/img/bathroom.png" >
+
+    </div>
+    <</if>>
+    <<if $wifi is true>>
+      <div class="multiple-icon-item">
+      <img src="assets/img/wifi.png" >
+
+    </div>
+     <</if>>
+    <<if $food is true>>
+      <div class="multiple-icon-item">
+      <img src="assets/img/food.png" >
+
+    </div>
+     <</if>>
+    <<if $charge is true>>
+      <div class="multiple-icon-item">
+      <img src="assets/img/charge.png" >
+
+    </div>
+     <</if>>
+    <<if $stepfree is true>>
+      <div class="multiple-icon-item">
+      <img src="assets/img/stepfree.png" >
+
+    </div>
+     <</if>>
+    <<if $caution is true>>
+     
+      <div class="multiple-icon-item">
+      <img src="assets/img/caution.png" >
+
+    </div>
+     <</if>>
+</div>
 </div >
 </header>
 
@@ -261,28 +301,26 @@ setup.backThirty = () => {
   </div>
   <</if>>
 
-
-<<if $showMap is true>>
-    <div class="nav-wrapper">
-      <div class="nav-item">
-    <<link [img[assets/img/map.png]]>>
-    <<toggleclass "#map" "hide">>
-
-    <</link>>
-    </div>
-  </div>
-  <</if>>
+<div id="headerinstmount"></div>
 
 <<if $showForwards is true>>
+  <<if $sendOn is true>>
+ <div class="nav-wrapper" id="forIcon">
+    <div class="nav-item " >
+        <a href="https://fr-flowers-that-grow-from-concrete.netlify.app">
+<img src="assets/img/for.png"></a>
+    </div>
+  </div>
+  <<else>>
     <div class="nav-wrapper" id="forIcon">
     <div class="nav-item " >
          [img[Forward|assets/img/for.png][$nextpass]]
     </div>
-  
   </div>
-     <</if>>
-</header>
+  <</if>>
+<</if>>
 
+</header>
 
 :: footer [nobr]{"position":"100,375","size":"100,100"}
 <footer>
@@ -577,48 +615,6 @@ setup.backThirty = () => {
 
 
 
-:: credits [nobr]{"position":"450,50","size":"100,100"}
-<<set $passage to "credits">>
-<<set $showMap to false>>
-<<set $showAudio to false>>
-<<set $showReplay to false>>
-<header class="credits">
-<div class="header-item"></div>
-<div class="header-item">
-  <h1>With Fire & Rage</h1>
-</div >
-</header>
-<main class="credits">
-<p>Testimonies include: </p>
-<h3>OLYA MUKHINA</h3>
-<p>Executive Director of the Lesya Ukrainka Theater</p>
-<h3>STAS KONONOV</h3>
-<p>Musician and Guitarist</p>
-<h3>ALEVTINA SHVETSOVA</h3>
-<p>Arts Journalist and Artist</p>
-<h3>LUTFIE ZUDIEVA</h3>
-<p>Civic Journalist</p>
-<h3>OLEKSANDRA OSADCHA</h3>
-<p>Researcher and Curator at Kharkiv School Of Photography</p>
-<h3>SERHIY ZAKHAROV</h3>
-<p>Artist</p>
-<h3>VICTORIA AMELINA</h3>
-<p>Writer and Poet</p>
-<h3>ANNA SHARYHINA</h3>
-<p>Activist, Cultural Manager and Founder of Sphere</p>
-<h3>JULIA NIKOLAJEVSKA</h3>
-<p>Musician and Cultural Manager Kharkiv Music Fest</p>
-<h3>DMYTRO KOSTIUMINSKIJ</h3>
-<p>Artist, Theatre director and Filmmaker</p>
-<br/>
-<p>Poetry & Additional Texts include:</p>
-<p>Text Counter/retnuoC by Alexander Levitsky from Anthology24 Text by Nina Zakhozhenko from Anthology24</p>
-<p>Poem by Aliye Kenzhalieva</p>
-<p>Poem Ctrl+Z by Mykhailo Zharzhalio</p>
-<p>Poem Survivor's Syndrome by Andriy Bondarenko</p>
-<p>Poem by Ostap Slyvynsky</p>
-</main>
-<<include "footerback">>
 
 
 :: beginning [nobr]  {"position":"700,175","size":"100,100"}
@@ -640,25 +636,66 @@ setup.backThirty = () => {
    <img class="poster" src="./../assets/img/spirits.jpeg"/>
  </div>
  <div class="menu-wrapper">
-    <<button "Begin">><<goto $nextpass>><</button>>
+    <<button "Keep going">><<goto $nextpass>><</button>>
+     <<button "I'm joining the audio tour here">><<goto $nextpass>><</button>>
+     <a href="www.withfireandrage.com"><button>Finish</button></a>
 </div>
 </main>
 
 
+
+:: framing [nobr]  {"position":"700,175","size":"100,100"}
+<<set $prevpass to "beginning">>
+<<set $passage to "framing">>
+<<set $nextpass to "instructions">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to false>>
+<<set $showForwards to true>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+<<set $showMap to false>>
+
+<main class="instructions" id="">
+<div id="mount"></div>
+<<timed 0.1s>><<replace "#mount">>
+<p>Welcome to With Fire and Rage</p>
+<</replace>><</timed>>
+
+<<timed 4s>><<append "#mount">>
+<p>I’m Veronika Skliarova, artist and producer from Kharkiv, Ukraine</p>
+<</append>><</timed>>
+
+<<timed 8s>><<append "#mount">>
+<p>I will be your guide for today
+</p>
+<</append>><</timed>>
+
+<<timed 6s>><<append "#mount">>
+<p>First let me show you, how to navigate your experience...
+</p>
+<</append>><</timed>>
+
+<<timed 8s>><<append "#mount">>
+<p>You can move forward via a button like<<button "This">><<goto $nextpass>><</button>></p> 
+<</append>><</timed>>
+ 
+</main>
+<<include "footer">>
 
 
 
 :: instructions [nobr]
 <<set $prevpass to "beginning">>
 <<set $passage to "instructions">>
-<<set $nextpass to "landing">>
+<<set $nextpass to "instructions2">>
 <<set $showMap to false>>
 <<set $showAudio to false>>
 <<set $showReplay to false>>
 <<set $showForwards to true>>
-<<set $showBackwards to false>>
+<<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-/* <<set $map = setup.generateDirectionsMap({originLat: 53.402939134543324,originLong:-2.969497397902565, originPlaceId: "ChIJ2ccRtxghe0gR3Z7JzoorJ58"},"ChIJ2ccRtxghe0gR3Z7JzoorJ58")>> */
+
 
 <<set $map = setup.generateViewMap({originLat: 53.402939134543324,originLong:-2.969497397902565, originName: "Liverpool Everyman Theatre"})>>
 
@@ -666,52 +703,196 @@ setup.backThirty = () => {
 <div id="audio"></div>
 /* <<include "header">> */
 <main class="instructions">
-<h2>Instructions</h2>
+<h2>Onboarding</h2>
 <div id="map" class="hide">$map</div>
 <div id="mount"></div>
-<<timed 2s>>
+<<timed 0.5s>>
   <<replace "#mount">>
-    <p>The <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>> takes you to a map</p>
+    <p>This icon takes you to a map <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>></p>
   <</replace>>
 
 <</timed>>
 <<timed 5s>>
-  <<append "#mount">>
-<p>The arrow [img[Back|assets/img/back.png][$prevpass]] skips back</p>
+   <<append "#mount">>
+<p>This arrow takes you back[img[Back|assets/img/back.png][$prevpass]]</p>
   <</append>>
 <</timed>>
 <<timed 8s>>
   <<append "#mount">>
-<p>You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]</p>
+<p>This arrow skips you forward [img[Forward|assets/img/for.png][$nextpass]]</p>
   <</append>>
     
 <</timed>>
 <<timed 11s>>
-  <<append "#mount">>
-<p>Step forward via a button like this     [img[Forward|assets/img/for.png][$nextpass]]</p>
+<<append "#mount">>
+<p>You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]</p>
   <</append>>
 <</timed>>
  <<timed 13s>>
   <<append "#mount">>
-<p>Toggle captions by tapping this [img[Forward|assets/img/captions.png][$nextpass]]</p>
+<p>To read a transcript of the audio press[img[Forward|assets/img/transcript.png][$nextpass]]</p>
   <</append>>
+
 <</timed>>
+
  <<timed 15s>>
-  <<append "#mount">>
-<p>[img[Forward|assets/img/transcript.png][$nextpass]] will show a transcript of the audio</p>
-  <</append>>
-<</timed>>
- <<timed 17s>>
   <<append "#mount">>
 <<button "Next">><<goto $nextpass>><</button>>
   <</append>>
 <</timed>>
 </main>
-<<include "footerfor">>
+<<include "footer">>
+
+:: instructions2 [nobr]
+<<set $prevpass to "instructions">>
+<<set $passage to "instructions2">>
+<<set $nextpass to "instructions3">>
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to false>>
+<<set $showForwards to true>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+
+<div id="audio"></div>
+/* <<include "header">> */
+<main class="instructions">
+<h2>Onboarding</h2>
+<div id="map" class="hide">$map</div>
+<div id="mount"></div>
+<<timed 0.1s>>
+  <<replace "#mount">>
+    <p>We will travel to ten different locations</p>
+  <</replace>>
+
+<</timed>>
+<<timed 4s>>
+   <<append "#mount">>
+<p>Walking for a little over one kilometre, in short stretches </p>
+  <</append>>
+<</timed>>
+<<timed 6s>>
+  <<append "#mount">>
+<p>It’s up to you how fast or slow you go</p>
+  <</append>>
+    
+<</timed>>
+<<timed 8s>>
+<<append "#mount">>
+<p>The full tour takes between 90 and 120 minutes 
+</p>
+  <</append>>
+<</timed>>
+
+ <<timed 10s>>
+  <<append "#mount">>
+<p>Listen to as much or as little as you like </p>
+  <</append>>
+<</timed>>
+
+<<timed 12s>>
+  <<append "#mount">>
+<p>You are always welcome to come back another day </p>
+  <</append>>
+<</timed>>
+
+
+ <<timed 14s>>
+  <<append "#mount">>
+<<button "Next">><<goto $nextpass>><</button>>
+  <</append>>
+<</timed>>
+</main>
+<<include "footer">>
+
+
+
+:: instructions3 [nobr]
+<<set $prevpass to "instructions2">>
+<<set $passage to "instructions3">>
+<<set $nextpass to "landing">>
+<<set $showMap to false>>
+<<set $showAudio to false>>
+<<set $showReplay to false>>
+<<set $showForwards to true>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+
+<div id="audio"></div>
+/* <<include "header">> */
+<main class="instructions">
+<h2>Onboarding</h2>
+<div id="map" class="hide">$map</div>
+<div id="mount"></div>
+<<timed 0.1s>>
+  <<append "#mount">>
+    <p>At every location, I will suggest places to sit, to lean, to shelter</p>
+  <</append>>
+<</timed>>
+<<timed 2s>>
+  <<append "#mount">>
+    <p>Make yourself comfortable, if you want, take a break</p>
+  <</append>>
+<</timed>>
+<<timed 4s>>
+  <<append "#mount">>
+    <p>These icons show when facilities are available </p>
+  <</append>>
+<</timed>>
+<<timed 5s>>
+   <<append "#mount">>
+  <div class="multiple-icon-wrapper">
+      <div class="multiple-icon-item">
+      <img src="assets/img/bathroom.png" >
+    <span>Bathroom </span>
+    </div>
+      <div class="multiple-icon-item">
+      <img src="assets/img/wifi.png" >
+    <span>Wifi </span>
+    </div>
+      <div class="multiple-icon-item">
+      <img src="assets/img/food.png" >
+    <span>Food & Drink </span>
+    </div>
+</div>
+  <</append>>
+<</timed>>
+<<timed 7s>>
+  <<append "#mount">>
+<p>As well as other important information like</p>
+  <</append>>
+<</timed>>
+<<timed 8s>>
+   <<append "#mount">>
+   <div class="multiple-icon-wrapper">
+      <div class="multiple-icon-item">
+      <img src="assets/img/stepfree.png" >
+    <span>Step-free access </span>
+    </div>
+      <div class="multiple-icon-item">
+      <img src="assets/img/wifi.png" >
+    <span>Phone Charger  </span>
+    </div>
+      <div class="multiple-icon-item">
+      <img src="assets/img/caution.png" >
+    <span>Caution! take care crossing roads</span>
+    </div>
+</div>
+
+  <</append>>
+<</timed>>
+ <<timed 10s>>
+  <<append "#mount">>
+<<button "Next">><<goto $nextpass>><</button>>
+  <</append>>
+<</timed>>
+</main>
+<<include "footer">>
 
 
 :: landing [nobr]
 <<set $title to "Spirits from Concrete and Iron">>
+<<set $location to " Liverpool Philharmonic">>
 <<set $theatre to "closed">>
 <<set $prevpass to "beginning">>
 <<set $passage to "landing">>
@@ -731,8 +912,8 @@ setup.backThirty = () => {
 
 <div id="map" class="hide">$map</div>
 <p>You should be outside the Liverpool Philharmonic</p>
-<p>Home to the UK's oldest continuing professional symphony orchestra</p>
-<p>Take a seat on the benches across the road</p>
+<p>Home to the  Britain’s oldest continuing professional symphony orchestra</p>
+<p>Or if it’s raining take shelter by the concert hall doors</p>
 <<button "I'm ready">><<goto $nextpass>><</button>>
 </main>
 <<include "footer">>
@@ -763,26 +944,32 @@ setup.backThirty = () => {
   
 <div id="caption" class="hide"></div>
 <div id="transcript"></div>
-<div id="mount"  ><p class="comment"> To listen to <em>$title</em> press <div class="inline-btn-wrapper">
+<div id="mount"></div>
+<<timed 0.1s>><<replace "#headerinstmount">><p class="comment"> To listen to <em>$title</em> press <div class="inline-btn-wrapper">
 <<link "play">>
         <<if $playToggle is false>>
       <<set $fn to setup.play()>>
       <<set $playToggle to true>>
       <<addclass "#playpause" "playhighlight">>
       <</if>>
-      <<replace "#mount">>
+      <<replace "#headerinstmount">>
 <p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I've finished">><<goto $nextpass>><</button>></div></p>
 
  <</replace>>
-      <</link>></div></p></div>
+      <</link>></div></p>
+ <</replace>><</timed>>
 
+ <<timed 30s>>
+ <<replace "#headerinstmount">>
+<p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
+ <</replace>>
+
+ <</timed>>
 
 </main>
 
 <<include "footerstory">>
-<<done>>
-  <<set $addC to setup.addCaptions("spirits")>>
-<</done>>
+
 
 
 
@@ -871,9 +1058,9 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 <main class="instructions">
 <div id="map" class="hide">$map</div>
-<p>Ready to go to St Lukes Bombed Out Church?</p>
+<p>Ready to go to St Luke's Bombed Out Church?</p>
 <p>You want to head to the steps out front</p>
-<p>On your way you will see our artwork on the railings</p>
+<p>On your way, you will see our artwork on the railings</p>
 
   <<button "Let's go">><<goto $nextpass>><</button>>
 </main>
@@ -893,6 +1080,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<set $showBackwards to true>>
 <<set $showForwards to true>>
 <<set $showCaptionsIcon to true>>
+<<set $sendOn to true>>
 <<set $transcriptname to  "mixtapetranscript">>
 <<audio ":all" stop>><<audio "walk" play>>
 /* Everyman to 1931  */
@@ -908,22 +1096,23 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 /* <div class="poster-wrapper hide" id="poster">
    <img class="poster" src="./../assets/img/obpy.jpeg"/>
  </div> */
-<div id="caption" class="hide" ></div>
+<div class="caution" ><img src="assets/img/caution.png"><p>Take care crossing roads </p></div>
 <div id="transcript"></div>
 <div id="mount"></div>
 
-<<timed 1s>>
-  <<replace "#mount">>  
-<p class="comment">The map <<link [img[assets/img/map.png]]>><</link>> will help guide you</p>
+<<timed 0.3s>>
+  <<replace "#headerinstmount">>  
+<p class="comment">The map will help guide you</p>
 <</replace>>
  <</timed>>
 
- <<timed 6s>>
-  <<replace "#mount">>  
+ <<timed 5s>>
+  <<replace "#headerinstmount">>  
 <p class="comment">As you begin to walk press  <div class="inline-btn-wrapper">
 <<link "play">>
-      <<replace "#mount">>
-    <p class="comment"> When you're finished listening, let me know <div class="inline-btn-wrapper"><<button "I'm finished">><<goto $nextpass>><</button>></div></p>
+      <<replace "#headerinstmount">>
+    <p class="comment"> Are you at the steps outside the Bombed Out Church?<a href="https://fr-flowers-that-grow-from-concrete.netlify.app">
+<button>I'm here</button></a></p>
     <</replace>>
         <<if $playToggle is false>>
       <<set $fn to setup.play()>>
@@ -938,9 +1127,8 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 </main>
 
 <<include "footerstorywalk">>
-<<done>>
-  <<set $addC to setup.addCaptions("mixtape")>>
-<</done>>
+
+
 
 
 
