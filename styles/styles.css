@@ -186,7 +186,7 @@ nav {
 }
 
 .nav-item > button {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .hide {
@@ -317,6 +317,10 @@ header.credits > .header-item > h3 {
 }
 
 /* INSTRUCTIONS  */
+
+header.standard > .header-item > h3.subtitle {
+  text-align: left;
+}
 
 #passage-beginning > main > .menu-wrapper {
   flex-direction: column;

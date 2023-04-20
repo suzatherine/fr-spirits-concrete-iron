@@ -312,7 +312,7 @@ setup.backThirty = () => {
 &lt;&lt;cacheaudio &quot;11&quot; &quot;./assets/audio/11-V2.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;13&quot; &quot;./assets/audio/13.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;walk&quot; &quot;./assets/audio/walk.mp3&quot;&gt;&gt;
-&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="header" tags="nobr" position="100,225" size="100,100">&lt;header&gt;
+&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="header" tags="nobr" position="100,225" size="100,100">&lt;header class=&quot;standard&quot;&gt;
 &lt;div class=&quot;header-item&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;header-item&quot;&gt;
   &lt;h1&gt;$title&lt;/h1&gt;
@@ -690,11 +690,11 @@ setup.backThirty = () => {
 &lt;p&gt;Welcome to With Fire and Rage&lt;/p&gt;
 &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 4s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
+&lt;&lt;timed 2s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;I’m Veronika Skliarova, artist and producer from Kharkiv, Ukraine&lt;/p&gt;
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 8s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
+&lt;&lt;timed 4s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;I will be your guide for today
 &lt;/p&gt;
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
@@ -729,36 +729,36 @@ setup.backThirty = () => {
 &lt;h2&gt;Onboarding&lt;/h2&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
 &lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
-&lt;&lt;timed 0.5s&gt;&gt;
+&lt;&lt;timed 0.1s&gt;&gt;
   &lt;&lt;replace &quot;#mount&quot;&gt;&gt;
     &lt;p&gt;This icon takes you to a map &lt;&lt;link [img[assets/img/map.png]]&gt;&gt;&lt;&lt;toggleclass &quot;#map&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/p&gt;
   &lt;&lt;/replace&gt;&gt;
 
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 5s&gt;&gt;
+&lt;&lt;timed 2s&gt;&gt;
    &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;This arrow takes you back[img[Back|assets/img/back.png][$prevpass]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 8s&gt;&gt;
+&lt;&lt;timed 4s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;This arrow skips you forward [img[Forward|assets/img/for.png][$nextpass]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
     
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 11s&gt;&gt;
+&lt;&lt;timed 6s&gt;&gt;
 &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
- &lt;&lt;timed 13s&gt;&gt;
+ &lt;&lt;timed 8s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;To read a transcript of the audio press[img[Forward|assets/img/transcript.png][$nextpass]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 
 &lt;&lt;/timed&gt;&gt;
 
- &lt;&lt;timed 15s&gt;&gt;
+ &lt;&lt;timed 10s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
   &lt;&lt;/append&gt;&gt;
@@ -786,38 +786,38 @@ setup.backThirty = () => {
   &lt;&lt;/replace&gt;&gt;
 
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 4s&gt;&gt;
+&lt;&lt;timed 2s&gt;&gt;
    &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;Walking for a little over one kilometre, in short stretches &lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 6s&gt;&gt;
+&lt;&lt;timed 4s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;It’s up to you how fast or slow you go&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
     
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 8s&gt;&gt;
+&lt;&lt;timed 6s&gt;&gt;
 &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;The full tour takes between 90 and 120 minutes 
 &lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 
- &lt;&lt;timed 10s&gt;&gt;
+ &lt;&lt;timed 8s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;Listen to as much or as little as you like &lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;timed 12s&gt;&gt;
+&lt;&lt;timed 10s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;p&gt;You are always welcome to come back another day &lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 
 
- &lt;&lt;timed 14s&gt;&gt;
+ &lt;&lt;timed 12s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
   &lt;&lt;/append&gt;&gt;
@@ -846,12 +846,12 @@ setup.backThirty = () => {
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 2s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-    &lt;p&gt;Make yourself comfortable, if you want, take a break&lt;/p&gt;
+    &lt;p&gt;Make yourself comfortable, if you want take a break&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 4s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-    &lt;p&gt;These icons show when facilities are available &lt;/p&gt;
+    &lt;p&gt;These icons show important information and facilities  &lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 5s&gt;&gt;
@@ -870,15 +870,7 @@ setup.backThirty = () => {
     &lt;span&gt;Food &amp; Drink &lt;/span&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-  &lt;&lt;/append&gt;&gt;
-&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 7s&gt;&gt;
-  &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;As well as other important information like&lt;/p&gt;
-  &lt;&lt;/append&gt;&gt;
-&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 8s&gt;&gt;
-   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
+
    &lt;div class=&quot;multiple-icon-wrapper&quot;&gt;
       &lt;div class=&quot;multiple-icon-item&quot;&gt;
       &lt;img src=&quot;assets/img/stepfree.png&quot; &gt;
@@ -896,7 +888,7 @@ setup.backThirty = () => {
 
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
- &lt;&lt;timed 10s&gt;&gt;
+ &lt;&lt;timed 7s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
 &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
   &lt;&lt;/append&gt;&gt;
@@ -904,7 +896,6 @@ setup.backThirty = () => {
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="landing" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $title to &quot;Spirits from Concrete and Iron&quot;&gt;&gt;
 &lt;&lt;set $location to &quot; Liverpool Philharmonic&quot;&gt;&gt;
-&lt;&lt;set $theatre to &quot;closed&quot;&gt;&gt;
 &lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;spirits&quot;&gt;&gt;

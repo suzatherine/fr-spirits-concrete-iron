@@ -241,7 +241,7 @@ setup.backThirty = () => {
 
 
 :: header [nobr]{"position":"100,225","size":"100,100"}
-<header>
+<header class="standard">
 <div class="header-item"></div>
 <div class="header-item">
   <h1>$title</h1>
@@ -662,11 +662,11 @@ setup.backThirty = () => {
 <p>Welcome to With Fire and Rage</p>
 <</replace>><</timed>>
 
-<<timed 4s>><<append "#mount">>
+<<timed 2s>><<append "#mount">>
 <p>I’m Veronika Skliarova, artist and producer from Kharkiv, Ukraine</p>
 <</append>><</timed>>
 
-<<timed 8s>><<append "#mount">>
+<<timed 4s>><<append "#mount">>
 <p>I will be your guide for today
 </p>
 <</append>><</timed>>
@@ -706,36 +706,36 @@ setup.backThirty = () => {
 <h2>Onboarding</h2>
 <div id="map" class="hide">$map</div>
 <div id="mount"></div>
-<<timed 0.5s>>
+<<timed 0.1s>>
   <<replace "#mount">>
     <p>This icon takes you to a map <<link [img[assets/img/map.png]]>><<toggleclass "#map" "hide">><</link>></p>
   <</replace>>
 
 <</timed>>
-<<timed 5s>>
+<<timed 2s>>
    <<append "#mount">>
 <p>This arrow takes you back[img[Back|assets/img/back.png][$prevpass]]</p>
   <</append>>
 <</timed>>
-<<timed 8s>>
+<<timed 4s>>
   <<append "#mount">>
 <p>This arrow skips you forward [img[Forward|assets/img/for.png][$nextpass]]</p>
   <</append>>
     
 <</timed>>
-<<timed 11s>>
+<<timed 6s>>
 <<append "#mount">>
 <p>You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]</p>
   <</append>>
 <</timed>>
- <<timed 13s>>
+ <<timed 8s>>
   <<append "#mount">>
 <p>To read a transcript of the audio press[img[Forward|assets/img/transcript.png][$nextpass]]</p>
   <</append>>
 
 <</timed>>
 
- <<timed 15s>>
+ <<timed 10s>>
   <<append "#mount">>
 <<button "Next">><<goto $nextpass>><</button>>
   <</append>>
@@ -766,38 +766,38 @@ setup.backThirty = () => {
   <</replace>>
 
 <</timed>>
-<<timed 4s>>
+<<timed 2s>>
    <<append "#mount">>
 <p>Walking for a little over one kilometre, in short stretches </p>
   <</append>>
 <</timed>>
-<<timed 6s>>
+<<timed 4s>>
   <<append "#mount">>
 <p>It’s up to you how fast or slow you go</p>
   <</append>>
     
 <</timed>>
-<<timed 8s>>
+<<timed 6s>>
 <<append "#mount">>
 <p>The full tour takes between 90 and 120 minutes 
 </p>
   <</append>>
 <</timed>>
 
- <<timed 10s>>
+ <<timed 8s>>
   <<append "#mount">>
 <p>Listen to as much or as little as you like </p>
   <</append>>
 <</timed>>
 
-<<timed 12s>>
+<<timed 10s>>
   <<append "#mount">>
 <p>You are always welcome to come back another day </p>
   <</append>>
 <</timed>>
 
 
- <<timed 14s>>
+ <<timed 12s>>
   <<append "#mount">>
 <<button "Next">><<goto $nextpass>><</button>>
   <</append>>
@@ -831,12 +831,12 @@ setup.backThirty = () => {
 <</timed>>
 <<timed 2s>>
   <<append "#mount">>
-    <p>Make yourself comfortable, if you want, take a break</p>
+    <p>Make yourself comfortable, if you want take a break</p>
   <</append>>
 <</timed>>
 <<timed 4s>>
   <<append "#mount">>
-    <p>These icons show when facilities are available </p>
+    <p>These icons show important information and facilities  </p>
   <</append>>
 <</timed>>
 <<timed 5s>>
@@ -855,15 +855,7 @@ setup.backThirty = () => {
     <span>Food & Drink </span>
     </div>
 </div>
-  <</append>>
-<</timed>>
-<<timed 7s>>
-  <<append "#mount">>
-<p>As well as other important information like</p>
-  <</append>>
-<</timed>>
-<<timed 8s>>
-   <<append "#mount">>
+
    <div class="multiple-icon-wrapper">
       <div class="multiple-icon-item">
       <img src="assets/img/stepfree.png" >
@@ -881,7 +873,7 @@ setup.backThirty = () => {
 
   <</append>>
 <</timed>>
- <<timed 10s>>
+ <<timed 7s>>
   <<append "#mount">>
 <<button "Next">><<goto $nextpass>><</button>>
   <</append>>
@@ -893,7 +885,6 @@ setup.backThirty = () => {
 :: landing [nobr]
 <<set $title to "Spirits from Concrete and Iron">>
 <<set $location to " Liverpool Philharmonic">>
-<<set $theatre to "closed">>
 <<set $prevpass to "beginning">>
 <<set $passage to "landing">>
 <<set $nextpass to "spirits">>
