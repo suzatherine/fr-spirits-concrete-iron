@@ -246,31 +246,7 @@ function log(msg) {
 
 // document.addEventListener("DOMContentLoaded", startup);
 
-// CAPTIONS
-setup.addCaptions = (cuekey) =>  {
-    const audio = document.getElementById("audio");
-     const track = audio.addTextTrack('subtitles', 'English', 'en');
-    track.mode = 'showing';
-    const cues = {
-      spirits: [[0.039,10.295,"[audio playing...]"],[10.32,15.335,"Let me introduce you to Clark, my city."],[15.36,18.96,"It's eclectic. Just like Liverpool. It's"],[18.96,21.12,"a center for culture, science,"],[21.145,24.875,"education, philosophy and trade."],[24.9,26.73,"mysteries are full of students from"],[26.73,29.195,"around the world."],[29.22,31.71,"Today that between Asia and Europe, you"],[31.71,34.65,"can see our transnational history carved"],[34.65,38.04,"out in the different architecture. Here"],[38.28,40.59,"is where the first concrete skyscraper"],[40.59,43.71,"was built in Soviet Union, and amazing"],[43.71,46.29,"monument of constructivism, made from"],[46.29,50.435,"concrete and iron using horses."],[50.46,53.52,"Harkey is only 40 kilometers from Russia"],[53.58,56.555,"and has become a city on the front line."],[56.58,58.71,"From the first days are busy streets"],[58.74,61.08,"with targets with rockets, classement"],[61.08,62.795,"air bombs."],[62.82,65.04,"But just like concrete and iron are hard"],[65.04,67.38,"to destroy. Our spirits are also"],[67.38,69.93,"unbreakable. As each of us bravely"],[69.93,73.205,"questions our responsibility, asking,"],[73.23,77.255,"How can I help to win to survive."],[77.28,80.46000000000001,"And for a moment, concerts were silent"],[80.52,82.59,"and Philharmonic music close close the"],[82.59,86.03999999999999,"doors as musicians, like stars couldn't"],[86.03999999999999,88.28999999999999,"have put down the instruments and became"],[88.28999999999999,98.795,"a frontline volunteer."],[98.82,100.97999999999999,"I was meant to play a concert in London"],[100.97999999999999,105.545,"on the 28th of February."],[105.57,108.75,"On the morning of 24th, a friend of mine"],[108.9,111.47999999999999,"came knocking on my door shouting, wake"],[111.47999999999999,115.325,"up, or you will sleep through the war."],[115.35,118.02000000000001,"For the next few days, myself and other"],[118.02000000000001,120.27,"artists gathered in a small flat near"],[120.27,122.015,"the center."],[122.04,124.95,"People were coming and going and we were"],[124.95,128.01,"trying to work out should we stay? Or"],[128.01,130.174,"should we leave."],[130.199,133.019,"I received a phone call from a friend in"],[133.019,135.389,"the more dangerous district saying that"],[135.389,139.444,"there was a basement with 450 people"],[139.469,143.014,"that they didn't have anything. No food,"],[143.039,146.189,"no water. And it's too dangerous to go"],[146.219,150.514,"outside. It was the moment I realized"],[150.539,153.119,"that I must say that there was a"],[153.119,155.429,"responsibility to provide and seek"],[155.429,158.609,"resources. The flight I was in became"],[158.609,161.129,"headquarters and everyone was an actor"],[161.159,164.639,"or connected to music, art culture. It"],[164.639,167.254,"was a little chaotic in the moment."],[167.279,169.439,"Someone provides something and it's"],[169.439,172.769,"distributed to anyone who needs sharing"],[172.799,175.769,"everything. It was a very intense"],[175.769,179.72899999999998,"process. After some time, it became more"],[179.72899999999998,181.619,"organized. And we had districts and"],[181.619,184.949,"volunteers in each area. Because it was"],[184.949,187.559,"dangerous everywhere in Harkey was"],[187.559,190.409,"dangerous. But I know a lot of examples"],[190.439,193.589,"of bravery. And for me what I'm doing is"],[193.589,195.185,"not brave."],[195.21,197.34,"It was stressful and frightening. It was"],[197.365,199.95499999999998,"a lot of things."],[199.98,202.68,"Everything makes you cry. But inside you"],[202.68,204.3,"have this feeling that you are in the"],[204.3,207.75,"right place. You are part of something"],[207.78,210.66,"bigger than yourself, that we are all"],[210.69,214.505,"equal. All Connect."],[214.53,216.72,"Everyone helps everyone. And it doesn't"],[216.72,219.39,"matter who you were before. You could"],[219.39,221.79,"have been a businessman with a Tesla car"],[221.94,225.905,"or an artist drive something very shady."],[225.93,227.79,"Even the Chief Commander of the Military"],[227.79,231.09,"Base work without hierarchy. It was a"],[231.09,233.28,"horizontal connection. It was"],[233.28,235.95,"solidarity. You call someone if you"],[235.95,239.165,"needed something, and you solved it."],[239.19,244.745,"It felt that 100 People were one"],[244.77,247.74,"before the full scale invasion. I was"],[247.74,251.885,"asking these questions. Who am I?"],[251.91,254.495,"What am I?"],[254.52,263.285,"This situation gave me the answers"],[263.31,265.53,"it feels like making music hasn't"],[265.53,268.235,"mattered for a long time."],[268.26,270.33,"A lot of musicians reject music right"],[270.33,272.015,"now."],[272.04,274.86,"To play you must be in the moment. Be"],[274.86,278.31,"present. Connect to your emotions is"],[278.31,280.77,"very stressful and painful. And when you"],[280.77,283.11,"start to play, you feel your pain and it"],[283.11,285.18,"comes in such a way that you stop and"],[285.18,288.995,"think never again."],[289.02,292.085,"We don't have the space to be emotional."],[292.11,295.62,"So you go around in the circle and come"],[295.62,299.165,"back to the idea that is not the time."],[299.19,299.97,"Maybe later"],[299.995,328.412,""]], 
-       mixtape: [[0.001,9.855,"[audio playing...]"],[9.88,12.005,"All musicians that's gone enough"],[12.03,14.61,"continues to volunteer distributing"],[14.61,17.76,"supplies to civilians and soldiers. This"],[17.76,20.345,"on the front line begins to play again"],[20.37,24.155,"concerts for the Army acoustic sounds"],[24.18,26.07,"sounds from his album he is yet to"],[26.07,29.19,"release and the music he recorded to the"],[29.19,31.32,"legendary studio Elysium that has now"],[31.32,42.514,"been completely destroyed."],[42.539,276.865,"[music playing...]"]]
-  }
-    for (let i=0; i<cues[cuekey].length; i++){
-    const cue = new VTTCue(cues[cuekey][i][0],cues[cuekey][i][1],cues[cuekey][i][2]);
-    track.addCue(cue); 
-}
-    track.addEventListener('cuechange', () => {
-    const activeCue = track.activeCues[0];
-    if (activeCue) {
-      document.getElementById('caption').textContent = activeCue.text;
-    }
-  });
-  console.log(audio.track)
 
-
-
- 
-}
 
 setup.play = () => {
  const audio = document.getElementById("audio")
@@ -489,11 +465,11 @@ setup.backThirty = () => {
   &lt;/div&gt;
 &lt;/footer&gt;</tw-passagedata><tw-passagedata pid="8" name="footerstory" tags="nobr" position="975,100" size="100,100">&lt;footer&gt;
 
-&lt;&lt;if $showCaptionsIcon is true&gt;&gt;
+/* &lt;&lt;if $showCaptionsIcon is true&gt;&gt;
 &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
       &lt;&lt;link [img[assets/img/captions.png]]&gt;&gt;
-      /* &lt;&lt;toggleclass &quot;#posterWrapper&quot; &quot;small&quot;&gt;&gt; */
+     
       &lt;&lt;if $captionToggle is true&gt;&gt;
          &lt;&lt;toggleclass &quot;#poster&quot; &quot;hide&quot;&gt;&gt;
          &lt;&lt;toggleclass &quot;#storyContainer&quot; &quot;captions&quot;&gt;&gt;
@@ -508,7 +484,7 @@ setup.backThirty = () => {
       &lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
   &lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt; */
 
 
 &lt;div class=&quot;nav-wrapper&quot;&gt;
@@ -537,14 +513,6 @@ setup.backThirty = () => {
 
 &lt;div class=&quot;nav-wrapper&quot;&gt;
   &lt;div class=&quot;nav-item&quot;&gt;
-    &lt;&lt;link &quot;+30s&quot;&gt;&gt;
-      &lt;&lt;set $fn to setup.addThirty()&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;nav-wrapper&quot;&gt;
-  &lt;div class=&quot;nav-item&quot;&gt;
   &lt;&lt;link [img[assets/img/transcript.png]]&gt;&gt;
 &lt;&lt;if $transcript is false&gt;&gt;
   &lt;&lt;set $transcript to true&gt;&gt;
@@ -560,13 +528,19 @@ setup.backThirty = () => {
   &lt;/div&gt;
 &lt;/div&gt;
 
+&lt;div class=&quot;nav-wrapper&quot;&gt;
+  &lt;div class=&quot;nav-item&quot;&gt;
+    &lt;&lt;link &quot;+30s&quot;&gt;&gt;
+      &lt;&lt;set $fn to setup.addThirty()&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;/footer&gt;</tw-passagedata><tw-passagedata pid="9" name="footerstorywalk" tags="nobr" position="1100,100" size="100,100">&lt;footer&gt;
 
-&lt;&lt;if $showCaptionsIcon is true&gt;&gt;
+/* &lt;&lt;if $showCaptionsIcon is true&gt;&gt;
 &lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;div class=&quot;nav-item&quot;&gt;
       &lt;&lt;link [img[assets/img/captions.png]]&gt;&gt;
-      /* &lt;&lt;toggleclass &quot;#posterWrapper&quot; &quot;small&quot;&gt;&gt; */
       &lt;&lt;if $captionToggle is true&gt;&gt;
          &lt;&lt;toggleclass &quot;#storyContainer&quot; &quot;captions&quot;&gt;&gt;
           &lt;&lt;set $captionToggle to false&gt;&gt;
@@ -579,7 +553,7 @@ setup.backThirty = () => {
       &lt;&lt;/link&gt;&gt;
 &lt;/div&gt;
   &lt;/div&gt;
-&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt; */
 
 
 &lt;div class=&quot;nav-wrapper&quot;&gt;
@@ -606,13 +580,7 @@ setup.backThirty = () => {
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;nav-wrapper&quot;&gt;
-  &lt;div class=&quot;nav-item&quot;&gt;
-    &lt;&lt;link &quot;+30s&quot;&gt;&gt;
-      &lt;&lt;set $fn to setup.addThirty()&gt;&gt;
-  &lt;&lt;/link&gt;&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+
 
 &lt;div class=&quot;nav-wrapper&quot;&gt;
   &lt;div class=&quot;nav-item&quot;&gt;
@@ -627,6 +595,13 @@ setup.backThirty = () => {
   &lt;&lt;replace &quot;#transcript&quot;&gt;&gt;
   &lt;&lt;/replace&gt;&gt;
   &lt;&lt;/if&gt;&gt;
+  &lt;&lt;/link&gt;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;nav-wrapper&quot;&gt;
+  &lt;div class=&quot;nav-item&quot;&gt;
+    &lt;&lt;link &quot;+30s&quot;&gt;&gt;
+      &lt;&lt;set $fn to setup.addThirty()&gt;&gt;
   &lt;&lt;/link&gt;&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -659,7 +634,7 @@ setup.backThirty = () => {
 &lt;&lt;set $captionToggle to false&gt;&gt;
 &lt;&lt;set $showForwards to true&gt;&gt;
 &lt;&lt;set $showBackwards to false&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to true&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
 
 &lt;div class=&quot;comp-warning&quot;&gt;Best experienced on a phone&lt;/div&gt;
@@ -925,7 +900,7 @@ setup.backThirty = () => {
 &lt;&lt;set $playToggle to false&gt;&gt;
 &lt;&lt;set $captionToggle to false&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to true&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
 &lt;&lt;set $transcriptname to  &quot;spiritstranscript&quot;&gt;&gt;
 &lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;11&quot; play&gt;&gt;
@@ -1054,7 +1029,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;set $captionToggle to false&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showForwards to true&gt;&gt;
-&lt;&lt;set $showCaptionsIcon to true&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
 &lt;&lt;set $sendOn to true&gt;&gt;
 &lt;&lt;set $transcriptname to  &quot;mixtapetranscript&quot;&gt;&gt;
 &lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;walk&quot; play&gt;&gt;
