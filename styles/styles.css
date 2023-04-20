@@ -318,6 +318,10 @@ header.credits > .header-item > h3 {
 
 /* INSTRUCTIONS  */
 
+#passage-beginning > main > .menu-wrapper {
+  flex-direction: column;
+}
+
 main.instructions {
   justify-content: flex-start;
 }
@@ -424,7 +428,7 @@ header.ar {
 header.ar > .nav-wrapper > .nav-item > h2 {
   font-size: 1.8rem;
   font-size: 2.2rem;
-  max-width: 80%;
+  max-width: 95%;
 }
 
 header.ar > .nav-wrapper > .nav-item > p.comment {
@@ -534,7 +538,7 @@ header.story {
 
 header > #headerinstmount > p.comment {
   font-size: 1.6rem;
-  max-width: 90%;
+  max-width: 80%;
   margin: auto;
 }
 

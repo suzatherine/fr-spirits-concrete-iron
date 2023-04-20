@@ -637,8 +637,8 @@ setup.backThirty = () => {
  </div>
  <div class="menu-wrapper">
     <<button "Keep going">><<goto $nextpass>><</button>>
-     <<button "I'm joining the audio tour here">><<goto $nextpass>><</button>>
-     <a href="www.withfireandrage.com"><button>Finish</button></a>
+     <<button "I'm joining the audio tour here">><<goto "framing">><</button>>
+     <a href="www.withfireandrage.com"><button>Leave the Tour</button></a>
 </div>
 </main>
 
@@ -1110,10 +1110,12 @@ We don’t have the space to be emotional. So you go round in this circle. And c
   <<replace "#headerinstmount">>  
 <p class="comment">As you begin to walk press  <div class="inline-btn-wrapper">
 <<link "play">>
+  <<timed 4s>>
       <<replace "#headerinstmount">>
     <p class="comment"> Are you at the steps outside the Bombed Out Church?<a href="https://fr-flowers-that-grow-from-concrete.netlify.app">
 <button>I'm here</button></a></p>
     <</replace>>
+    <</timed>>
         <<if $playToggle is false>>
       <<set $fn to setup.play()>>
       <<set $playToggle to true>>
