@@ -611,7 +611,7 @@ setup.backThirty = () => {
 <main class="" id="">
 
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/spirits.jpeg"/>
+   <img class="poster" src="./../assets/img/spirits-title.jpeg"/>
  </div>
  <div class="menu-wrapper">
     <<button "Keep going">><<goto $nextpass>><</button>>
@@ -675,7 +675,7 @@ setup.backThirty = () => {
 <<set $showCaptionsIcon to false>>
 
 
-<<set $map = setup.generateViewMap({originLat: 53.402939134543324,originLong:-2.969497397902565, originName: "Liverpool Everyman Theatre"})>>
+<<set $map = setup.generateViewMap({originLat: 53.401592938405685,originLong: -2.9703296791325453, originName: "Royal Liverpool Philharmonic"})>>
 
 
 <div id="audio"></div>
@@ -904,7 +904,7 @@ setup.backThirty = () => {
 <<include "headerstory">>
 <main class="story" id="storyContainer">
 <audio id="audio" >
-  <source src="https://www.dropbox.com/s/k0ctc95n24r8lle/02.%20Spirits%20of%20Concrete%20and%20Iron%20V1.mp3?raw=1">
+  <source src="https://withfireandrageliverpool.com/audio/SC/spiritsv2.mp3">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
 <div class="poster-wrapper" id="poster">
@@ -1057,7 +1057,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<include "headerstory">>
 <main class="story" id="storyContainer" >
 <audio id="audio" >
-  <source src="https://www.dropbox.com/s/w1zv0172ha8b1vs/Walk%202%20_%20Stas%20Acoustic%20Music%20V1%20%281%29.mp3?raw=1">
+  <source src="https://withfireandrageliverpool.com/audio/SC/staswalkv2.mp3">
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
 
