@@ -616,7 +616,7 @@ setup.backThirty = () => {
  <div class="menu-wrapper">
     <<button "Keep going">><<goto $nextpass>><</button>>
      <<button "I'm joining the audio tour here">><<goto "framing">><</button>>
-     <a href="www.withfireandrage.com"><button>Leave the Tour</button></a>
+     <a href="https://www.withfireandrage.com"><button>Leave the Tour</button></a>
 </div>
 </main>
 
@@ -633,7 +633,9 @@ setup.backThirty = () => {
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
 <<set $showMap to false>>
-
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp1.mp3">
+</audio>
 <main class="instructions" id="">
 <div id="mount"></div>
 <<timed 0.1s>><<replace "#mount">>
@@ -673,10 +675,10 @@ setup.backThirty = () => {
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-
-
 <<set $map = setup.generateViewMap({originLat: 53.401592938405685,originLong: -2.9703296791325453, originName: "Royal Liverpool Philharmonic"})>>
-
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp2.mp3">
+</audio>
 
 <div id="audio"></div>
 /* <<include "header">> */
@@ -731,8 +733,9 @@ setup.backThirty = () => {
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-
-<div id="audio"></div>
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp3.mp3">
+</audio>
 /* <<include "header">> */
 <main class="instructions">
 <h2>Onboarding</h2>
@@ -795,8 +798,9 @@ setup.backThirty = () => {
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
-
-<div id="audio"></div>
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp4.mp3">
+</audio>
 /* <<include "header">> */
 <main class="instructions">
 <h2>Onboarding</h2>
@@ -944,41 +948,64 @@ setup.backThirty = () => {
 
 :: spiritstranscript
 
-<h2>Transcript</h2>
-NARRATOR:
+<h2>SPIRITS FROM CONCRETE AND IRON</h2>
+
+NARRATION BY VERONIKA SKLIAROVA:
+
 Let me introduce you to Kharkiv, my city.
 It's eclectic
+
 Just like Liverpool, it’s a centre for culture, science, education, philosophy and trade. The streets are full of students from around the world.
-Situated between Asia and Europe, you can see our transnational history carved out in the different architecture.
+
 Here is where the first concrete skyscraper was built in the Soviet Union. An amazing monument of constructivism, made from concrete and iron, using horses.
 Kharkiv is only 40 kilometres from Russia and has become a city on the frontline. 
+
 From the first days, our busy streets, were targeted with rockets, cluster and air bombs. But just like concrete and iron are hard to destroy, our spirits are also unbreakable. As each of us bravely questioned our responsibility. Asking how can I help to win? To survive?
-And for a moment concerts were silent, and Philharmonic Music Halls close their doors. As musicians like Stas Kononov put down their instruments and became frontline volunteer…
+
+And for a moment, concerts were silent, and Philharmonic Music Halls closed their doors. As musicians like Stas Kononov put down their instruments and became frontline volunteer…
 
 
-STAS KONONOV:
+TESTIMONY OF STAS KONONOV:
+
 I was meant to play a concert in London on the 28th of February.
 On the morning of the 24th a friend of mine, came knocking on my door, shouting ‘wake up, or you will sleep through the war’. 
+
 For the next few days, myself and other artists gathered in a small flat near the centre.
+
 People were coming and going, and we were trying to work out, should we stay or should we leave?
+
 I received a phone call from a friend, in a more dangerous district, saying that there was a basement with 450 people. That they didn’t have anything, no food, no water and its too dangerous to go outside.
+
 It was the moment I realised that I must stay. That there was a responsibility to provide and seek resources. 
+
 The flat I was in became a headquarters, and everyone was an actor, or connected to music, art and culture. 
-It was a little chaotic in that moment. Someone provides something and its distributed to anyone who needs - Sharing everything
-It was a very intense process.
+
+It was a little chaotic in that moment. Someone provides something and its distributed to anyone who needs…Sharing everything…It was a very intense process.
+
 After some time it became more organised, and we had districts and volunteers in each area. 
+
 Of course it was dangerous. Everywhere in Kharkiv was dangerous.
+
 But I know a lot of examples of bravery, and for me what I’m doing is not brave.
+
 It was stressful and frightening, it was a lot of things. Everything makes you cry, but inside you have this feeling that you are in the right place, are part of something bigger than yourself. That we are all equal, all connected.
+
 Everyone helps everyone and it doesn’t matter who you were before. You could have been a businessman with a Tesla car or an artist who drives something very shitty.
+
 Even the chief commander of the military base worked without hierarchy. It was a horizontal connection… it was solidarity. You called someone if you needed something and you solved it. 
+
 It felt that one hundred people were one.
+
 Before the full-scale invasion, I was asking these questions - Who am I? What am I? 
 This situation gave me the answers.
-It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
-To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
-We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.
 
+(Stas Kononov plays acoustic guitar as the air raid signal plays)
+
+It feels like making music has not mattered for a long time. A lot of musicians reject music right now.
+
+To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful, and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
+
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.
 
 
 :: AR1 [nobr]{"position":"450,50","size":"100,100"}
@@ -1105,11 +1132,18 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 :: mixtapetranscript
 
-<h2>Transcript</h2>
-NARRATOR:
+<h2>MIXTAPE - STAS’S MUSIC</h2>
+
+NARRATION BY VERONIKA SKLIAROVA:
+
 Musician Stas Kononov continues to volunteer, distributing supplies to civilians and soldiers. 
-It is on the frontline, he begins to play again - concerts for the army.
-Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izium that has now been completely destroyed…
+
+It’s on the frontline, he begins to play again, concerts for the army.
+
+Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izyum that has now been completely destroyed...
+
+(Acoustic music by Stas Kononov and Oleg Kadanov called Then And The Day Before)
+
 
 
 
