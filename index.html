@@ -100,8 +100,8 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 	</div>
 	<!-- UUID://F9E39354-F641-4070-8B45-C337A3FDC8C9// --><tw-storydata name="Spirits from Concrete and Iron" startnode="11" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C337A3FDC8C9" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
-@import url("./styles/generics.css");
-@import url("./styles/styles.css");</style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
+@import url("styles/generics.css");
+@import url("styles/styles.css");</style><script role="script" id="twine-user-script" type="text/twine-javascript">$('#ui-bar').remove();
 $(document.head).find('#style-ui-bar').remove();
 
 // MAKE MAP FUNCTION
@@ -284,10 +284,10 @@ setup.backThirty = () => {
   const audio = document.getElementById("audio");
   const timeHolder = audio.currentTime;
   audio.currentTime = timeHolder -30;
-  }</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;10&quot; &quot;./assets/audio/10-V2.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;11&quot; &quot;./assets/audio/11-V2.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;13&quot; &quot;./assets/audio/13.mp3&quot;&gt;&gt;
-&lt;&lt;cacheaudio &quot;walk&quot; &quot;./assets/audio/walk.mp3&quot;&gt;&gt;
+  }</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;10&quot; &quot;assets/audio/10-V2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;11&quot; &quot;assets/audio/11-V2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;13&quot; &quot;assets/audio/13.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;walk&quot; &quot;assets/audio/walk.mp3&quot;&gt;&gt;
 &lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="header" tags="nobr" position="100,225" size="100,100">&lt;header class=&quot;standard&quot;&gt;
 &lt;div class=&quot;header-item&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;header-item&quot;&gt;
@@ -349,7 +349,7 @@ setup.backThirty = () => {
   &lt;&lt;if $sendOn is true&gt;&gt;
  &lt;div class=&quot;nav-wrapper&quot; id=&quot;forIcon&quot;&gt;
     &lt;div class=&quot;nav-item &quot; &gt;
-        &lt;a href=&quot;https://fr-flowers-that-grow-from-concrete.netlify.app&quot;&gt;
+        &lt;a href=&quot;https://withfireandrageliverpool.com/flowers&quot;&gt;
 &lt;img src=&quot;assets/img/for.png&quot;&gt;&lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -641,14 +641,39 @@ setup.backThirty = () => {
 &lt;main class=&quot;&quot; id=&quot;&quot;&gt;
 
 &lt;div class=&quot;poster-wrapper&quot; id=&quot;poster&quot;&gt;
-   &lt;img class=&quot;poster&quot; src=&quot;./../assets/img/spirits-title.jpeg&quot;/&gt;
+   &lt;img class=&quot;poster&quot; src=&quot;assets/img/spirits-title.jpeg&quot;/&gt;
  &lt;/div&gt;
  &lt;div class=&quot;menu-wrapper&quot;&gt;
     &lt;&lt;button &quot;Keep going&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
      &lt;&lt;button &quot;I&#39;m joining the audio tour here&quot;&gt;&gt;&lt;&lt;goto &quot;framing&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
-     &lt;a href=&quot;https://www.withfireandrage.com&quot;&gt;&lt;button&gt;Leave the Tour&lt;/button&gt;&lt;/a&gt;
+      &lt;&lt;button &quot;Leave&quot;&gt;&gt;&lt;&lt;goto &quot;leave&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="12" name="framing" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="12" name="leave" tags="nobr" position="225,225" size="100,100">&lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
+&lt;&lt;set $passage to &quot;leave&quot;&gt;&gt;
+&lt;&lt;set $nextpass to &quot;leave&quot;&gt;&gt;
+&lt;&lt;set $transcript to false&gt;&gt;
+&lt;&lt;set $playToggle to false&gt;&gt;
+&lt;&lt;set $captionToggle to false&gt;&gt;
+&lt;&lt;set $showForwards to false&gt;&gt;
+&lt;&lt;set $showBackwards to true&gt;&gt;
+&lt;&lt;set $showCaptionsIcon to false&gt;&gt;
+&lt;&lt;set $showMap to false&gt;&gt;
+&lt;audio id=&quot;audio&quot; autoplay &gt;
+  &lt;source src=&quot;https://withfireandrageliverpool.com/audio/ONB/CreditsAltV1.mp3&quot;&gt;
+&lt;/audio&gt;
+&lt;main class=&quot;instructions&quot; id=&quot;&quot;&gt;
+&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Thank you for joining me today&lt;/p&gt;
+
+&lt;p&gt;With Fire And Rage is created from the testimonies, art, photography, and music of artists across Ukraine &lt;/p&gt;
+&lt;p&gt;I invite you to discover their work &lt;/p&gt;
+&lt;p&gt;Listen to more online&lt;/p&gt;
+&lt;p&gt;Or visit other locations another day&lt;/p&gt;
+
+&lt;a href=&quot;https://www.withfireandrage.com&quot;  rel=&quot;noreferrer&quot; style=&quot;color:var(--color-yellow) &quot;&gt;&lt;p&gt;withfireandrage.com&lt;/p&gt;&lt;/a&gt;
+
+&lt;/main&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="framing" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;framing&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instructions&quot;&gt;&gt;
 &lt;&lt;set $transcript to false&gt;&gt;
@@ -686,7 +711,7 @@ setup.backThirty = () => {
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
  
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="instructions" tags="nobr" position="350,225" size="100,100">&lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="instructions" tags="nobr" position="475,225" size="100,100">&lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instructions&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instructions2&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -741,7 +766,7 @@ setup.backThirty = () => {
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="instructions2" tags="nobr" position="475,225" size="100,100">&lt;&lt;set $prevpass to &quot;instructions&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="instructions2" tags="nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;instructions&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instructions2&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instructions3&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -801,7 +826,7 @@ setup.backThirty = () => {
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="instructions3" tags="nobr" position="600,225" size="100,100">&lt;&lt;set $prevpass to &quot;instructions2&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="instructions3" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $prevpass to &quot;instructions2&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instructions3&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -873,7 +898,7 @@ setup.backThirty = () => {
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="landing" tags="nobr" position="725,225" size="100,100">&lt;&lt;set $title to &quot;Spirits from Concrete and Iron&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="landing" tags="nobr" position="850,225" size="100,100">&lt;&lt;set $title to &quot;Spirits from Concrete and Iron&quot;&gt;&gt;
 &lt;&lt;set $location to &quot; Liverpool Philharmonic&quot;&gt;&gt;
 &lt;&lt;set $prevpass to &quot;beginning&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
@@ -897,7 +922,7 @@ setup.backThirty = () => {
 &lt;p&gt;Or if it’s raining take shelter by the concert hall doors&lt;/p&gt;
 &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="spirits" tags="nobr" position="700,175" size="100,100">&lt;&lt;set $prevpass to &quot;landing&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $transcript to false&gt;&gt;
@@ -915,7 +940,7 @@ setup.backThirty = () => {
   &lt;track kind=&quot;captions&quot; srclang=&quot;en&quot; label=&quot;English captions&quot; id=&quot;captrack&quot; default&gt;
 &lt;/audio&gt;
 &lt;div class=&quot;poster-wrapper&quot; id=&quot;poster&quot;&gt;
-   &lt;img class=&quot;poster audio&quot; src=&quot;./../assets/img/spirits.jpeg&quot;/&gt;
+   &lt;img class=&quot;poster audio&quot; src=&quot;assets/img/spirits.jpeg&quot;/&gt;
  &lt;/div&gt;
   
 &lt;div id=&quot;caption&quot; class=&quot;hide&quot;&gt;&lt;/div&gt;
@@ -944,7 +969,7 @@ setup.backThirty = () => {
 
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footerstory&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="spiritstranscript" tags="" position="975,225" size="100,100">&lt;h2&gt;SPIRITS FROM CONCRETE AND IRON&lt;/h2&gt;
+&lt;&lt;include &quot;footerstory&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="spiritstranscript" tags="" position="1100,225" size="100,100">&lt;h2&gt;SPIRITS FROM CONCRETE AND IRON&lt;/h2&gt;
 
 NARRATION BY VERONIKA SKLIAROVA:
 
@@ -1001,7 +1026,7 @@ It feels like making music has not mattered for a long time. A lot of musicians 
 
 To play, you must be in the moment, be present, to connect to your emotions. It is very stressful and painful, and when you start to play, you feel your pain and it comes in such a wave that you stop and think, never again.
 
-We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="19" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
+We don’t have the space to be emotional. So you go round in this circle. And come back to the idea that it is not the time… maybe later.</tw-passagedata><tw-passagedata pid="20" name="AR1" tags="nobr" position="450,50" size="100,100">&lt;&lt;set $prevpass to &quot;instnar3&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;AR1&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -1016,17 +1041,17 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
   &lt;div class=&quot;ar-imgs-container one&quot; id=&quot;ARContainer&quot;&gt;
     &lt;div class=&quot;hidden-img-wrapper touch transparent&quot; id=&quot;reveal&quot; &gt;
-        &lt;img src=&quot;./assets/img/gifs/ar1open.gif&quot; class=&quot;&quot;&gt;
+        &lt;img src=&quot;assets/img/gifs/ar1open.gif&quot; class=&quot;&quot;&gt;
       &lt;/div&gt;
     &lt;div class=&quot;ar-img-wrapper touch bottom&quot; id=&quot;initial&quot; &gt;
-      &lt;img src=&quot;./assets/img/everyman-inside.jpeg&quot; class=&quot;&quot;&gt;
+      &lt;img src=&quot;assets/img/everyman-inside.jpeg&quot; class=&quot;&quot;&gt;
       &lt;/div&gt;
   &lt;/div&gt;
 
 
 &lt;/main&gt;
 &lt;&lt;include &quot;footerAR&quot;&gt;&gt;
-&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="instnar5" tags="nobr" position="1225,225" size="100,100">&lt;&lt;set $prevpass to &quot;spirits&quot;&gt;&gt;
+&lt;&lt;done&gt;&gt;&lt;&lt;set $s to setup.startup()&gt;&gt;&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="instnar5" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;spirits&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -1048,7 +1073,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
   &lt;&lt;button &quot;Let&#39;s go&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="mixtape" tags="nobr" position="100,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar5&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="mixtape" tags="nobr" position="225,350" size="100,100">&lt;&lt;set $prevpass to &quot;instnar5&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to true&gt;&gt;
@@ -1072,7 +1097,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 &lt;div id=&quot;map&quot; class=&quot;&quot;&gt;$map&lt;/div&gt;
 /* &lt;div class=&quot;poster-wrapper hide&quot; id=&quot;poster&quot;&gt;
-   &lt;img class=&quot;poster&quot; src=&quot;./../assets/img/obpy.jpeg&quot;/&gt;
+   &lt;img class=&quot;poster&quot; src=&quot;assets/img/obpy.jpeg&quot;/&gt;
  &lt;/div&gt; */
 &lt;div class=&quot;caution&quot; &gt;&lt;img src=&quot;assets/img/caution.png&quot;&gt;&lt;p&gt;Take care crossing roads &lt;/p&gt;&lt;/div&gt;
 &lt;div id=&quot;transcript&quot;&gt;&lt;/div&gt;
@@ -1090,7 +1115,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 &lt;&lt;link &quot;play&quot;&gt;&gt;
   &lt;&lt;timed 4s&gt;&gt;
       &lt;&lt;replace &quot;#headerinstmount&quot;&gt;&gt;
-    &lt;p class=&quot;comment&quot;&gt; Are you at the steps outside the Bombed Out Church?&lt;a href=&quot;https://fr-flowers-that-grow-from-concrete.netlify.app&quot;&gt;
+    &lt;p class=&quot;comment&quot;&gt; Are you at the steps outside the Bombed Out Church?&lt;a href=&quot;https://withfireandrageliverpool.com/flowers&quot;&gt;
 &lt;button&gt;I&#39;m here&lt;/button&gt;&lt;/a&gt;&lt;/p&gt;
     &lt;&lt;/replace&gt;&gt;
     &lt;&lt;/timed&gt;&gt;
@@ -1106,7 +1131,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footerstorywalk&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="mixtapetranscript" tags="" position="225,350" size="100,100">&lt;h2&gt;MIXTAPE - STAS’S MUSIC&lt;/h2&gt;
+&lt;&lt;include &quot;footerstorywalk&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="mixtapetranscript" tags="" position="350,350" size="100,100">&lt;h2&gt;MIXTAPE - STAS’S MUSIC&lt;/h2&gt;
 
 NARRATION BY VERONIKA SKLIAROVA:
 
@@ -1116,7 +1141,7 @@ It’s on the frontline, he begins to play again, concerts for the army.
 
 Acoustic sounds, songs from his album he is yet to release and music he recorded in a legendary studio in Izyum that has now been completely destroyed...
 
-(Acoustic music by Stas Kononov and Oleg Kadanov called Then And The Day Before)</tw-passagedata><tw-passagedata pid="23" name="end" tags="nobr" position="350,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
+(Acoustic music by Stas Kononov and Oleg Kadanov called Then And The Day Before)</tw-passagedata><tw-passagedata pid="24" name="end" tags="nobr" position="475,350" size="100,100">&lt;&lt;set $prevpass to &quot;mixtape&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $nextpass to &quot;end&quot;&gt;&gt;
 &lt;&lt;set $showMap to false&gt;&gt;
@@ -1138,7 +1163,7 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 &lt;br/&gt;
  &lt;h3&gt;Flowers That Grow from Concrete&lt;/h3&gt;
  &lt;br/&gt;
-    &lt;a href=&quot;https://fr-flowers-that-grow-from-concrete.netlify.app/&quot;&gt;
+    &lt;a href=&quot;https://withfireandrageliverpool.com/flowers/&quot;&gt;
 &lt;button&gt;Start&lt;/button&gt;&lt;/a&gt;
 
 

@@ -15,8 +15,8 @@ Spirits from Concrete and Iron
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
-@import url("./styles/generics.css");
-@import url("./styles/styles.css");
+@import url("styles/generics.css");
+@import url("styles/styles.css");
 
 
 
@@ -209,10 +209,10 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "10" "./assets/audio/10-V2.mp3">>
-<<cacheaudio "11" "./assets/audio/11-V2.mp3">>
-<<cacheaudio "13" "./assets/audio/13.mp3">>
-<<cacheaudio "walk" "./assets/audio/walk.mp3">>
+<<cacheaudio "10" "assets/audio/10-V2.mp3">>
+<<cacheaudio "11" "assets/audio/11-V2.mp3">>
+<<cacheaudio "13" "assets/audio/13.mp3">>
+<<cacheaudio "walk" "assets/audio/walk.mp3">>
 <<waitforaudio>>
 
 
@@ -283,7 +283,7 @@ setup.backThirty = () => {
   <<if $sendOn is true>>
  <div class="nav-wrapper" id="forIcon">
     <div class="nav-item " >
-        <a href="https://fr-flowers-that-grow-from-concrete.netlify.app">
+        <a href="https://withfireandrageliverpool.com/flowers">
 <img src="assets/img/for.png"></a>
     </div>
   </div>
@@ -611,16 +611,42 @@ setup.backThirty = () => {
 <main class="" id="">
 
 <div class="poster-wrapper" id="poster">
-   <img class="poster" src="./../assets/img/spirits-title.jpeg"/>
+   <img class="poster" src="assets/img/spirits-title.jpeg"/>
  </div>
  <div class="menu-wrapper">
     <<button "Keep going">><<goto $nextpass>><</button>>
      <<button "I'm joining the audio tour here">><<goto "framing">><</button>>
-     <a href="https://www.withfireandrage.com"><button>Leave the Tour</button></a>
+      <<button "Leave">><<goto "leave">><</button>>
 </div>
 </main>
 
+:: leave [nobr]
+<<set $prevpass to "beginning">>
+<<set $passage to "leave">>
+<<set $nextpass to "leave">>
+<<set $transcript to false>>
+<<set $playToggle to false>>
+<<set $captionToggle to false>>
+<<set $showForwards to false>>
+<<set $showBackwards to true>>
+<<set $showCaptionsIcon to false>>
+<<set $showMap to false>>
+<audio id="audio" autoplay >
+  <source src="https://withfireandrageliverpool.com/audio/ONB/CreditsAltV1.mp3">
+</audio>
+<main class="instructions" id="">
+<div id="mount"></div>
+<p>Thank you for joining me today</p>
 
+<p>With Fire And Rage is created from the testimonies, art, photography, and music of artists across Ukraine </p>
+<p>I invite you to discover their work </p>
+<p>Listen to more online</p>
+<p>Or visit other locations another day</p>
+
+<a href="https://www.withfireandrage.com"  rel="noreferrer" style="color:var(--color-yellow) "><p>withfireandrage.com</p></a>
+
+</main>
+<<include "footer">>
 
 :: framing [nobr]  {"position":"700,175","size":"100,100"}
 <<set $prevpass to "beginning">>
@@ -912,7 +938,7 @@ setup.backThirty = () => {
   <track kind="captions" srclang="en" label="English captions" id="captrack" default>
 </audio>
 <div class="poster-wrapper" id="poster">
-   <img class="poster audio" src="./../assets/img/spirits.jpeg"/>
+   <img class="poster audio" src="assets/img/spirits.jpeg"/>
  </div>
   
 <div id="caption" class="hide"></div>
@@ -1024,10 +1050,10 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
   <div class="ar-imgs-container one" id="ARContainer">
     <div class="hidden-img-wrapper touch transparent" id="reveal" >
-        <img src="./assets/img/gifs/ar1open.gif" class="">
+        <img src="assets/img/gifs/ar1open.gif" class="">
       </div>
     <div class="ar-img-wrapper touch bottom" id="initial" >
-      <img src="./assets/img/everyman-inside.jpeg" class="">
+      <img src="assets/img/everyman-inside.jpeg" class="">
       </div>
   </div>
 
@@ -1090,7 +1116,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 
 <div id="map" class="">$map</div>
 /* <div class="poster-wrapper hide" id="poster">
-   <img class="poster" src="./../assets/img/obpy.jpeg"/>
+   <img class="poster" src="assets/img/obpy.jpeg"/>
  </div> */
 <div class="caution" ><img src="assets/img/caution.png"><p>Take care crossing roads </p></div>
 <div id="transcript"></div>
@@ -1108,7 +1134,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
 <<link "play">>
   <<timed 4s>>
       <<replace "#headerinstmount">>
-    <p class="comment"> Are you at the steps outside the Bombed Out Church?<a href="https://fr-flowers-that-grow-from-concrete.netlify.app">
+    <p class="comment"> Are you at the steps outside the Bombed Out Church?<a href="https://withfireandrageliverpool.com/flowers">
 <button>I'm here</button></a></p>
     <</replace>>
     <</timed>>
@@ -1170,7 +1196,7 @@ Acoustic sounds, songs from his album he is yet to release and music he recorded
 <br/>
  <h3>Flowers That Grow from Concrete</h3>
  <br/>
-    <a href="https://fr-flowers-that-grow-from-concrete.netlify.app/">
+    <a href="https://withfireandrageliverpool.com/flowers/">
 <button>Start</button></a>
 
 
