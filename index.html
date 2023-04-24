@@ -284,7 +284,7 @@ setup.backThirty = () => {
   const audio = document.getElementById("audio");
   const timeHolder = audio.currentTime;
   audio.currentTime = timeHolder -30;
-  }</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;10&quot; &quot;assets/audio/10-V2.mp3&quot;&gt;&gt;
+  }</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;10&quot; &quot;assets/audio/10-V3.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;11&quot; &quot;assets/audio/11-V2.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;13&quot; &quot;assets/audio/13.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;walk&quot; &quot;assets/audio/walk.mp3&quot;&gt;&gt;
@@ -707,7 +707,7 @@ setup.backThirty = () => {
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;timed 8s&gt;&gt;&lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;You can move forward via a button like&lt;&lt;button &quot;This&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt; 
+&lt;p&gt;To move forward press a button like &lt;&lt;button &quot;Next&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/p&gt; 
 &lt;&lt;/append&gt;&gt;&lt;&lt;/timed&gt;&gt;
  
 &lt;/main&gt;
@@ -724,8 +724,6 @@ setup.backThirty = () => {
 &lt;audio id=&quot;audio&quot; autoplay &gt;
   &lt;source src=&quot;https://withfireandrageliverpool.com/audio/ONB/onboardingp2.mp3&quot;&gt;
 &lt;/audio&gt;
-
-&lt;div id=&quot;audio&quot;&gt;&lt;/div&gt;
 /* &lt;&lt;include &quot;header&quot;&gt;&gt; */
 &lt;main class=&quot;instructions&quot;&gt;
 &lt;h2&gt;Onboarding&lt;/h2&gt;
@@ -739,7 +737,7 @@ setup.backThirty = () => {
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 2s&gt;&gt;
    &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;This arrow takes you back[img[Back|assets/img/back.png][$prevpass]]&lt;/p&gt;
+&lt;p&gt;This arrow takes you back [img[Back|assets/img/back.png][$prevpass]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 4s&gt;&gt;
@@ -750,7 +748,7 @@ setup.backThirty = () => {
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 6s&gt;&gt;
 &lt;&lt;append &quot;#mount&quot;&gt;&gt;
-&lt;p&gt;You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]&lt;/p&gt;
+&lt;p&gt;You can replay with this icon [img[Replay|assets/img/replay.png][$passage]]&lt;/p&gt;
   &lt;&lt;/append&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
  &lt;&lt;timed 8s&gt;&gt;
@@ -835,6 +833,7 @@ setup.backThirty = () => {
 &lt;&lt;set $showForwards to true&gt;&gt;
 &lt;&lt;set $showBackwards to true&gt;&gt;
 &lt;&lt;set $showCaptionsIcon to false&gt;&gt;
+&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;audio id=&quot;audio&quot; autoplay &gt;
   &lt;source src=&quot;https://withfireandrageliverpool.com/audio/ONB/onboardingp4.mp3&quot;&gt;
 &lt;/audio&gt;
@@ -842,7 +841,7 @@ setup.backThirty = () => {
 &lt;main class=&quot;instructions&quot;&gt;
 &lt;h2&gt;Onboarding&lt;/h2&gt;
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
-&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;mount&quot; class=&quot;onboarding&quot;&gt;&lt;/div&gt;
 &lt;&lt;timed 0.1s&gt;&gt;
   &lt;&lt;append &quot;#mount&quot;&gt;&gt;
     &lt;p&gt;At every location, I will suggest places to sit, to lean, to shelter&lt;/p&gt;
@@ -919,6 +918,7 @@ setup.backThirty = () => {
 &lt;div id=&quot;map&quot; class=&quot;hide&quot;&gt;$map&lt;/div&gt;
 &lt;p&gt;You should be outside the Liverpool Philharmonic&lt;/p&gt;
 &lt;p&gt;Home to the  Britain’s oldest continuing professional symphony orchestra&lt;/p&gt;
+&lt;p&gt;Take a seat on the benches across the road&lt;/p&gt;
 &lt;p&gt;Or if it’s raining take shelter by the concert hall doors&lt;/p&gt;
 &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto $nextpass&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;

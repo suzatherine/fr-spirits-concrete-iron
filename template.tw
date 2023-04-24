@@ -209,7 +209,7 @@ setup.backThirty = () => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "10" "assets/audio/10-V2.mp3">>
+<<cacheaudio "10" "assets/audio/10-V3.mp3">>
 <<cacheaudio "11" "assets/audio/11-V2.mp3">>
 <<cacheaudio "13" "assets/audio/13.mp3">>
 <<cacheaudio "walk" "assets/audio/walk.mp3">>
@@ -683,7 +683,7 @@ setup.backThirty = () => {
 <</append>><</timed>>
 
 <<timed 8s>><<append "#mount">>
-<p>You can move forward via a button like<<button "This">><<goto $nextpass>><</button>></p> 
+<p>To move forward press a button like <<button "Next">><<goto $nextpass>><</button>></p> 
 <</append>><</timed>>
  
 </main>
@@ -705,8 +705,6 @@ setup.backThirty = () => {
 <audio id="audio" autoplay >
   <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp2.mp3">
 </audio>
-
-<div id="audio"></div>
 /* <<include "header">> */
 <main class="instructions">
 <h2>Onboarding</h2>
@@ -720,7 +718,7 @@ setup.backThirty = () => {
 <</timed>>
 <<timed 2s>>
    <<append "#mount">>
-<p>This arrow takes you back[img[Back|assets/img/back.png][$prevpass]]</p>
+<p>This arrow takes you back [img[Back|assets/img/back.png][$prevpass]]</p>
   <</append>>
 <</timed>>
 <<timed 4s>>
@@ -731,7 +729,7 @@ setup.backThirty = () => {
 <</timed>>
 <<timed 6s>>
 <<append "#mount">>
-<p>You can replay with this icon   [img[Replay|assets/img/replay.png][$passage]]</p>
+<p>You can replay with this icon [img[Replay|assets/img/replay.png][$passage]]</p>
   <</append>>
 <</timed>>
  <<timed 8s>>
@@ -824,6 +822,7 @@ setup.backThirty = () => {
 <<set $showForwards to true>>
 <<set $showBackwards to true>>
 <<set $showCaptionsIcon to false>>
+<<audio ":all" stop>>
 <audio id="audio" autoplay >
   <source src="https://withfireandrageliverpool.com/audio/ONB/onboardingp4.mp3">
 </audio>
@@ -831,7 +830,7 @@ setup.backThirty = () => {
 <main class="instructions">
 <h2>Onboarding</h2>
 <div id="map" class="hide">$map</div>
-<div id="mount"></div>
+<div id="mount" class="onboarding"></div>
 <<timed 0.1s>>
   <<append "#mount">>
     <p>At every location, I will suggest places to sit, to lean, to shelter</p>
@@ -912,6 +911,7 @@ setup.backThirty = () => {
 <div id="map" class="hide">$map</div>
 <p>You should be outside the Liverpool Philharmonic</p>
 <p>Home to the  Britain’s oldest continuing professional symphony orchestra</p>
+<p>Take a seat on the benches across the road</p>
 <p>Or if it’s raining take shelter by the concert hall doors</p>
 <<button "I'm ready">><<goto $nextpass>><</button>>
 </main>
