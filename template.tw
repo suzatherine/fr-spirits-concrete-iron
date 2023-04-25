@@ -1132,7 +1132,7 @@ We don’t have the space to be emotional. So you go round in this circle. And c
   <<replace "#headerinstmount">>  
 <p class="comment">As you begin to walk press  <div class="inline-btn-wrapper">
 <<link "play">>
-  <<timed 4s>>
+  <<timed 15s>>
       <<replace "#headerinstmount">>
     <p class="comment"> Are you at the steps outside the Bombed Out Church?<a href="https://withfireandrageliverpool.com/flowers">
 <button>I'm here</button></a></p>
